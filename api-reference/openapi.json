@@ -4,7 +4,19 @@
     "title": "Internal Server",
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
     "schemas": {},
     "parameters": {}
   },
@@ -245,11 +257,11 @@
                         "type": "object",
                         "properties": {
                           "page": {
-                            "type": "number",
+                            "type": "integer",
                             "minimum": 0
                           },
                           "limit": {
-                            "type": "number",
+                            "type": "integer",
                             "minimum": 1,
                             "maximum": 1000
                           }
@@ -389,11 +401,11 @@
                           "type": "object",
                           "properties": {
                             "page": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 0
                             },
                             "limit": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 1,
                               "maximum": 1000
                             }
@@ -773,11 +785,11 @@
                           "type": "object",
                           "properties": {
                             "page": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 0
                             },
                             "limit": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 1,
                               "maximum": 1000
                             }
@@ -1207,11 +1219,11 @@
                           "type": "object",
                           "properties": {
                             "page": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 0
                             },
                             "limit": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 1,
                               "maximum": 1000
                             }
@@ -1671,11 +1683,11 @@
                           "type": "object",
                           "properties": {
                             "page": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 0
                             },
                             "limit": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 1,
                               "maximum": 1000
                             }
@@ -2191,11 +2203,11 @@
                         "type": "object",
                         "properties": {
                           "page": {
-                            "type": "number",
+                            "type": "integer",
                             "minimum": 0
                           },
                           "limit": {
-                            "type": "number",
+                            "type": "integer",
                             "minimum": 1,
                             "maximum": 1000
                           }
@@ -2567,11 +2579,11 @@
                           "type": "object",
                           "properties": {
                             "page": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 0
                             },
                             "limit": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 1,
                               "maximum": 1000
                             }
@@ -3184,11 +3196,11 @@
                           "type": "object",
                           "properties": {
                             "page": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 0
                             },
                             "limit": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 1,
                               "maximum": 1000
                             }
@@ -3905,11 +3917,11 @@
                           "type": "object",
                           "properties": {
                             "page": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 0
                             },
                             "limit": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 1,
                               "maximum": 1000
                             }
@@ -4719,11 +4731,11 @@
                           "type": "object",
                           "properties": {
                             "page": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 0
                             },
                             "limit": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 1,
                               "maximum": 1000
                             }
@@ -5336,11 +5348,11 @@
                           "type": "object",
                           "properties": {
                             "page": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 0
                             },
                             "limit": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 1,
                               "maximum": 1000
                             }
@@ -5953,11 +5965,11 @@
                           "type": "object",
                           "properties": {
                             "page": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 0
                             },
                             "limit": {
-                              "type": "number",
+                              "type": "integer",
                               "minimum": 1,
                               "maximum": 1000
                             }
