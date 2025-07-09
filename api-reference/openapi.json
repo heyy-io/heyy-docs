@@ -9,6 +9,11 @@
       "url": "http://localhost:3000"
     }
   ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
   "components": {
     "securitySchemes": {
       "bearerAuth": {
