@@ -9,7 +9,7 @@
     "parameters": {}
   },
   "paths": {
-    "/search": {
+    "/attributes/search": {
       "post": {
         "summary": "Search attributes",
         "requestBody": {
@@ -637,7 +637,7 @@
         }
       }
     },
-    "/{attributeId}": {
+    "/attributes/{attributeId}": {
       "get": {
         "summary": "Get attribute by id",
         "parameters": [
@@ -1463,372 +1463,12 @@
         ],
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "object",
-                      "properties": {
-                        "messageKey": {
-                          "type": "string"
-                        },
-                        "message": {
-                          "type": "string"
-                        },
-                        "invalidParams": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "object",
-                            "properties": {
-                              "key": {
-                                "type": "string"
-                              },
-                              "message": {
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "key",
-                              "message"
-                            ]
-                          }
-                        }
-                      }
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "createdAt": {
-                          "type": "string"
-                        },
-                        "updatedAt": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "text",
-                            "number",
-                            "single_select"
-                          ]
-                        },
-                        "displayName": {
-                          "type": "string"
-                        },
-                        "description": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "visibility": {
-                          "type": "object",
-                          "properties": {
-                            "inbox": {
-                              "type": "boolean"
-                            },
-                            "contacts": {
-                              "type": "boolean"
-                            },
-                            "create": {
-                              "type": "boolean"
-                            }
-                          },
-                          "required": [
-                            "inbox",
-                            "contacts",
-                            "create"
-                          ]
-                        },
-                        "details": {
-                          "type": "object",
-                          "properties": {
-                            "options": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "createdAt",
-                        "updatedAt",
-                        "name",
-                        "type",
-                        "displayName",
-                        "description",
-                        "visibility",
-                        "details"
-                      ]
-                    },
-                    "pagination": {
-                      "anyOf": [
-                        {
-                          "type": "object",
-                          "properties": {
-                            "page": {
-                              "type": "number",
-                              "minimum": 0
-                            },
-                            "limit": {
-                              "type": "number",
-                              "minimum": 1,
-                              "maximum": 1000
-                            }
-                          },
-                          "additionalProperties": false
-                        },
-                        {
-                          "type": "boolean",
-                          "enum": [
-                            false
-                          ]
-                        }
-                      ]
-                    },
-                    "query": {
-                      "type": "object",
-                      "properties": {
-                        "filter": {
-                          "anyOf": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "condition"
-                                  ]
-                                },
-                                "field": {
-                                  "type": "string"
-                                },
-                                "operator": {
-                                  "type": "string",
-                                  "enum": [
-                                    "equal",
-                                    "not_equal",
-                                    "greater_than",
-                                    "less_than",
-                                    "greater_than_or_equal",
-                                    "less_than_or_equal",
-                                    "contains",
-                                    "not_contains"
-                                  ]
-                                },
-                                "value": {
-                                  "anyOf": [
-                                    {
-                                      "type": "string"
-                                    },
-                                    {
-                                      "type": "number"
-                                    },
-                                    {
-                                      "type": "boolean"
-                                    }
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "type",
-                                "field",
-                                "operator",
-                                "value"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "condition"
-                                  ]
-                                },
-                                "field": {
-                                  "type": "string"
-                                },
-                                "operator": {
-                                  "type": "string",
-                                  "enum": [
-                                    "in",
-                                    "not_in"
-                                  ]
-                                },
-                                "value": {
-                                  "type": "array",
-                                  "items": {
-                                    "anyOf": [
-                                      {
-                                        "type": "string"
-                                      },
-                                      {
-                                        "type": "number"
-                                      },
-                                      {
-                                        "type": "boolean"
-                                      }
-                                    ]
-                                  }
-                                }
-                              },
-                              "required": [
-                                "type",
-                                "field",
-                                "operator",
-                                "value"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "condition"
-                                  ]
-                                },
-                                "field": {
-                                  "type": "string"
-                                },
-                                "operator": {
-                                  "type": "string",
-                                  "enum": [
-                                    "is_empty",
-                                    "is_not_empty"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "type",
-                                "field",
-                                "operator"
-                              ]
-                            },
-                            {
-                              "oneOf": [
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "and"
-                                      ]
-                                    },
-                                    "filters": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object"
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "type",
-                                    "filters"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "or"
-                                      ]
-                                    },
-                                    "filters": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object"
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "type",
-                                    "filters"
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "json_array_and"
-                                  ]
-                                },
-                                "field": {
-                                  "type": "string"
-                                },
-                                "filters": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object"
-                                  }
-                                }
-                              },
-                              "required": [
-                                "type",
-                                "field",
-                                "filters"
-                              ]
-                            }
-                          ]
-                        },
-                        "sortBy": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "object",
-                            "properties": {
-                              "order": {
-                                "type": "string",
-                                "enum": [
-                                  "asc",
-                                  "desc"
-                                ]
-                              },
-                              "nulls": {
-                                "type": "string",
-                                "enum": [
-                                  "first",
-                                  "last"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "order"
-                            ]
-                          }
-                        },
-                        "search": {
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  }
-                }
-              }
-            }
+            "description": ""
           }
         }
       }
     },
-    "/": {
+    "/attributes": {
       "post": {
         "summary": "Create attribute",
         "requestBody": {
@@ -2292,6 +1932,887 @@
         },
         "responses": {
           "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/channels/search": {
+      "post": {
+        "summary": "Search channels",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "filter": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "condition"
+                            ]
+                          },
+                          "field": {
+                            "type": "string"
+                          },
+                          "operator": {
+                            "type": "string",
+                            "enum": [
+                              "equal",
+                              "not_equal",
+                              "greater_than",
+                              "less_than",
+                              "greater_than_or_equal",
+                              "less_than_or_equal",
+                              "contains",
+                              "not_contains"
+                            ]
+                          },
+                          "value": {
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "boolean"
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "field",
+                          "operator",
+                          "value"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "condition"
+                            ]
+                          },
+                          "field": {
+                            "type": "string"
+                          },
+                          "operator": {
+                            "type": "string",
+                            "enum": [
+                              "in",
+                              "not_in"
+                            ]
+                          },
+                          "value": {
+                            "type": "array",
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "boolean"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "field",
+                          "operator",
+                          "value"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "condition"
+                            ]
+                          },
+                          "field": {
+                            "type": "string"
+                          },
+                          "operator": {
+                            "type": "string",
+                            "enum": [
+                              "is_empty",
+                              "is_not_empty"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "field",
+                          "operator"
+                        ]
+                      },
+                      {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "and"
+                                ]
+                              },
+                              "filters": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object"
+                                }
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "filters"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "or"
+                                ]
+                              },
+                              "filters": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object"
+                                }
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "filters"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "json_array_and"
+                            ]
+                          },
+                          "field": {
+                            "type": "string"
+                          },
+                          "filters": {
+                            "type": "array",
+                            "items": {
+                              "type": "object"
+                            }
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "field",
+                          "filters"
+                        ]
+                      }
+                    ]
+                  },
+                  "sortBy": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "properties": {
+                        "order": {
+                          "type": "string",
+                          "enum": [
+                            "asc",
+                            "desc"
+                          ]
+                        },
+                        "nulls": {
+                          "type": "string",
+                          "enum": [
+                            "first",
+                            "last"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "order"
+                      ]
+                    }
+                  },
+                  "search": {
+                    "type": "string"
+                  },
+                  "pagination": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "page": {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          "limit": {
+                            "type": "number",
+                            "minimum": 1,
+                            "maximum": 1000
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "boolean",
+                        "enum": [
+                          false
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "messageKey": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "invalidParams": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "message"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "whatsapp",
+                              "sms",
+                              "email",
+                              "instagram"
+                            ]
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "setting_up",
+                              "awaiting_approval",
+                              "active",
+                              "restricted",
+                              "blocked",
+                              "deactivated"
+                            ]
+                          },
+                          "vendorId": {
+                            "type": "string"
+                          },
+                          "vendorDetails": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "vendor": {
+                                    "type": "string",
+                                    "enum": [
+                                      "meta",
+                                      "bik"
+                                    ]
+                                  },
+                                  "wabaId": {
+                                    "type": "string"
+                                  },
+                                  "phoneNumberId": {
+                                    "type": "string"
+                                  },
+                                  "phoneNumber": {
+                                    "type": "string"
+                                  },
+                                  "isVerified": {
+                                    "type": "boolean"
+                                  },
+                                  "dailyLimit": {
+                                    "type": "number",
+                                    "nullable": true
+                                  },
+                                  "qualityRating": {
+                                    "type": "string",
+                                    "enum": [
+                                      "flagged",
+                                      "high",
+                                      "medium",
+                                      "low"
+                                    ]
+                                  },
+                                  "displayName": {
+                                    "type": "string"
+                                  },
+                                  "profile": {
+                                    "type": "object",
+                                    "properties": {
+                                      "about": {
+                                        "type": "string"
+                                      },
+                                      "address": {
+                                        "type": "string",
+                                        "nullable": true
+                                      },
+                                      "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                      },
+                                      "email": {
+                                        "type": "string",
+                                        "nullable": true
+                                      },
+                                      "profilePicture": {
+                                        "type": "object",
+                                        "nullable": true,
+                                        "properties": {
+                                          "id": {
+                                            "type": "string"
+                                          },
+                                          "createdAt": {
+                                            "type": "string"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "image",
+                                              "video",
+                                              "audio",
+                                              "document"
+                                            ]
+                                          },
+                                          "name": {
+                                            "type": "string"
+                                          },
+                                          "extension": {
+                                            "type": "string"
+                                          },
+                                          "contentType": {
+                                            "type": "string"
+                                          },
+                                          "url": {
+                                            "type": "string"
+                                          },
+                                          "size": {
+                                            "type": "number"
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "createdAt",
+                                          "type",
+                                          "name",
+                                          "extension",
+                                          "contentType",
+                                          "url",
+                                          "size"
+                                        ]
+                                      },
+                                      "vertical": {
+                                        "type": "string",
+                                        "enum": [
+                                          "undefined",
+                                          "other",
+                                          "auto",
+                                          "beauty",
+                                          "apparel",
+                                          "edu",
+                                          "entertain",
+                                          "event_plan",
+                                          "finance",
+                                          "grocery",
+                                          "govt",
+                                          "hotel",
+                                          "health",
+                                          "nonprofit",
+                                          "prof_services",
+                                          "retail",
+                                          "travel",
+                                          "restaurant",
+                                          "not_a_biz",
+                                          "alcohol",
+                                          "online_gambling",
+                                          "otc_drugs",
+                                          "physical_gambling"
+                                        ]
+                                      },
+                                      "websites": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "about",
+                                      "address",
+                                      "description",
+                                      "email",
+                                      "vertical",
+                                      "websites"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "vendor",
+                                  "wabaId",
+                                  "phoneNumberId",
+                                  "phoneNumber",
+                                  "isVerified",
+                                  "dailyLimit",
+                                  "qualityRating",
+                                  "displayName",
+                                  "profile"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "vendor": {
+                                    "type": "string",
+                                    "enum": [
+                                      "sms019"
+                                    ]
+                                  },
+                                  "senderName": {
+                                    "type": "string"
+                                  },
+                                  "allowInbound": {
+                                    "type": "boolean"
+                                  }
+                                },
+                                "required": [
+                                  "vendor",
+                                  "senderName",
+                                  "allowInbound"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "vendor": {
+                                    "type": "string",
+                                    "enum": [
+                                      "twilio"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "vendor"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "vendor": {
+                                    "type": "string",
+                                    "enum": [
+                                      "aws"
+                                    ]
+                                  },
+                                  "email": {
+                                    "type": "string"
+                                  },
+                                  "senderName": {
+                                    "type": "string"
+                                  },
+                                  "replyToEmail": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "forwardingEmail": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "vendor",
+                                  "email",
+                                  "senderName",
+                                  "replyToEmail",
+                                  "forwardingEmail"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "vendor": {
+                                    "type": "string",
+                                    "enum": [
+                                      "meta"
+                                    ]
+                                  },
+                                  "pgId": {
+                                    "type": "string"
+                                  },
+                                  "igId": {
+                                    "type": "string"
+                                  },
+                                  "username": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "vendor",
+                                  "pgId",
+                                  "igId",
+                                  "username"
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "createdAt",
+                          "updatedAt",
+                          "name",
+                          "type",
+                          "status",
+                          "vendorId",
+                          "vendorDetails"
+                        ]
+                      }
+                    },
+                    "pagination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "equal",
+                                    "not_equal",
+                                    "greater_than",
+                                    "less_than",
+                                    "greater_than_or_equal",
+                                    "less_than_or_equal",
+                                    "contains",
+                                    "not_contains"
+                                  ]
+                                },
+                                "value": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in",
+                                    "not_in"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "is_empty",
+                                    "is_not_empty"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator"
+                              ]
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "or"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "json_array_and"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "filters": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "filters"
+                              ]
+                            }
+                          ]
+                        },
+                        "sortBy": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "string",
+                                "enum": [
+                                  "asc",
+                                  "desc"
+                                ]
+                              },
+                              "nulls": {
+                                "type": "string",
+                                "enum": [
+                                  "first",
+                                  "last"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "order"
+                            ]
+                          }
+                        },
+                        "search": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/channels/{channelId}": {
+      "get": {
+        "summary": "Get channel by id",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "channelId",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
             "description": "",
             "content": {
               "application/json": {
@@ -2345,47 +2866,281 @@
                         "type": {
                           "type": "string",
                           "enum": [
-                            "text",
-                            "number",
-                            "single_select"
+                            "whatsapp",
+                            "sms",
+                            "email",
+                            "instagram"
                           ]
                         },
-                        "displayName": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "setting_up",
+                            "awaiting_approval",
+                            "active",
+                            "restricted",
+                            "blocked",
+                            "deactivated"
+                          ]
+                        },
+                        "vendorId": {
                           "type": "string"
                         },
-                        "description": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "visibility": {
-                          "type": "object",
-                          "properties": {
-                            "inbox": {
-                              "type": "boolean"
+                        "vendorDetails": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "meta",
+                                    "bik"
+                                  ]
+                                },
+                                "wabaId": {
+                                  "type": "string"
+                                },
+                                "phoneNumberId": {
+                                  "type": "string"
+                                },
+                                "phoneNumber": {
+                                  "type": "string"
+                                },
+                                "isVerified": {
+                                  "type": "boolean"
+                                },
+                                "dailyLimit": {
+                                  "type": "number",
+                                  "nullable": true
+                                },
+                                "qualityRating": {
+                                  "type": "string",
+                                  "enum": [
+                                    "flagged",
+                                    "high",
+                                    "medium",
+                                    "low"
+                                  ]
+                                },
+                                "displayName": {
+                                  "type": "string"
+                                },
+                                "profile": {
+                                  "type": "object",
+                                  "properties": {
+                                    "about": {
+                                      "type": "string"
+                                    },
+                                    "address": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "description": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "email": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "profilePicture": {
+                                      "type": "object",
+                                      "nullable": true,
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "createdAt": {
+                                          "type": "string"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "image",
+                                            "video",
+                                            "audio",
+                                            "document"
+                                          ]
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "extension": {
+                                          "type": "string"
+                                        },
+                                        "contentType": {
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        },
+                                        "size": {
+                                          "type": "number"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "createdAt",
+                                        "type",
+                                        "name",
+                                        "extension",
+                                        "contentType",
+                                        "url",
+                                        "size"
+                                      ]
+                                    },
+                                    "vertical": {
+                                      "type": "string",
+                                      "enum": [
+                                        "undefined",
+                                        "other",
+                                        "auto",
+                                        "beauty",
+                                        "apparel",
+                                        "edu",
+                                        "entertain",
+                                        "event_plan",
+                                        "finance",
+                                        "grocery",
+                                        "govt",
+                                        "hotel",
+                                        "health",
+                                        "nonprofit",
+                                        "prof_services",
+                                        "retail",
+                                        "travel",
+                                        "restaurant",
+                                        "not_a_biz",
+                                        "alcohol",
+                                        "online_gambling",
+                                        "otc_drugs",
+                                        "physical_gambling"
+                                      ]
+                                    },
+                                    "websites": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "about",
+                                    "address",
+                                    "description",
+                                    "email",
+                                    "vertical",
+                                    "websites"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "wabaId",
+                                "phoneNumberId",
+                                "phoneNumber",
+                                "isVerified",
+                                "dailyLimit",
+                                "qualityRating",
+                                "displayName",
+                                "profile"
+                              ]
                             },
-                            "contacts": {
-                              "type": "boolean"
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sms019"
+                                  ]
+                                },
+                                "senderName": {
+                                  "type": "string"
+                                },
+                                "allowInbound": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "senderName",
+                                "allowInbound"
+                              ]
                             },
-                            "create": {
-                              "type": "boolean"
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "twilio"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "vendor"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aws"
+                                  ]
+                                },
+                                "email": {
+                                  "type": "string"
+                                },
+                                "senderName": {
+                                  "type": "string"
+                                },
+                                "replyToEmail": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "forwardingEmail": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "email",
+                                "senderName",
+                                "replyToEmail",
+                                "forwardingEmail"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "meta"
+                                  ]
+                                },
+                                "pgId": {
+                                  "type": "string"
+                                },
+                                "igId": {
+                                  "type": "string"
+                                },
+                                "username": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "pgId",
+                                "igId",
+                                "username"
+                              ]
                             }
-                          },
-                          "required": [
-                            "inbox",
-                            "contacts",
-                            "create"
                           ]
-                        },
-                        "details": {
-                          "type": "object",
-                          "properties": {
-                            "options": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            }
-                          }
                         }
                       },
                       "required": [
@@ -2394,10 +3149,2763 @@
                         "updatedAt",
                         "name",
                         "type",
-                        "displayName",
-                        "description",
-                        "visibility",
-                        "details"
+                        "status",
+                        "vendorId",
+                        "vendorDetails"
+                      ]
+                    },
+                    "pagination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "equal",
+                                    "not_equal",
+                                    "greater_than",
+                                    "less_than",
+                                    "greater_than_or_equal",
+                                    "less_than_or_equal",
+                                    "contains",
+                                    "not_contains"
+                                  ]
+                                },
+                                "value": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in",
+                                    "not_in"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "is_empty",
+                                    "is_not_empty"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator"
+                              ]
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "or"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "json_array_and"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "filters": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "filters"
+                              ]
+                            }
+                          ]
+                        },
+                        "sortBy": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "string",
+                                "enum": [
+                                  "asc",
+                                  "desc"
+                                ]
+                              },
+                              "nulls": {
+                                "type": "string",
+                                "enum": [
+                                  "first",
+                                  "last"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "order"
+                            ]
+                          }
+                        },
+                        "search": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update channel",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "channelId",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "whatsapp"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "vendorDetails": {
+                        "type": "object",
+                        "properties": {
+                          "profile": {
+                            "type": "object",
+                            "properties": {
+                              "about": {
+                                "type": "string"
+                              },
+                              "profilePictureId": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid"
+                              },
+                              "vertical": {
+                                "type": "string",
+                                "enum": [
+                                  "undefined",
+                                  "other",
+                                  "auto",
+                                  "beauty",
+                                  "apparel",
+                                  "edu",
+                                  "entertain",
+                                  "event_plan",
+                                  "finance",
+                                  "grocery",
+                                  "govt",
+                                  "hotel",
+                                  "health",
+                                  "nonprofit",
+                                  "prof_services",
+                                  "retail",
+                                  "travel",
+                                  "restaurant",
+                                  "not_a_biz",
+                                  "alcohol",
+                                  "online_gambling",
+                                  "otc_drugs",
+                                  "physical_gambling"
+                                ]
+                              },
+                              "description": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "address": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "email": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "email"
+                              },
+                              "websites": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "format": "uri"
+                                },
+                                "maxItems": 2
+                              }
+                            },
+                            "required": [
+                              "about",
+                              "profilePictureId",
+                              "vertical",
+                              "description",
+                              "address",
+                              "email",
+                              "websites"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "profile"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "type"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "messageKey": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "invalidParams": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "message"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "whatsapp",
+                            "sms",
+                            "email",
+                            "instagram"
+                          ]
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "setting_up",
+                            "awaiting_approval",
+                            "active",
+                            "restricted",
+                            "blocked",
+                            "deactivated"
+                          ]
+                        },
+                        "vendorId": {
+                          "type": "string"
+                        },
+                        "vendorDetails": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "meta",
+                                    "bik"
+                                  ]
+                                },
+                                "wabaId": {
+                                  "type": "string"
+                                },
+                                "phoneNumberId": {
+                                  "type": "string"
+                                },
+                                "phoneNumber": {
+                                  "type": "string"
+                                },
+                                "isVerified": {
+                                  "type": "boolean"
+                                },
+                                "dailyLimit": {
+                                  "type": "number",
+                                  "nullable": true
+                                },
+                                "qualityRating": {
+                                  "type": "string",
+                                  "enum": [
+                                    "flagged",
+                                    "high",
+                                    "medium",
+                                    "low"
+                                  ]
+                                },
+                                "displayName": {
+                                  "type": "string"
+                                },
+                                "profile": {
+                                  "type": "object",
+                                  "properties": {
+                                    "about": {
+                                      "type": "string"
+                                    },
+                                    "address": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "description": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "email": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "profilePicture": {
+                                      "type": "object",
+                                      "nullable": true,
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "createdAt": {
+                                          "type": "string"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "image",
+                                            "video",
+                                            "audio",
+                                            "document"
+                                          ]
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "extension": {
+                                          "type": "string"
+                                        },
+                                        "contentType": {
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        },
+                                        "size": {
+                                          "type": "number"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "createdAt",
+                                        "type",
+                                        "name",
+                                        "extension",
+                                        "contentType",
+                                        "url",
+                                        "size"
+                                      ]
+                                    },
+                                    "vertical": {
+                                      "type": "string",
+                                      "enum": [
+                                        "undefined",
+                                        "other",
+                                        "auto",
+                                        "beauty",
+                                        "apparel",
+                                        "edu",
+                                        "entertain",
+                                        "event_plan",
+                                        "finance",
+                                        "grocery",
+                                        "govt",
+                                        "hotel",
+                                        "health",
+                                        "nonprofit",
+                                        "prof_services",
+                                        "retail",
+                                        "travel",
+                                        "restaurant",
+                                        "not_a_biz",
+                                        "alcohol",
+                                        "online_gambling",
+                                        "otc_drugs",
+                                        "physical_gambling"
+                                      ]
+                                    },
+                                    "websites": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "about",
+                                    "address",
+                                    "description",
+                                    "email",
+                                    "vertical",
+                                    "websites"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "wabaId",
+                                "phoneNumberId",
+                                "phoneNumber",
+                                "isVerified",
+                                "dailyLimit",
+                                "qualityRating",
+                                "displayName",
+                                "profile"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sms019"
+                                  ]
+                                },
+                                "senderName": {
+                                  "type": "string"
+                                },
+                                "allowInbound": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "senderName",
+                                "allowInbound"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "twilio"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "vendor"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aws"
+                                  ]
+                                },
+                                "email": {
+                                  "type": "string"
+                                },
+                                "senderName": {
+                                  "type": "string"
+                                },
+                                "replyToEmail": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "forwardingEmail": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "email",
+                                "senderName",
+                                "replyToEmail",
+                                "forwardingEmail"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "meta"
+                                  ]
+                                },
+                                "pgId": {
+                                  "type": "string"
+                                },
+                                "igId": {
+                                  "type": "string"
+                                },
+                                "username": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "pgId",
+                                "igId",
+                                "username"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "updatedAt",
+                        "name",
+                        "type",
+                        "status",
+                        "vendorId",
+                        "vendorDetails"
+                      ]
+                    },
+                    "pagination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "equal",
+                                    "not_equal",
+                                    "greater_than",
+                                    "less_than",
+                                    "greater_than_or_equal",
+                                    "less_than_or_equal",
+                                    "contains",
+                                    "not_contains"
+                                  ]
+                                },
+                                "value": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in",
+                                    "not_in"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "is_empty",
+                                    "is_not_empty"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator"
+                              ]
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "or"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "json_array_and"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "filters": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "filters"
+                              ]
+                            }
+                          ]
+                        },
+                        "sortBy": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "string",
+                                "enum": [
+                                  "asc",
+                                  "desc"
+                                ]
+                              },
+                              "nulls": {
+                                "type": "string",
+                                "enum": [
+                                  "first",
+                                  "last"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "order"
+                            ]
+                          }
+                        },
+                        "search": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete channel",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "channelId",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/channels": {
+      "post": {
+        "summary": "Create channel",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "whatsapp"
+                        ]
+                      },
+                      "vendor": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "meta",
+                                  "bik"
+                                ]
+                              },
+                              "phoneNumberId": {
+                                "type": "string"
+                              },
+                              "wabaId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "phoneNumberId",
+                              "wabaId"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "vendor"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "sms"
+                        ]
+                      },
+                      "vendor": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "sms019"
+                                ]
+                              },
+                              "senderName": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "senderName"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "twilio"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "type"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "vendor"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "email"
+                        ]
+                      },
+                      "vendor": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "aws"
+                                ]
+                              },
+                              "email": {
+                                "type": "string",
+                                "format": "email"
+                              },
+                              "senderName": {
+                                "type": "string"
+                              },
+                              "replyToEmail": {
+                                "type": "string",
+                                "format": "email"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "email",
+                              "senderName"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "vendor"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "instagram"
+                        ]
+                      },
+                      "vendor": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "meta"
+                                ]
+                              },
+                              "code": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "code"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "vendor"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "messageKey": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "invalidParams": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "message"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "whatsapp",
+                            "sms",
+                            "email",
+                            "instagram"
+                          ]
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "setting_up",
+                            "awaiting_approval",
+                            "active",
+                            "restricted",
+                            "blocked",
+                            "deactivated"
+                          ]
+                        },
+                        "vendorId": {
+                          "type": "string"
+                        },
+                        "vendorDetails": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "meta",
+                                    "bik"
+                                  ]
+                                },
+                                "wabaId": {
+                                  "type": "string"
+                                },
+                                "phoneNumberId": {
+                                  "type": "string"
+                                },
+                                "phoneNumber": {
+                                  "type": "string"
+                                },
+                                "isVerified": {
+                                  "type": "boolean"
+                                },
+                                "dailyLimit": {
+                                  "type": "number",
+                                  "nullable": true
+                                },
+                                "qualityRating": {
+                                  "type": "string",
+                                  "enum": [
+                                    "flagged",
+                                    "high",
+                                    "medium",
+                                    "low"
+                                  ]
+                                },
+                                "displayName": {
+                                  "type": "string"
+                                },
+                                "profile": {
+                                  "type": "object",
+                                  "properties": {
+                                    "about": {
+                                      "type": "string"
+                                    },
+                                    "address": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "description": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "email": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "profilePicture": {
+                                      "type": "object",
+                                      "nullable": true,
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "createdAt": {
+                                          "type": "string"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "image",
+                                            "video",
+                                            "audio",
+                                            "document"
+                                          ]
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "extension": {
+                                          "type": "string"
+                                        },
+                                        "contentType": {
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        },
+                                        "size": {
+                                          "type": "number"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "createdAt",
+                                        "type",
+                                        "name",
+                                        "extension",
+                                        "contentType",
+                                        "url",
+                                        "size"
+                                      ]
+                                    },
+                                    "vertical": {
+                                      "type": "string",
+                                      "enum": [
+                                        "undefined",
+                                        "other",
+                                        "auto",
+                                        "beauty",
+                                        "apparel",
+                                        "edu",
+                                        "entertain",
+                                        "event_plan",
+                                        "finance",
+                                        "grocery",
+                                        "govt",
+                                        "hotel",
+                                        "health",
+                                        "nonprofit",
+                                        "prof_services",
+                                        "retail",
+                                        "travel",
+                                        "restaurant",
+                                        "not_a_biz",
+                                        "alcohol",
+                                        "online_gambling",
+                                        "otc_drugs",
+                                        "physical_gambling"
+                                      ]
+                                    },
+                                    "websites": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "about",
+                                    "address",
+                                    "description",
+                                    "email",
+                                    "vertical",
+                                    "websites"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "wabaId",
+                                "phoneNumberId",
+                                "phoneNumber",
+                                "isVerified",
+                                "dailyLimit",
+                                "qualityRating",
+                                "displayName",
+                                "profile"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sms019"
+                                  ]
+                                },
+                                "senderName": {
+                                  "type": "string"
+                                },
+                                "allowInbound": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "senderName",
+                                "allowInbound"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "twilio"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "vendor"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aws"
+                                  ]
+                                },
+                                "email": {
+                                  "type": "string"
+                                },
+                                "senderName": {
+                                  "type": "string"
+                                },
+                                "replyToEmail": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "forwardingEmail": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "email",
+                                "senderName",
+                                "replyToEmail",
+                                "forwardingEmail"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "meta"
+                                  ]
+                                },
+                                "pgId": {
+                                  "type": "string"
+                                },
+                                "igId": {
+                                  "type": "string"
+                                },
+                                "username": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "pgId",
+                                "igId",
+                                "username"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "updatedAt",
+                        "name",
+                        "type",
+                        "status",
+                        "vendorId",
+                        "vendorDetails"
+                      ]
+                    },
+                    "pagination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "equal",
+                                    "not_equal",
+                                    "greater_than",
+                                    "less_than",
+                                    "greater_than_or_equal",
+                                    "less_than_or_equal",
+                                    "contains",
+                                    "not_contains"
+                                  ]
+                                },
+                                "value": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in",
+                                    "not_in"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "is_empty",
+                                    "is_not_empty"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator"
+                              ]
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "or"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "json_array_and"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "filters": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "filters"
+                              ]
+                            }
+                          ]
+                        },
+                        "sortBy": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "string",
+                                "enum": [
+                                  "asc",
+                                  "desc"
+                                ]
+                              },
+                              "nulls": {
+                                "type": "string",
+                                "enum": [
+                                  "first",
+                                  "last"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "order"
+                            ]
+                          }
+                        },
+                        "search": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/channels/{channelId}/refresh": {
+      "post": {
+        "summary": "Refresh channel",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "channelId",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "messageKey": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "invalidParams": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "message"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "whatsapp",
+                            "sms",
+                            "email",
+                            "instagram"
+                          ]
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "setting_up",
+                            "awaiting_approval",
+                            "active",
+                            "restricted",
+                            "blocked",
+                            "deactivated"
+                          ]
+                        },
+                        "vendorId": {
+                          "type": "string"
+                        },
+                        "vendorDetails": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "meta",
+                                    "bik"
+                                  ]
+                                },
+                                "wabaId": {
+                                  "type": "string"
+                                },
+                                "phoneNumberId": {
+                                  "type": "string"
+                                },
+                                "phoneNumber": {
+                                  "type": "string"
+                                },
+                                "isVerified": {
+                                  "type": "boolean"
+                                },
+                                "dailyLimit": {
+                                  "type": "number",
+                                  "nullable": true
+                                },
+                                "qualityRating": {
+                                  "type": "string",
+                                  "enum": [
+                                    "flagged",
+                                    "high",
+                                    "medium",
+                                    "low"
+                                  ]
+                                },
+                                "displayName": {
+                                  "type": "string"
+                                },
+                                "profile": {
+                                  "type": "object",
+                                  "properties": {
+                                    "about": {
+                                      "type": "string"
+                                    },
+                                    "address": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "description": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "email": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "profilePicture": {
+                                      "type": "object",
+                                      "nullable": true,
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "createdAt": {
+                                          "type": "string"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "image",
+                                            "video",
+                                            "audio",
+                                            "document"
+                                          ]
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "extension": {
+                                          "type": "string"
+                                        },
+                                        "contentType": {
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        },
+                                        "size": {
+                                          "type": "number"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "createdAt",
+                                        "type",
+                                        "name",
+                                        "extension",
+                                        "contentType",
+                                        "url",
+                                        "size"
+                                      ]
+                                    },
+                                    "vertical": {
+                                      "type": "string",
+                                      "enum": [
+                                        "undefined",
+                                        "other",
+                                        "auto",
+                                        "beauty",
+                                        "apparel",
+                                        "edu",
+                                        "entertain",
+                                        "event_plan",
+                                        "finance",
+                                        "grocery",
+                                        "govt",
+                                        "hotel",
+                                        "health",
+                                        "nonprofit",
+                                        "prof_services",
+                                        "retail",
+                                        "travel",
+                                        "restaurant",
+                                        "not_a_biz",
+                                        "alcohol",
+                                        "online_gambling",
+                                        "otc_drugs",
+                                        "physical_gambling"
+                                      ]
+                                    },
+                                    "websites": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "about",
+                                    "address",
+                                    "description",
+                                    "email",
+                                    "vertical",
+                                    "websites"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "wabaId",
+                                "phoneNumberId",
+                                "phoneNumber",
+                                "isVerified",
+                                "dailyLimit",
+                                "qualityRating",
+                                "displayName",
+                                "profile"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sms019"
+                                  ]
+                                },
+                                "senderName": {
+                                  "type": "string"
+                                },
+                                "allowInbound": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "senderName",
+                                "allowInbound"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "twilio"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "vendor"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aws"
+                                  ]
+                                },
+                                "email": {
+                                  "type": "string"
+                                },
+                                "senderName": {
+                                  "type": "string"
+                                },
+                                "replyToEmail": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "forwardingEmail": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "email",
+                                "senderName",
+                                "replyToEmail",
+                                "forwardingEmail"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "meta"
+                                  ]
+                                },
+                                "pgId": {
+                                  "type": "string"
+                                },
+                                "igId": {
+                                  "type": "string"
+                                },
+                                "username": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "pgId",
+                                "igId",
+                                "username"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "updatedAt",
+                        "name",
+                        "type",
+                        "status",
+                        "vendorId",
+                        "vendorDetails"
+                      ]
+                    },
+                    "pagination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "equal",
+                                    "not_equal",
+                                    "greater_than",
+                                    "less_than",
+                                    "greater_than_or_equal",
+                                    "less_than_or_equal",
+                                    "contains",
+                                    "not_contains"
+                                  ]
+                                },
+                                "value": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in",
+                                    "not_in"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "is_empty",
+                                    "is_not_empty"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator"
+                              ]
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "or"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "json_array_and"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "filters": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "filters"
+                              ]
+                            }
+                          ]
+                        },
+                        "sortBy": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "string",
+                                "enum": [
+                                  "asc",
+                                  "desc"
+                                ]
+                              },
+                              "nulls": {
+                                "type": "string",
+                                "enum": [
+                                  "first",
+                                  "last"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "order"
+                            ]
+                          }
+                        },
+                        "search": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/channels/{channelId}/usage": {
+      "get": {
+        "summary": "Usage channel",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "channelId",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "messageKey": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "invalidParams": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "message"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "whatsapp",
+                            "sms",
+                            "email",
+                            "instagram"
+                          ]
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "setting_up",
+                            "awaiting_approval",
+                            "active",
+                            "restricted",
+                            "blocked",
+                            "deactivated"
+                          ]
+                        },
+                        "vendorId": {
+                          "type": "string"
+                        },
+                        "vendorDetails": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "meta",
+                                    "bik"
+                                  ]
+                                },
+                                "wabaId": {
+                                  "type": "string"
+                                },
+                                "phoneNumberId": {
+                                  "type": "string"
+                                },
+                                "phoneNumber": {
+                                  "type": "string"
+                                },
+                                "isVerified": {
+                                  "type": "boolean"
+                                },
+                                "dailyLimit": {
+                                  "type": "number",
+                                  "nullable": true
+                                },
+                                "qualityRating": {
+                                  "type": "string",
+                                  "enum": [
+                                    "flagged",
+                                    "high",
+                                    "medium",
+                                    "low"
+                                  ]
+                                },
+                                "displayName": {
+                                  "type": "string"
+                                },
+                                "profile": {
+                                  "type": "object",
+                                  "properties": {
+                                    "about": {
+                                      "type": "string"
+                                    },
+                                    "address": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "description": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "email": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "profilePicture": {
+                                      "type": "object",
+                                      "nullable": true,
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "createdAt": {
+                                          "type": "string"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "image",
+                                            "video",
+                                            "audio",
+                                            "document"
+                                          ]
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "extension": {
+                                          "type": "string"
+                                        },
+                                        "contentType": {
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        },
+                                        "size": {
+                                          "type": "number"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "createdAt",
+                                        "type",
+                                        "name",
+                                        "extension",
+                                        "contentType",
+                                        "url",
+                                        "size"
+                                      ]
+                                    },
+                                    "vertical": {
+                                      "type": "string",
+                                      "enum": [
+                                        "undefined",
+                                        "other",
+                                        "auto",
+                                        "beauty",
+                                        "apparel",
+                                        "edu",
+                                        "entertain",
+                                        "event_plan",
+                                        "finance",
+                                        "grocery",
+                                        "govt",
+                                        "hotel",
+                                        "health",
+                                        "nonprofit",
+                                        "prof_services",
+                                        "retail",
+                                        "travel",
+                                        "restaurant",
+                                        "not_a_biz",
+                                        "alcohol",
+                                        "online_gambling",
+                                        "otc_drugs",
+                                        "physical_gambling"
+                                      ]
+                                    },
+                                    "websites": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "about",
+                                    "address",
+                                    "description",
+                                    "email",
+                                    "vertical",
+                                    "websites"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "wabaId",
+                                "phoneNumberId",
+                                "phoneNumber",
+                                "isVerified",
+                                "dailyLimit",
+                                "qualityRating",
+                                "displayName",
+                                "profile"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sms019"
+                                  ]
+                                },
+                                "senderName": {
+                                  "type": "string"
+                                },
+                                "allowInbound": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "senderName",
+                                "allowInbound"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "twilio"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "vendor"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aws"
+                                  ]
+                                },
+                                "email": {
+                                  "type": "string"
+                                },
+                                "senderName": {
+                                  "type": "string"
+                                },
+                                "replyToEmail": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "forwardingEmail": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "email",
+                                "senderName",
+                                "replyToEmail",
+                                "forwardingEmail"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "vendor": {
+                                  "type": "string",
+                                  "enum": [
+                                    "meta"
+                                  ]
+                                },
+                                "pgId": {
+                                  "type": "string"
+                                },
+                                "igId": {
+                                  "type": "string"
+                                },
+                                "username": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "vendor",
+                                "pgId",
+                                "igId",
+                                "username"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "updatedAt",
+                        "name",
+                        "type",
+                        "status",
+                        "vendorId",
+                        "vendorDetails"
                       ]
                     },
                     "pagination": {
