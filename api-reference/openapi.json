@@ -1,216 +1,2660 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
+    "title": "Internal Server",
     "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "http://sandbox.mintlify.com"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
+  "components": {
+    "schemas": {},
+    "parameters": {}
+  },
   "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
+    "/search": {
+      "post": {
+        "summary": "Search attributes",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "filter": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "condition"
+                            ]
+                          },
+                          "field": {
+                            "type": "string"
+                          },
+                          "operator": {
+                            "type": "string",
+                            "enum": [
+                              "equal",
+                              "not_equal",
+                              "greater_than",
+                              "less_than",
+                              "greater_than_or_equal",
+                              "less_than_or_equal",
+                              "contains",
+                              "not_contains"
+                            ]
+                          },
+                          "value": {
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "boolean"
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "field",
+                          "operator",
+                          "value"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "condition"
+                            ]
+                          },
+                          "field": {
+                            "type": "string"
+                          },
+                          "operator": {
+                            "type": "string",
+                            "enum": [
+                              "in",
+                              "not_in"
+                            ]
+                          },
+                          "value": {
+                            "type": "array",
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "boolean"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "field",
+                          "operator",
+                          "value"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "condition"
+                            ]
+                          },
+                          "field": {
+                            "type": "string"
+                          },
+                          "operator": {
+                            "type": "string",
+                            "enum": [
+                              "is_empty",
+                              "is_not_empty"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "field",
+                          "operator"
+                        ]
+                      },
+                      {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "and"
+                                ]
+                              },
+                              "filters": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object"
+                                }
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "filters"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "or"
+                                ]
+                              },
+                              "filters": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object"
+                                }
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "filters"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "json_array_and"
+                            ]
+                          },
+                          "field": {
+                            "type": "string"
+                          },
+                          "filters": {
+                            "type": "array",
+                            "items": {
+                              "type": "object"
+                            }
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "field",
+                          "filters"
+                        ]
+                      }
+                    ]
+                  },
+                  "sortBy": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "properties": {
+                        "order": {
+                          "type": "string",
+                          "enum": [
+                            "asc",
+                            "desc"
+                          ]
+                        },
+                        "nulls": {
+                          "type": "string",
+                          "enum": [
+                            "first",
+                            "last"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "order"
+                      ]
+                    }
+                  },
+                  "search": {
+                    "type": "string"
+                  },
+                  "pagination": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "page": {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          "limit": {
+                            "type": "number",
+                            "minimum": 1,
+                            "maximum": 1000
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "boolean",
+                        "enum": [
+                          false
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "messageKey": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "invalidParams": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "message"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "text",
+                              "number",
+                              "single_select"
+                            ]
+                          },
+                          "displayName": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "visibility": {
+                            "type": "object",
+                            "properties": {
+                              "inbox": {
+                                "type": "boolean"
+                              },
+                              "contacts": {
+                                "type": "boolean"
+                              },
+                              "create": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "inbox",
+                              "contacts",
+                              "create"
+                            ]
+                          },
+                          "details": {
+                            "type": "object",
+                            "properties": {
+                              "options": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "createdAt",
+                          "updatedAt",
+                          "name",
+                          "type",
+                          "displayName",
+                          "description",
+                          "visibility",
+                          "details"
+                        ]
+                      }
+                    },
+                    "pagination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "equal",
+                                    "not_equal",
+                                    "greater_than",
+                                    "less_than",
+                                    "greater_than_or_equal",
+                                    "less_than_or_equal",
+                                    "contains",
+                                    "not_contains"
+                                  ]
+                                },
+                                "value": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in",
+                                    "not_in"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "is_empty",
+                                    "is_not_empty"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator"
+                              ]
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "or"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "json_array_and"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "filters": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "filters"
+                              ]
+                            }
+                          ]
+                        },
+                        "sortBy": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "string",
+                                "enum": [
+                                  "asc",
+                                  "desc"
+                                ]
+                              },
+                              "nulls": {
+                                "type": "string",
+                                "enum": [
+                                  "first",
+                                  "last"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "order"
+                            ]
+                          }
+                        },
+                        "search": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
                   }
                 }
               }
             }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
           }
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/{attributeId}": {
+      "get": {
+        "summary": "Get attribute by id",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "attributeId",
+            "in": "path"
           }
         ],
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
+          "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "messageKey": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "invalidParams": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "message"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "text",
+                            "number",
+                            "single_select"
+                          ]
+                        },
+                        "displayName": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "properties": {
+                            "inbox": {
+                              "type": "boolean"
+                            },
+                            "contacts": {
+                              "type": "boolean"
+                            },
+                            "create": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "inbox",
+                            "contacts",
+                            "create"
+                          ]
+                        },
+                        "details": {
+                          "type": "object",
+                          "properties": {
+                            "options": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "updatedAt",
+                        "name",
+                        "type",
+                        "displayName",
+                        "description",
+                        "visibility",
+                        "details"
+                      ]
+                    },
+                    "pagination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "equal",
+                                    "not_equal",
+                                    "greater_than",
+                                    "less_than",
+                                    "greater_than_or_equal",
+                                    "less_than_or_equal",
+                                    "contains",
+                                    "not_contains"
+                                  ]
+                                },
+                                "value": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in",
+                                    "not_in"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "is_empty",
+                                    "is_not_empty"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator"
+                              ]
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "or"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "json_array_and"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "filters": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "filters"
+                              ]
+                            }
+                          ]
+                        },
+                        "sortBy": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "string",
+                                "enum": [
+                                  "asc",
+                                  "desc"
+                                ]
+                              },
+                              "nulls": {
+                                "type": "string",
+                                "enum": [
+                                  "first",
+                                  "last"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "order"
+                            ]
+                          }
+                        },
+                        "search": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
                 }
               }
             }
           }
         }
-      }
-    }
-  },
-  "webhooks": {
-    "/plant/webhook": {
-      "post": {
-        "description": "Information about a new plant added to the store",
+      },
+      "put": {
+        "summary": "Update attribute",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "attributeId",
+            "in": "path"
+          }
+        ],
         "requestBody": {
-          "description": "Plant added to the store",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "type": "object",
+                "properties": {
+                  "displayName": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "visibility": {
+                    "type": "object",
+                    "properties": {
+                      "inbox": {
+                        "type": "boolean"
+                      },
+                      "contacts": {
+                        "type": "boolean"
+                      },
+                      "create": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "inbox",
+                      "contacts",
+                      "create"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "details": {
+                    "type": "object",
+                    "properties": {
+                      "options": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "minItems": 1
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "messageKey": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "invalidParams": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "message"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "text",
+                            "number",
+                            "single_select"
+                          ]
+                        },
+                        "displayName": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "properties": {
+                            "inbox": {
+                              "type": "boolean"
+                            },
+                            "contacts": {
+                              "type": "boolean"
+                            },
+                            "create": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "inbox",
+                            "contacts",
+                            "create"
+                          ]
+                        },
+                        "details": {
+                          "type": "object",
+                          "properties": {
+                            "options": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "updatedAt",
+                        "name",
+                        "type",
+                        "displayName",
+                        "description",
+                        "visibility",
+                        "details"
+                      ]
+                    },
+                    "pagination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "equal",
+                                    "not_equal",
+                                    "greater_than",
+                                    "less_than",
+                                    "greater_than_or_equal",
+                                    "less_than_or_equal",
+                                    "contains",
+                                    "not_contains"
+                                  ]
+                                },
+                                "value": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in",
+                                    "not_in"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "is_empty",
+                                    "is_not_empty"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator"
+                              ]
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "or"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "json_array_and"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "filters": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "filters"
+                              ]
+                            }
+                          ]
+                        },
+                        "sortBy": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "string",
+                                "enum": [
+                                  "asc",
+                                  "desc"
+                                ]
+                              },
+                              "nulls": {
+                                "type": "string",
+                                "enum": [
+                                  "first",
+                                  "last"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "order"
+                            ]
+                          }
+                        },
+                        "search": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
               }
             }
           }
-        ]
+        }
       },
-      "Error": {
-        "required": [
-          "error",
-          "message"
+      "delete": {
+        "summary": "Delete attribute",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "attributeId",
+            "in": "path"
+          }
         ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "messageKey": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "invalidParams": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "message"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "text",
+                            "number",
+                            "single_select"
+                          ]
+                        },
+                        "displayName": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "properties": {
+                            "inbox": {
+                              "type": "boolean"
+                            },
+                            "contacts": {
+                              "type": "boolean"
+                            },
+                            "create": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "inbox",
+                            "contacts",
+                            "create"
+                          ]
+                        },
+                        "details": {
+                          "type": "object",
+                          "properties": {
+                            "options": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "updatedAt",
+                        "name",
+                        "type",
+                        "displayName",
+                        "description",
+                        "visibility",
+                        "details"
+                      ]
+                    },
+                    "pagination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "equal",
+                                    "not_equal",
+                                    "greater_than",
+                                    "less_than",
+                                    "greater_than_or_equal",
+                                    "less_than_or_equal",
+                                    "contains",
+                                    "not_contains"
+                                  ]
+                                },
+                                "value": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in",
+                                    "not_in"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "is_empty",
+                                    "is_not_empty"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator"
+                              ]
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "or"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "json_array_and"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "filters": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "filters"
+                              ]
+                            }
+                          ]
+                        },
+                        "sortBy": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "string",
+                                "enum": [
+                                  "asc",
+                                  "desc"
+                                ]
+                              },
+                              "nulls": {
+                                "type": "string",
+                                "enum": [
+                                  "first",
+                                  "last"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "order"
+                            ]
+                          }
+                        },
+                        "search": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
     },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+    "/": {
+      "post": {
+        "summary": "Create attribute",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "text",
+                      "number",
+                      "single_select"
+                    ]
+                  },
+                  "displayName": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "visibility": {
+                    "type": "object",
+                    "properties": {
+                      "inbox": {
+                        "type": "boolean"
+                      },
+                      "contacts": {
+                        "type": "boolean"
+                      },
+                      "create": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "inbox",
+                      "contacts",
+                      "create"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "details": {
+                    "type": "object",
+                    "properties": {
+                      "options": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "minItems": 1
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "type",
+                  "displayName",
+                  "name",
+                  "visibility"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "messageKey": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "invalidParams": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "message"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "text",
+                            "number",
+                            "single_select"
+                          ]
+                        },
+                        "displayName": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "properties": {
+                            "inbox": {
+                              "type": "boolean"
+                            },
+                            "contacts": {
+                              "type": "boolean"
+                            },
+                            "create": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "inbox",
+                            "contacts",
+                            "create"
+                          ]
+                        },
+                        "details": {
+                          "type": "object",
+                          "properties": {
+                            "options": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "updatedAt",
+                        "name",
+                        "type",
+                        "displayName",
+                        "description",
+                        "visibility",
+                        "details"
+                      ]
+                    },
+                    "pagination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "equal",
+                                    "not_equal",
+                                    "greater_than",
+                                    "less_than",
+                                    "greater_than_or_equal",
+                                    "less_than_or_equal",
+                                    "contains",
+                                    "not_contains"
+                                  ]
+                                },
+                                "value": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in",
+                                    "not_in"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "is_empty",
+                                    "is_not_empty"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator"
+                              ]
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "or"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "json_array_and"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "filters": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "filters"
+                              ]
+                            }
+                          ]
+                        },
+                        "sortBy": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "string",
+                                "enum": [
+                                  "asc",
+                                  "desc"
+                                ]
+                              },
+                              "nulls": {
+                                "type": "string",
+                                "enum": [
+                                  "first",
+                                  "last"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "order"
+                            ]
+                          }
+                        },
+                        "search": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete attributes",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  }
+                },
+                "required": [
+                  "ids"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "messageKey": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "invalidParams": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key",
+                              "message"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "text",
+                            "number",
+                            "single_select"
+                          ]
+                        },
+                        "displayName": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "visibility": {
+                          "type": "object",
+                          "properties": {
+                            "inbox": {
+                              "type": "boolean"
+                            },
+                            "contacts": {
+                              "type": "boolean"
+                            },
+                            "create": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "inbox",
+                            "contacts",
+                            "create"
+                          ]
+                        },
+                        "details": {
+                          "type": "object",
+                          "properties": {
+                            "options": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "updatedAt",
+                        "name",
+                        "type",
+                        "displayName",
+                        "description",
+                        "visibility",
+                        "details"
+                      ]
+                    },
+                    "pagination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "limit": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "query": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "equal",
+                                    "not_equal",
+                                    "greater_than",
+                                    "less_than",
+                                    "greater_than_or_equal",
+                                    "less_than_or_equal",
+                                    "contains",
+                                    "not_contains"
+                                  ]
+                                },
+                                "value": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in",
+                                    "not_in"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator",
+                                "value"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "condition"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "enum": [
+                                    "is_empty",
+                                    "is_not_empty"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "operator"
+                              ]
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "and"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "or"
+                                      ]
+                                    },
+                                    "filters": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "filters"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "json_array_and"
+                                  ]
+                                },
+                                "field": {
+                                  "type": "string"
+                                },
+                                "filters": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "field",
+                                "filters"
+                              ]
+                            }
+                          ]
+                        },
+                        "sortBy": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "string",
+                                "enum": [
+                                  "asc",
+                                  "desc"
+                                ]
+                              },
+                              "nulls": {
+                                "type": "string",
+                                "enum": [
+                                  "first",
+                                  "last"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "order"
+                            ]
+                          }
+                        },
+                        "search": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
