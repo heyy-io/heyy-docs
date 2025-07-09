@@ -9,21 +9,19 @@
       "url": "http://localhost:3000"
     }
   ],
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
   "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
+    "parameters": {
+      "x-tenant-id": {
+        "name": "x-tenant-id",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
       }
     },
-    "schemas": {},
-    "parameters": {}
+    "schemas": {}
   },
   "paths": {
     "/attributes/search": {
