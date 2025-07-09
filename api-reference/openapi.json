@@ -12,6 +12,9 @@
     "/attributes/search": {
       "post": {
         "summary": "Search attributes",
+        "tags": [
+          "Attribute"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -640,6 +643,9 @@
     "/attributes/{attributeId}": {
       "get": {
         "summary": "Get attribute by id",
+        "tags": [
+          "Attribute"
+        ],
         "parameters": [
           {
             "schema": {
@@ -1019,6 +1025,9 @@
       },
       "put": {
         "summary": "Update attribute",
+        "tags": [
+          "Attribute"
+        ],
         "parameters": [
           {
             "schema": {
@@ -1450,6 +1459,9 @@
       },
       "delete": {
         "summary": "Delete attribute",
+        "tags": [
+          "Attribute"
+        ],
         "parameters": [
           {
             "schema": {
@@ -1471,6 +1483,9 @@
     "/attributes": {
       "post": {
         "summary": "Create attribute",
+        "tags": [
+          "Attribute"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1908,6 +1923,9 @@
       },
       "delete": {
         "summary": "Delete attributes",
+        "tags": [
+          "Attribute"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1940,6 +1958,9 @@
     "/channels/search": {
       "post": {
         "summary": "Search channels",
+        "tags": [
+          "Channel"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2800,6 +2821,9 @@
     "/channels/{channelId}": {
       "get": {
         "summary": "Get channel by id",
+        "tags": [
+          "Channel"
+        ],
         "parameters": [
           {
             "schema": {
@@ -3412,6 +3436,9 @@
       },
       "put": {
         "summary": "Update channel",
+        "tags": [
+          "Channel"
+        ],
         "parameters": [
           {
             "schema": {
@@ -4130,6 +4157,9 @@
       },
       "delete": {
         "summary": "Delete channel",
+        "tags": [
+          "Channel"
+        ],
         "parameters": [
           {
             "schema": {
@@ -4151,6 +4181,9 @@
     "/channels": {
       "post": {
         "summary": "Create channel",
+        "tags": [
+          "Channel"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -4940,6 +4973,9 @@
     "/channels/{channelId}/refresh": {
       "post": {
         "summary": "Refresh channel",
+        "tags": [
+          "Channel"
+        ],
         "parameters": [
           {
             "schema": {
@@ -5554,6 +5590,9 @@
     "/channels/{channelId}/usage": {
       "get": {
         "summary": "Usage channel",
+        "tags": [
+          "Channel"
+        ],
         "parameters": [
           {
             "schema": {
