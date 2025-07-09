@@ -9,7 +9,19 @@
       "url": "http://localhost:3000"
     }
   ],
+  "security": [
+    {
+      "tenantHeader": []
+    }
+  ],
   "components": {
+    "securitySchemes": {
+      "tenantHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-tenant-id"
+      }
+    },
     "parameters": {
       "x-tenant-id": {
         "name": "x-tenant-id",
