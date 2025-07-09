@@ -4,7 +4,7 @@
   "name": "Heyy Help Center",
   "colors": {
     "primary": "#FE3265",
-    "light": "#07C983",
+    "light": "#FE3265",
     "dark": "#15803D"
   },
   "favicon": "/favicon.ico",
