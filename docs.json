@@ -16,7 +16,7 @@
           {
             "group": "Quick Start",
             "pages": [
-              "pages/quick-start/index",
+              "pages/quick-start/introduction",
               "pages/quick-start/quickstart"
             ]
           },
