@@ -23,7 +23,8 @@
           {
             "group": "Basics",
             "pages": [
-              "pages/basics/members"
+              "pages/basics/members",
+              "pages/basics/settings",
             ]
           },
           {
@@ -38,20 +39,9 @@
           {
             "group": "Automation",
             "pages": [
-              "pages/channels/quickstart",
-              "pages/channels/triggers",
-              "pages/channels/actions"
-            ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "pages/essentials/markdown",
-              "pages/essentials/code",
-              "pages/essentials/images",
-              "pages/essentials/settings",
-              "pages/essentials/navigation",
-              "pages/essentials/reusable-snippets"
+              "pages/automation/quickstart",
+              "pages/automation/triggers",
+              "pages/automation/actions"
             ]
           }
         ]
