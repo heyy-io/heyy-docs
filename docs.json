@@ -21,6 +21,29 @@
             ]
           },
           {
+            "group": "Basics",
+            "pages": [
+              "pages/basics/members"
+            ]
+          },
+          {
+            "group": "Channels",
+            "pages": [
+              "pages/channels/whatsapp",
+              "pages/channels/instagram",
+              "pages/channels/sms",
+              "pages/channels/email"
+            ]
+          },
+          {
+            "group": "Automation",
+            "pages": [
+              "pages/channels/quickstart",
+              "pages/channels/triggers",
+              "pages/channels/actions"
+            ]
+          },
+          {
             "group": "Essentials",
             "pages": [
               "pages/essentials/markdown",
