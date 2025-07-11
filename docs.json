@@ -23,11 +23,12 @@
           {
             "group": "Basics",
             "pages": [
-              "pages/basics/settings",
               "pages/basics/inbox",
               "pages/basics/contacts",
               "pages/basics/workflows",
-              "pages/basics/campaigns"
+              "pages/basics/campaigns",
+              "pages/basics/settings",
+              "pages/basics/usage"
             ]
           },
           {
