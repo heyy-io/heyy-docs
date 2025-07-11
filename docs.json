@@ -14,22 +14,21 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Quick Start",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "pages/quick-start/index",
+              "pages/quick-start/quickstart"
             ]
           },
           {
             "group": "Essentials",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "pages/essentials/markdown",
+              "pages/essentials/code",
+              "pages/essentials/images",
+              "pages/essentials/settings",
+              "pages/essentials/navigation",
+              "pages/essentials/reusable-snippets"
             ]
           }
         ]
@@ -40,13 +39,13 @@
           {
             "group": "API Documentation",
             "pages": [
-              "api-reference/introduction"
+              "pages/api-reference/introduction"
             ]
           },
           {
             "group": "Endpoints",
             "openapi": {
-              "source": "api-reference/openapi.json",
+              "source": "pages/api-reference/openapi.json",
               "directory": "api-reference"
             }
           }
@@ -58,8 +57,8 @@
     }
   },
   "logo": {
-    "light": "/logo/logo.svg",
-    "dark": "/logo/logo.svg"
+    "light": "/assets/logo.svg",
+    "dark": "/assets/logo.svg"
   },
   "navbar": {
     "links": [
