@@ -16,55 +16,37 @@
           {
             "group": "Quick Start",
             "pages": [
-              "pages/quick-start/introduction",
-              "pages/quick-start/quickstart"
+              "quick-start/introduction",
+              "quick-start/quickstart"
             ]
           },
           {
             "group": "Basics",
             "pages": [
-              "pages/basics/inbox",
-              "pages/basics/contacts",
-              "pages/basics/workflows",
-              "pages/basics/campaigns",
-              "pages/basics/settings",
-              "pages/basics/usage"
+              "basics/inbox",
+              "basics/contacts",
+              "basics/workflows",
+              "basics/campaigns",
+              "basics/settings",
+              "basics/usage"
             ]
           },
           {
             "group": "Channels",
             "pages": [
-              "pages/channels/whatsapp",
-              "pages/channels/instagram",
-              "pages/channels/sms",
-              "pages/channels/email"
+              "channels/whatsapp",
+              "channels/instagram",
+              "channels/sms",
+              "channels/email"
             ]
           },
           {
             "group": "Automation",
             "pages": [
-              "pages/automation/quickstart",
-              "pages/automation/triggers",
-              "pages/automation/actions"
+              "automation/quickstart",
+              "automation/triggers",
+              "automation/actions"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API Documentation",
-            "pages": [
-              "pages/api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoints",
-            "openapi": {
-              "source": "pages/api-reference/openapi.json",
-              "directory": "api-reference"
-            }
           }
         ]
       }
