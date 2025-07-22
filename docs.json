@@ -36,7 +36,8 @@
             "pages": [
               "channels/whatsapp",
               "channels/instagram",
-              "channels/sms",
+              "channels/messenger",
+              "channels/webchat",
               "channels/email"
             ]
           },
