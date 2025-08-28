@@ -37,8 +37,7 @@
               "channels/whatsapp",
               "channels/instagram",
               "channels/messenger",
-              "channels/webchat",
-              "channels/email"
+              "channels/webchat"
             ]
           },
           {
