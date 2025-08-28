@@ -6,7 +6,7 @@ Please open Pull Requests to suggest helpful changes!
 
 ### Development
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the documentation changes locally. To install, use the following command
+Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the documentation changes locally. To install, use the following command.
 
 ```
 npm i -g mintlify
