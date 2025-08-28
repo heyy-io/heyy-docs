@@ -23,12 +23,12 @@
           {
             "group": "Basics",
             "pages": [
+              "basics/ai-agents",
               "basics/inbox",
-              "basics/contacts",
               "basics/workflows",
+              "basics/contacts",
               "basics/campaigns",
-              "basics/settings",
-              "basics/usage"
+              "basics/settings"
             ]
           },
           {
