@@ -18,7 +18,6 @@
             "pages": [
               "quick-start/introduction",
               "quick-start/ai-employees",
-              "quick-start/inbox",
               {
                 "group": "Workflows",
                 "icon": "share-nodes",
@@ -31,8 +30,9 @@
                   "quick-start/workflows/instagram-actions"
                 ]
               },
-              "quick-start/contacts",
+              "quick-start/inbox",
               "quick-start/campaigns",
+              "quick-start/contacts",
               "quick-start/settings"
             ]
           },
