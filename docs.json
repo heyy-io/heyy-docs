@@ -65,14 +65,15 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Hub",
-      "href": "https://hub.heyy.io"
+      "label": "App",
+      "href": "https://app.heyy.io"
     }
   },
   "footer": {
     "socials": {
       "instagram": "https://www.instagram.com/heyy_hq",
-      "linkedin": "https://www.linkedin.com/company/heyyio"
+      "linkedin": "https://www.linkedin.com/company/heyyio",
+      "x": "https://x.com/Heyy_hq"
     }
   }
 }
