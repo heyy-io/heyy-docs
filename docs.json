@@ -31,9 +31,9 @@
                   "quick-start/workflows/instagram-actions"
                 ]
               },
-              "basics/contacts",
-              "basics/campaigns",
-              "basics/settings"
+              "quick-start/contacts",
+              "quick-start/campaigns",
+              "quick-start/settings"
             ]
           },
           {
