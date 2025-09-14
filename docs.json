@@ -25,7 +25,18 @@
             "pages": [
               "basics/ai-employees",
               "basics/inbox",
-              "basics/workflows",
+              {
+                "group": "Workflows",
+                "icon": "share-nodes",
+                "expanded": false,
+                "pages": [
+                  "basics/workflows/getting-started",
+                  "basics/workflows/logic-actions",
+                  "basics/workflows/ai-actions",
+                  "basics/workflows/whatsapp-actions",
+                  "basics/workflows/instagram-actions"
+                ]
+              },
               "basics/contacts",
               "basics/campaigns",
               "basics/settings"
