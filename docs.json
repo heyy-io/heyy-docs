@@ -17,12 +17,6 @@
             "group": "Quick Start",
             "pages": [
               "quick-start/introduction",
-              "quick-start/quickstart"
-            ]
-          },
-          {
-            "group": "Basics",
-            "pages": [
               "basics/ai-employees",
               "basics/inbox",
               {
