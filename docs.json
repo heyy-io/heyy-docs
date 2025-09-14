@@ -17,18 +17,18 @@
             "group": "Quick Start",
             "pages": [
               "quick-start/introduction",
-              "basics/ai-employees",
-              "basics/inbox",
+              "quick-start/ai-employees",
+              "quick-start/inbox",
               {
                 "group": "Workflows",
                 "icon": "share-nodes",
                 "expanded": false,
                 "pages": [
-                  "basics/workflows/getting-started",
-                  "basics/workflows/logic-actions",
-                  "basics/workflows/ai-actions",
-                  "basics/workflows/whatsapp-actions",
-                  "basics/workflows/instagram-actions"
+                  "quick-start/workflows/getting-started",
+                  "quick-start/workflows/logic-actions",
+                  "quick-start/workflows/ai-actions",
+                  "quick-start/workflows/whatsapp-actions",
+                  "quick-start/workflows/instagram-actions"
                 ]
               },
               "basics/contacts",
@@ -43,14 +43,6 @@
               "channels/instagram",
               "channels/messenger",
               "channels/webchat"
-            ]
-          },
-          {
-            "group": "Automation",
-            "pages": [
-              "automation/quickstart",
-              "automation/triggers",
-              "automation/actions"
             ]
           }
         ]
