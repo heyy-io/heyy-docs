@@ -1,7 +1,55 @@
 ---
-title: 'AI Actions'
-description: 'Description of your new file.'
+title: "AI Actions"
 icon: "sparkles"
 sidebarTitle: "AI Employees"
 ---
 
+## 1.  AI Intention Recognition
+
+The **AI Intention Recognition** action allows you to identify the **intention of a contact** based on their input, using AI.
+
+Instead of relying on strictly formatted responses, this action gives flexibility to how users reply.\
+You provide background information (context) about the type of input you expect — either from the preceding workflow step or from a stored variable.\
+The AI then analyzes the contact’s response and extracts the information according to the fields you define.
+
+### Core Purpose
+
+- Works like a smart router in your workflow
+- Routes the contact to the **right branch of the flow** based on their natural language input
+- Similar to a **Condition** action, but powered by AI understanding instead of rigid keyword matching
+
+**Use case example:**
+You want to guide a contact based on whether they’re interested in **booking a demo, getting support, or leaving feedback**.\
+The contact replies: _“I’d like some help with my account.”_
+
+AI Intention Recognition can detect that this maps to **Support** and automatically route the contact down the support-related workflow.
+
+---
+
+## 2.  AI Transform
+
+The **AI Transform** action allows you to **transform input using AI** based on custom instructions.
+
+Unlike Intention Recognition (which routes the contact based on the provided response), this action focuses on **reformatting or converting input data**.\
+You provide the input and tell the AI how you want it transformed, and the system outputs the result in the desired format. The input can come from the workflow or the contact.
+
+### What It Can Do
+
+- Convert time zones (e.g., **GMT+1 → GMT+3**)
+- Reformat dates (e.g., **DD/MM/YYYY → MM-DD-YYYY**)
+- Perform simple word-to-word translations
+- Normalize text formats (e.g., convert all text to lowercase or title case)
+
+### Why It Matters
+
+- Ensures data is **consistent and usable** in the next workflow steps
+- Handles common **formatting issues** without manual cleanup
+
+**Use case examples:**
+
+- A customer enters a date as **“12/08/2025”** → AI Transform outputs **“August 12, 2025”**
+- A contact provides a time in **GMT+1** → AI Transform converts it to **GMT+3** before scheduling
+- A reply is received in **mixed-case text** → AI Transform converts it to standard formatting
+
+> _Note_
+_While AI Transform is powerful, always test your transformation rules to ensure the workflow produces **valid and reliable outputs** before deploying._

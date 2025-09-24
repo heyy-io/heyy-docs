@@ -1,7 +1,78 @@
 ---
 title: 'WhatsApp Actions'
-description: 'Description of your new file.'
 icon: "whatsapp"
 sidebarTitle: "WhatsApp Actions"
 ---
 
+## 1.  Send Message
+The **Send Message** action allows you to send a plain text WhatsApp message to a contact.
+
+This is the most basic form of WhatsApp communication in workflows and is typically used for simple updates, notifications, confirmations, or conversational messages.  
+It supports only text and media (images, video or documents), without additional interactive elements like buttons or lists.
+
+**Use case examples:**
+- Sending an order confirmation message  
+- Sending a reminder or quick notification to a customer  
+
+---
+
+## 2.  Send Buttons
+The **Send Buttons** action allows you to send a WhatsApp message with up to **3 interactive buttons**.  
+These buttons give users clear ways to respond or take action, reducing the need to type manually.
+
+### Types of Buttons
+- **Quick Reply Buttons**: Predefined text responses that are instantly sent back when tapped.  
+
+
+
+
+### Context and Limitations
+- Maximum of **3 buttons per message**  
+- Designed for short, action-oriented interactions  
+ 
+
+**Use case examples:**
+- Quick Reply: Offering **“Confirm,” “Reschedule,” or “Cancel”** appointment options  
+ 
+
+---
+
+## 3.  Send List
+The **Send List** action allows you to send a WhatsApp message with a list of up to **10 reply options**.
+
+List are similar to buttons but offer more options and room for descriptions and category grouping.  
+They are especially useful when you want to present more than 3 options without cluttering the chat.  
+Users select one item from the list, and only that choice is sent back as their response.
+
+### Context and Limitations
+- Maximum of **10 items per list**  
+
+- Best suited for menus or when structured navigation is needed  
+
+**Use case examples:**
+- Presenting a service menu (e.g., **“Billing,” “Technical Support,” “Sales”**)  
+- Offering a product selection with multiple categories  
+- Providing a structured list of FAQs for users to choose from  
+
+---
+
+## 4.  Send Template
+The **Send Template** action allows you to send a WhatsApp message using a **pre-approved message template**.
+
+Message templates are required when initiating a conversation with a customer who hasn’t messaged you first.  
+They act as the entry point for WhatsApp messaging flows and ensure compliance with Meta’s policies.
+
+### Approval Process and Context
+- Templates must be **approved by Meta** before use  
+- Approval usually takes just a few seconds to a minute (It can take up to 24 hours in some cases).  
+- Once approved, templates can be reused across multiple campaigns or workflows  
+- Templates can include **variables, media (images, documents, videos), and buttons (quick replies, URLs, phone numbers)**  
+
+### Why It Matters
+WhatsApp enforces template usage to prevent spam and ensure quality communication.  
+By using templates, businesses can reach out proactively while staying compliant.
+
+**Use case examples:**
+- Sending order shipment notifications  
+- Sharing booking confirmations with dynamic details (**date, time, location**)  
+- Re-engaging customers with promotional offers or reminders  

@@ -1,7 +1,86 @@
 ---
 title: 'Logic Actions'
-description: 'Description of your new file.'
 icon: "gear"
 sidebarTitle: "Logic Actions"
 ---
 
+## 1.  Set Variable
+The **Set Variable** action allows you to assign a value to a **workflow variable**.
+
+Variables are placeholders that store information during a workflow, and you can define them at any point.  
+With this action, you assign a value to an existing variable or create a new one on the fly.
+
+**Use case examples:**
+- Storing a contact’s **first name, last name, email, or phone number** into a workflow variable  
+- Saving a user’s response (e.g., **“preferred delivery time”**) for later use in the workflow  
+- Initializing a variable with a **default value**  
+
+---
+
+## 2.  Clear Workflow Variable
+The **Clear Workflow Variable** action removes the stored value of a workflow variable.
+
+This resets the variable, making it empty or undefined for the remainder of the workflow unless assigned again.
+
+**Use case examples:**
+- Clearing temporary variables after they are no longer needed  
+- Resetting **session-based data** before starting a new flow for the same contact  
+- Ensuring outdated values (e.g., old **cart information**) don’t interfere with a new session  
+
+> _Note_
+_When using workflow variables, keep in mind that they are session-based. This means they are reset each time the workflow is triggered or run, preventing data from carrying over between sessions._
+
+---
+
+## 3.  Condition
+The **Condition** action allows you to define **branching logic** within a workflow.
+
+Conditions check whether specific rules are met (e.g., variable values, user attributes, or workflow state).  
+Based on the results, the workflow can continue along different paths.
+
+### How It Works
+- Add one or more **if/else conditions**  
+- Each condition can check a variable, input, or attribute  
+- Define actions for when the condition is **true (IF)** and when it is **false (ELSE)**  
+
+**Use case examples:**
+- If **contact’s subscription status = active**, send premium content; else, prompt them to subscribe  
+- If **cart value > $100**, trigger a discount offer; else, continue checkout flow  
+- Route contacts to different support teams based on their **selected department**  
+
+---
+
+## 4.  Trigger Workflow
+The **Trigger Workflow** action allows you to start a different, predefined workflow from within the current one.
+
+This makes workflows **modular and reusable**, as you can break down complex automations into smaller flows and call them when needed.
+
+**Use case examples:**
+- Triggering a **welcome workflow** after a new user subscribes  
+- Starting a **payment verification workflow** during checkout  
+- Linking multiple workflows together to handle **multi-step processes**  
+
+---
+
+## 5.  Delay
+The **Delay** action pauses the workflow for a specified period before moving to the next step.
+
+You can set either a **fixed delay** (e.g., 30 seconds, 5 minutes, 1 day) or a **randomized delay** within a given range to create natural timing.
+
+**Use case examples:**
+- Adding a **30-second delay** before sending a follow-up message, making the response feel natural  
+- Waiting **1 day** before sending a reminder message  
+- Randomizing delays between **2–5 minutes** to stagger message delivery across contacts  
+
+---
+
+## 6.  Randomizer
+The **Randomizer** action splits the workflow into multiple paths, with each path selected based on **probability**.
+
+You can define the number of paths and assign probabilities to each.  
+The total probability across all paths must equal **100%**.
+
+**Use case examples:**
+- Running **A/B tests** by randomly assigning contacts to different message variations  
+- Distributing leads across different sales agents in a randomized way  
+- Creating multiple **engagement sequences** and rotating them randomly to avoid repetition  
