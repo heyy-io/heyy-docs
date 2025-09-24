@@ -51,16 +51,6 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "Webhook",
-            "openapi": "/api-reference/openapi.json",
-            "pages": [
-              "GET /api_webhooks",
-              "POST /api_webhooks",
-              "PUT /api_webhooks/{webhookId}",
-              "DELETE /api_webhooks/{webhookId}"
-            ]
-          },
-          {
             "group": "Attribute",
             "openapi": "/api-reference/openapi.json",
             "pages": [
@@ -145,6 +135,16 @@
             ]
           },
           {
+            "group": "Webhook",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "GET /api_webhooks",
+              "POST /api_webhooks",
+              "PUT /api_webhooks/{webhookId}",
+              "DELETE /api_webhooks/{webhookId}"
+            ]
+          },
+          {
             "group": "WhatsApp Message",
             "openapi": "/api-reference/openapi.json",
             "pages": [
@@ -152,7 +152,7 @@
             ]
           },
           {
-            "group": "Workflows",
+            "group": "Workflow",
             "openapi": "/api-reference/openapi.json",
             "pages": [
               "GET /{channelId}/workflows",
