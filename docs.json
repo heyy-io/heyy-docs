@@ -51,11 +51,21 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API V2",
+            "group": "Webhooks",
             "openapi": "/api-reference/openapi.json",
             "pages": [
               "GET /api_webhooks",
               "POST /api_webhooks"
+            ]
+          },
+          {
+            "group": "Attributes",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "GET /api_webhooks",
+              "POST /api_webhooks",
+              "PUT /api_webhooks/{webhookId}",
+              "DELETE /api_webhooks/{webhookId}"
             ]
           }
         ]
