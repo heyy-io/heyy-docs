@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "maple",
   "name": "Heyy Help Center",
   "colors": {
     "primary": "#FE3265",
@@ -47,10 +47,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": []
-    }
+    ]
   },
   "logo": {
     "light": "/assets/logo.svg",
