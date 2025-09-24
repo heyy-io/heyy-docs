@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
             "group": "Quick Start",
@@ -46,6 +46,14 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": []
+      },
+      {
+        "tab": "Changelog",
+        "groups": []
       }
     ]
   },
@@ -62,7 +70,7 @@
     ],
     "primary": {
       "type": "button",
-      "label": "App",
+      "label": "Get started",
       "href": "https://app.heyy.io"
     }
   },
