@@ -50,11 +50,12 @@
       {
         "tab": "API Reference",
         "groups": [
-                    {
+          {
             "group": "API Reference",
-            "pages": [
-              "api-reference/introduction"
-            ]
+            "openapi": {
+              "source": "/openapi.json",
+              "directory": "api-reference"
+            }
           }
         ]
       },
