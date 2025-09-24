@@ -52,10 +52,10 @@
         "groups": [
           {
             "group": "API Reference",
-            "openapi": {
-              "source": "/api-reference/openapi.json",
-              "directory": "api-reference"
-            }
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "api_webhooks"
+            ]
           }
         ]
       },

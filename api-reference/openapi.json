@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "https://api.heyy.io"
+      "url": "https://api.heyy.io/api/v2.0"
     }
   ],
   "security": [
@@ -26,7 +26,7 @@
     "parameters": {}
   },
   "paths": {
-    "/api/v2.0/api_webhooks": {
+    "/api_webhooks": {
       "get": {
         "summary": "Get API webhooks",
         "responses": {
@@ -181,7 +181,7 @@
         }
       }
     },
-    "/api/v2.0/api_webhooks/{webhookId}": {
+    "/api_webhooks/{webhookId}": {
       "put": {
         "summary": "Update API webhook",
         "parameters": [
@@ -319,7 +319,7 @@
         }
       }
     },
-    "/api/v2.0/attributes": {
+    "/attributes": {
       "get": {
         "summary": "Get attributes",
         "responses": {
@@ -494,7 +494,7 @@
         }
       }
     },
-    "/api/v2.0/attributes/{attributeId}": {
+    "/attributes/{attributeId}": {
       "delete": {
         "summary": "Delete attribute",
         "parameters": [
@@ -549,7 +549,7 @@
         }
       }
     },
-    "/api/v2.0/{channelId}/broadcasts": {
+    "/{channelId}/broadcasts": {
       "get": {
         "summary": "Get broadcasts",
         "parameters": [
@@ -839,7 +839,7 @@
         }
       }
     },
-    "/api/v2.0/{channelId}/broadcasts/{broadcastId}": {
+    "/{channelId}/broadcasts/{broadcastId}": {
       "get": {
         "summary": "Get broadcast by id",
         "parameters": [
@@ -1109,7 +1109,7 @@
         }
       }
     },
-    "/api/v2.0/{channelId}/broadcasts/{broadcastId}/start": {
+    "/{channelId}/broadcasts/{broadcastId}/start": {
       "post": {
         "summary": "Start broadcast",
         "parameters": [
@@ -1181,7 +1181,7 @@
         }
       }
     },
-    "/api/v2.0/{channelId}/broadcasts/{broadcastId}/recipients": {
+    "/{channelId}/broadcasts/{broadcastId}/recipients": {
       "get": {
         "summary": "Get broadcast recipients",
         "parameters": [
@@ -1418,7 +1418,7 @@
         }
       }
     },
-    "/api/v2.0/business": {
+    "/business": {
       "get": {
         "summary": "Get business",
         "responses": {
@@ -1473,7 +1473,7 @@
         }
       }
     },
-    "/api/v2.0/channels": {
+    "/channels": {
       "get": {
         "summary": "Get channels",
         "responses": {
@@ -1531,7 +1531,7 @@
         }
       }
     },
-    "/api/v2.0/channels/{channelId}": {
+    "/channels/{channelId}": {
       "get": {
         "summary": "Get channel by id",
         "parameters": [
@@ -1596,7 +1596,7 @@
         }
       }
     },
-    "/api/v2.0/{channelId}/chats": {
+    "/{channelId}/chats": {
       "get": {
         "summary": "Get chats",
         "parameters": [
@@ -1679,7 +1679,7 @@
         }
       }
     },
-    "/api/v2.0/{channelId}/chats/{chatId}": {
+    "/{channelId}/chats/{chatId}": {
       "get": {
         "summary": "Get chat by id",
         "parameters": [
@@ -1890,7 +1890,7 @@
         }
       }
     },
-    "/api/v2.0/contacts": {
+    "/contacts": {
       "get": {
         "summary": "Get contacts",
         "responses": {
@@ -2125,7 +2125,7 @@
         }
       }
     },
-    "/api/v2.0/contacts/{contactId}": {
+    "/contacts/{contactId}": {
       "get": {
         "summary": "Get contact by id",
         "parameters": [
@@ -2409,7 +2409,7 @@
         }
       }
     },
-    "/api/v2.0/contacts/{contactId}/attributes": {
+    "/contacts/{contactId}/attributes": {
       "post": {
         "summary": "Add contact attribute",
         "parameters": [
@@ -2575,7 +2575,7 @@
         }
       }
     },
-    "/api/v2.0/upload_file": {
+    "/upload_file": {
       "post": {
         "summary": "Upload file",
         "requestBody": {
@@ -2653,7 +2653,7 @@
         }
       }
     },
-    "/api/v2.0/labels": {
+    "/labels": {
       "get": {
         "summary": "Get labels",
         "responses": {
@@ -2770,7 +2770,7 @@
         }
       }
     },
-    "/api/v2.0/labels/{labelId}": {
+    "/labels/{labelId}": {
       "delete": {
         "summary": "Delete label",
         "parameters": [
@@ -2825,7 +2825,7 @@
         }
       }
     },
-    "/api/v2.0/message_templates": {
+    "/message_templates": {
       "get": {
         "summary": "Get message templates",
         "responses": {
@@ -2896,7 +2896,7 @@
         }
       }
     },
-    "/api/v2.0/{channelId}/whatsapp_messages/send": {
+    "/{channelId}/whatsapp_messages/send": {
       "post": {
         "summary": "Send WhatsApp message",
         "parameters": [
@@ -3100,7 +3100,7 @@
         }
       }
     },
-    "/api/v2.0/{channelId}/workflows": {
+    "/{channelId}/workflows": {
       "get": {
         "summary": "Get workflows",
         "parameters": [
@@ -3175,7 +3175,7 @@
         }
       }
     },
-    "/api/v2.0/{channelId}/workflows/{workflowId}": {
+    "/{channelId}/workflows/{workflowId}": {
       "post": {
         "summary": "Start workflow",
         "parameters": [
