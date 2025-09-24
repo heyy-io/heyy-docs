@@ -52,15 +52,10 @@
         "groups": [
           {
             "group": "API V2",
+            "openapi": "/api-reference/openapi.json",
             "pages": [
-              {
-                "openapi": "/api-reference/api-webhook/openapi.json",
-                "directory": "API Webhook"
-              },
-              {
-                "openapi": "/api-reference/attribute/openapi.json",
-                "directory": "Attribute"
-              }
+              "GET /api_webhooks",
+              "POST /api_webhooks"
             ]
           }
         ]
