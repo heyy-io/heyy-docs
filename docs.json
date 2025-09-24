@@ -51,21 +51,112 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "Webhooks",
-            "openapi": "/api-reference/openapi.json",
-            "pages": [
-              "GET /api_webhooks",
-              "POST /api_webhooks"
-            ]
-          },
-          {
-            "group": "Attributes",
+            "group": "Webhook",
             "openapi": "/api-reference/openapi.json",
             "pages": [
               "GET /api_webhooks",
               "POST /api_webhooks",
               "PUT /api_webhooks/{webhookId}",
               "DELETE /api_webhooks/{webhookId}"
+            ]
+          },
+          {
+            "group": "Attribute",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "GET /attributes",
+              "POST /attributes",
+              "DELETE /attributes/{attributeId}"
+            ]
+          },
+          {
+            "group": "Broadcast",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "GET /{channelId}/broadcasts",
+              "POST /{channelId}/broadcasts",
+              "GET /{channelId}/broadcasts/{broadcastId}",
+              "PUT /{channelId}/broadcasts/{broadcastId}",
+              "DELETE /{channelId}/broadcasts/{broadcastId}",
+              "POST /{channelId}/broadcasts/{broadcastId}/start",
+              "GET /{channelId}/broadcasts/{broadcastId}/recipients",
+              "POST /{channelId}/broadcasts/{broadcastId}/recipients",
+              "DELETE /{channelId}/broadcasts/{broadcastId}/recipients"
+            ]
+          },
+          {
+            "group": "Business",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "GET /business"
+            ]
+          },
+          {
+            "group": "Channel",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "GET /channels",
+              "GET /channels/{channelId}"
+            ]
+          },
+          {
+            "group": "Chat",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "GET /{channelId}/chats",
+              "GET /{channelId}/chats/{chatId}",
+              "PUT /{channelId}/chats/{chatId}"
+            ]
+          },
+          {
+            "group": "Contact",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "GET /contacts",
+              "POST /contacts",
+              "GET /contacts/{contactId}",
+              "PUT /contacts/{contactId}",
+              "DELETE /contacts/{contactId}",
+              "POST /contacts/{contactId}/attributes",
+              "DELETE /contacts/{contactId}/attributes"
+            ]
+          },
+          {
+            "group": "File",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "POST /upload_file"
+            ]
+          },
+          {
+            "group": "Label",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "GET /labels",
+              "POST /labels",
+              "DELETE /labels/{labelId}"
+            ]
+          },
+          {
+            "group": "Message Template",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "GET /message_templates"
+            ]
+          },
+          {
+            "group": "WhatsApp Message",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "POST /{channelId}/whatsapp_messages/send"
+            ]
+          },
+          {
+            "group": "Workflows",
+            "openapi": "/api-reference/openapi.json",
+            "pages": [
+              "GET /{channelId}/workflows",
+              "POST /{channelId}/workflows/{workflowId}"
             ]
           }
         ]
