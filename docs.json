@@ -51,6 +51,12 @@
         "tab": "API Reference",
         "groups": [
           {
+            "group": "Getting Started",
+            "pages": [
+              "/api-reference/introduction"
+            ]
+          },
+          {
             "group": "Attribute",
             "openapi": "/api-reference/openapi.json",
             "pages": [
