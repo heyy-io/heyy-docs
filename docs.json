@@ -51,12 +51,17 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API Webhook",
-            "openapi": "/api-reference/api-webhook/openapi.json"
-          },
-          {
-            "group": "Attribute",
-            "openapi": "/api-reference/attribute/openapi.json"
+            "group": "API V2",
+            "pages": [
+              {
+                "openapi": "/api-reference/api-webhook/openapi.json",
+                "directory": "API Webhook"
+              },
+              {
+                "openapi": "/api-reference/attribute/openapi.json",
+                "directory": "Attribute"
+              }
+            ]
           }
         ]
       },
