@@ -1,5 +1,4 @@
-  <script type="text/javascript">
-    function loadHeyy() {
+function loadHeyy() {
       window.heyySettings = { widgetId: "JlIknkx9lv7L117y", baseUrl: "http://localhost:3050" };
 
       var s = document.createElement('script');
@@ -14,5 +13,4 @@
       } else {
         setTimeout(loadHeyy, 3000);
       }
-    });
-  </script>
+});
