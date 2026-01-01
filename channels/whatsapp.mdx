@@ -1,6 +1,72 @@
 ---
-title: "WhatsApp"
-description: "Description of your new file."
+title: "WhatsApp channel"
+description: "Use the WhatsApp channel to handle conversations from WhatsApp directly in your Heyy Inbox and send outbound WhatsApp messages."
 icon: "whatsapp"
 sidebarTitle: "WhatsApp"
 ---
+
+Connecting your WhatsApp business number lets you handle conversations from WhatsApp directly in your Heyy inbox. Meaning your customers can contact you in the most convenient way for them, while you take advantage of powerful Heyy automations.
+
+You can also send WhatsApp [campaigns](https://docs.heyy.io/quick-start/campaigns) to multiple contacts, or offer WhatsApp as a _follow up_  channel in the [Live chat](https://docs.heyy.io/channels/live-chat) so customers can take the conversation with them for maximum convenience.
+
+## **The Traditional Way (Cloud API)**
+
+This is the standard integration method. It provides the most stable connection and is recommended for most users. Using the Cloud API means your number will be hosted by Meta, and you will manage all interactions through Heyy.
+
+### **What you'll need**
+
+To set up the traditional Cloud API connection, ensure you have the following ready:
+
+- **A New or Clean Number:** A valid phone number that can receive an SMS or voice call for verification.
+  - _Important:_ This number **cannot** be active on the WhatsApp mobile app (Standard or Business) once the connection is complete.
+- **Meta Business Portfolio:** Your Meta Business Portfolio must be ready with the [**Business Info**](https://business.facebook.com/latest/settings/business_info) fully completed.
+<Note> Incomplete info may cause connection restrictions so make sure to first complete your [Business Info](https://business.facebook.com/latest/settings/business_info) and only them start the onbaording, if you already started the onboading and the number didn't connect fully go to the [Business Info](https://business.facebook.com/latest/settings/business_info) complete it and then [contact support](https://heyy.io/contact-us)</Note>
+
+### **Setup Process**
+
+1. Navigate to **Channels** in your Heyy dashboard.
+2. Click **Add Channel**.
+3. Pick **Whatsapp**.
+4. Click **Connect Number**.
+5. Follow the Meta Embedded Signup flow to verify your number and link your Business Portfolio.
+
+## **The Alternative Way (Coexistence)**
+
+Coexistence mode allows you to use the **WhatsApp Business App** on your smartphone while simultaneously managing conversations through the **Heyy Inbox**. This is useful if you still rely on the mobile app for voice calls or specific app-only features.
+
+### **Requirements for Coexistence**
+
+If you choose this method, you must first ensure your mobile app is prepared to "coexist" with a business platform.
+
+1. **WhatsApp Business App Check**\
+   You must confirm that your existing WhatsApp Business App is **not connected to any other Business Platform**.
+  - **Android:**
+    1. In your WhatsApp Business App, click the **"3 dots"** icon (top right).
+    2. Go to **Settings** \> **Account**.
+    3. Select **Business Platform**.
+      - **If you see "Connect to the Business Platform"**: You are ready!
+      - **If an app is listed**: Click it and then click **"Disconnect"**.
+
+  - **iPhone:**
+    1. Open the WhatsApp Business App and go to Settings.
+    2. Tap on Account > Business Platform.
+    3. If any platform is connected, tap it and select Disconnect.
+
+#### **2. Business Details**
+
+The Meta requirements for Coexistence are identical to the [Traditional Way](https://www.google.com/search?q=%23the-traditional-way-cloud-api):
+
+- The WhatsApp Business app version 2.24.17 or higher.
+- A fully filled-out Meta Business Portfolio.
+- A display name that matches your business Portfolio name or contains it.
+
+### **When to choose Coexistence?**
+
+| Feature               | Traditional (Cloud API)  | Coexistence          |
+| :-------------------- | :----------------------- | :------------------- |
+| **Heyy Inbox Access** | Yes                      | Yes                  |
+| **Mobile App Access** | No                       | Yes                  |
+| **Voice Calls**       | No (API doesn't support) | Yes (via Mobile App) |
+| **Stability**         | High                     | Medium               |
+
+For more details on which to choose, or to switch from Coexistence back to the [Traditional Way](https://www.google.com/search?q=%23the-traditional-way-cloud-api), please contact our [support team](https://heyy.io/contact-us).
