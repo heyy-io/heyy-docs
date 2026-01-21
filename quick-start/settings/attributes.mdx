@@ -1,0 +1,62 @@
+---
+title: "Attributes"
+icon: "sliders"
+sidebarTitle: "Settings"
+---
+
+# Attributes
+
+Create custom fields to store additional information about your contacts.
+
+<Frame>
+  ![Attributes Settings](/images/settings-attributes.png)
+</Frame>
+
+<Info>
+  Go to [**Settings \> Attributes**](https://app.heyy.io/settings/attributes)
+</Info>
+
+## Attribute Properties
+
+Each attribute has:
+
+- **Name** - Display name for the attribute
+- **ID** - Unique identifier used in integrations and templates
+- **Type** - Data type (Text, Number, Date, etc.)
+
+## Creating Attributes
+
+<Steps>
+  <Step title="Click Create Attribute">
+    Click **\+ Create attribute** button
+  </Step>
+  <Step title="Configure Attribute">
+    - Enter a display name
+    - Set the attribute ID (used in API/templates)
+    - Select the data type
+  </Step>
+  <Step title="Save">
+    Save your new attribute
+  </Step>
+</Steps>
+
+## Attribute Types
+
+<Tabs>
+  <Tab title="Text">
+    Free-form text input for names, descriptions, notes, etc.
+  </Tab>
+  <Tab title="Number">
+    Numeric values for quantities, scores, amounts, etc.
+  </Tab>
+  <Tab title="Date">
+    Date values for birthdays, signup dates, appointments, etc.
+  </Tab>
+  <Tab title="Boolean">
+    Yes/No values for opt-ins, preferences, status flags, etc.
+  </Tab>
+</Tabs>
+
+<Note>
+  Attributes can be used in message templates with placeholders like `{{attribute_id}}` for personalized messaging.
+</Note>

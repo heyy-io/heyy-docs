@@ -1,0 +1,68 @@
+---
+title: "Webhooks"
+icon: "sliders"
+sidebarTitle: "Settings"
+---
+
+# Webhooks
+
+Configure webhooks to receive real-time notifications when events occur in your Heyy workspace.
+
+<Frame>
+  ![Webhooks Settings](/images/settings-webhooks.png)
+</Frame>
+
+<Info>
+  Go to [**Settings \> Webhooks**](https://app.heyy.io/settings/api-webhooks)
+</Info>
+
+## Creating Webhooks
+
+<Steps>
+  <Step title="Click Create Webhook">
+    Click **\+ Create webhook** button
+  </Step>
+  <Step title="Enter Endpoint URL">
+    Provide the URL where webhook events should be sent
+  </Step>
+  <Step title="Select Events">
+    Choose which events should trigger the webhook:
+
+    - New message received
+    - Conversation assigned
+    - Contact created/updated
+    - And more...
+  </Step>
+  <Step title="Save">
+    Save your webhook configuration
+  </Step>
+</Steps>
+
+## Webhook Events
+
+<AccordionGroup>
+  <Accordion title="Message Events">
+    - `message.received` - New inbound message
+    - `message.sent` - Outbound message delivered
+    - `message.failed` - Message delivery failed
+  </Accordion>
+  <Accordion title="Conversation Events">
+    - `conversation.created` - New conversation started
+    - `conversation.assigned` - Conversation assigned to agent
+    - `conversation.resolved` - Conversation marked as resolved
+  </Accordion>
+  <Accordion title="Contact Events">
+    - `contact.created` - New contact added
+    - `contact.updated` - Contact information changed
+    - `contact.deleted` - Contact removed
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Use webhooks to:
+
+  - Sync contacts with your CRM
+  - Trigger workflows in other tools
+  - Log conversations for analytics
+  - Send notifications to your team
+</Tip>

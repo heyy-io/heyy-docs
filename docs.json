@@ -17,7 +17,14 @@
             "group": "Quick Start",
             "pages": [
               "quick-start/introduction",
-              "quick-start/ai-employees",
+              {
+                "group": "AI Employees",
+                "icon": "share-nodes",
+                "expanded": false,
+                "pages": [
+                  "quick-start/ai-employees/"
+                ]
+              },
               {
                 "group": "Automations",
                 "icon": "share-nodes",
@@ -30,10 +37,52 @@
                   "quick-start/automations/instagram-actions"
                 ]
               },
-              "quick-start/inbox",
-              "quick-start/campaigns",
-              "quick-start/contacts",
-              "quick-start/settings"
+              {
+                "group": "Inbox",
+                "icon": "share-nodes",
+                "expanded": false,
+                "pages": [
+                  "quick-start/inbox/"
+                ]
+              },
+              {
+                "group": "Campaigns",
+                "icon": "share-nodes",
+                "expanded": false,
+                "pages": [
+                  "quick-start/campaigns/"
+                ]
+              },
+              {
+                "group": "Contacts",
+                "icon": "share-nodes",
+                "expanded": false,
+                "pages": [
+                  "quick-start/contacts/"
+                ]
+              },
+              {
+                "group": "Settings",
+                "icon": "share-nodes",
+                "expanded": false,
+                "pages": [
+                  "quick-start/settings/profile",
+                  "quick-start/settings/general",
+                  "quick-start/settings/working-hours",
+                  "quick-start/settings/team",
+                  "quick-start/settings/billing",
+                  "quick-start/settings/usage",
+                  "quick-start/settings/channels",
+                  "quick-start/settings/whatsapp-templates",
+                  "quick-start/settings/quick-replies",
+                  "quick-start/settings/labels",
+                  "quick-start/settings/attributes",
+                  "quick-start/settings/team-inboxes",
+                  "quick-start/settings/views",
+                  "quick-start/settings/api-keys",
+                  "quick-start/settings/webhooks"
+                ]
+              }
             ]
           },
           {
