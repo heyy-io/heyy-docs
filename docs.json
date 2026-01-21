@@ -19,7 +19,7 @@
               "quick-start/introduction",
               {
                 "group": "AI Employees",
-                "icon": "share-nodes",
+                "icon": "sparkles",
                 "expanded": false,
                 "pages": [
                   "quick-start/ai-employees/"
@@ -39,7 +39,7 @@
               },
               {
                 "group": "Inbox",
-                "icon": "share-nodes",
+                "icon": "inbox",
                 "expanded": false,
                 "pages": [
                   "quick-start/inbox/"
@@ -47,7 +47,7 @@
               },
               {
                 "group": "Campaigns",
-                "icon": "share-nodes",
+                "icon": "bullseye-arrow",
                 "expanded": false,
                 "pages": [
                   "quick-start/campaigns/"
@@ -55,7 +55,7 @@
               },
               {
                 "group": "Contacts",
-                "icon": "share-nodes",
+                "icon": "users",
                 "expanded": false,
                 "pages": [
                   "quick-start/contacts/"
@@ -63,7 +63,7 @@
               },
               {
                 "group": "Settings",
-                "icon": "share-nodes",
+                "icon": "gear",
                 "expanded": false,
                 "pages": [
                   "quick-start/settings/profile",
