@@ -1,6 +1,6 @@
 ---
 title: "WhatsApp Templates"
-description: "Create and manage WhatsApp message templates for outbound communications."
+description: "Create and manage pre-approved WhatsApp message templates for outbound communication."
 ---
 
 <Frame>
@@ -8,58 +8,133 @@ description: "Create and manage WhatsApp message templates for outbound communic
 </Frame>
 
 <Info>
-  Go to [**Settings \> WhatsApp Message Templates**](https://app.heyy.io/settings/whatsapp-templates)
+  Navigate to [**Settings \> WhatsApp Message Templates**](https://app.heyy.io/settings/whatsapp-templates) to manage your templates.
 </Info>
 
 ## Template Overview
 
-WhatsApp requires pre-approved templates for initiating conversations. Your templates table shows:
+Meta requires pre-approved templates to initiate conversations with users. WhatsApp templates are the only message type allowed outside of the [24-hour customer service window](https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages#customer-service-windows). They are essential for sending bulk broadcasts or reaching out to users when no active session exists.
 
-- **Name** - Template identifier
-- **Channel** - Associated WhatsApp channel
-- **Status** - Approval status (Active, Pending, Rejected)
-- **Category** - Template type (Marketing, Utility, Authentication)
-- **Created At** - Creation date
+Your templates table provides a high-level view of your library:
+
+- **Name**: The unique identifier for your template.
+- **Channel**: The specific WhatsApp Business account associated with the template.
+- **Status**: The current approval state (Active, Pending, or Rejected).
+- **Category**: The template classification (Marketing, Utility, or Authentication).
+- **Created At**: The timestamp of the template's creation.
 
 ## Creating Templates
 
-<Steps>
-  <Step title="Click New Template">
-    Click **\+ New Template** button
-  </Step>
-  <Step title="Configure Template">
-    - Enter a template name
-    - Select the category
-    - Choose the language
-    - Write your message content with placeholders
-  </Step>
-  <Step title="Add Components">
-    Optionally add:
+To create a new template, click the **"New template"** button in the top right corner of the page. Fill in the following fields and then click **"Submit for review"**.
 
-    - Header (text, image, video, document)
-    - Body with variables
-    - Footer
-    - Quick reply or call-to-action buttons
-  </Step>
-  <Step title="Submit for Approval">
-    Submit the template to WhatsApp for review
-  </Step>
-</Steps>
+<AccordionGroup>
+  <Accordion title="Name">
+    Enter a descriptive, internal name for your template to help your team identify it quickly.
+  </Accordion>
+  <Accordion title="WhatsApp Channel">
+    Select the specific WhatsApp channel for this template.
 
-<Warning>
-  Templates must comply with WhatsApp's policies. Marketing templates require opt-in consent from recipients.
-</Warning>
+    <Info>
+      A template can only be associated with one WhatsApp channel at a time.
+    </Info>
+  </Accordion>
+  <Accordion title="Header">
+    Add an optional header to your message. Supported formats include:
 
-## Template Categories
+    <AccordionGroup>
+      <Accordion title="Text">
+        Text headers are displayed at the top of your message. Note that Markdown characters are not supported in this field.
 
-<Tabs>
-  <Tab title="Marketing">
-    Promotional messages, offers, and announcements. Requires explicit opt-in from recipients.
-  </Tab>
-  <Tab title="Utility">
-    Transactional messages like order updates, appointment reminders, and account notifications.
-  </Tab>
-  <Tab title="Authentication">
-    One-time passwords and verification codes.
-  </Tab>
-</Tabs>
+        <Info>
+          Text headers support a maximum of **one** variable.
+        </Info>
+      </Accordion>
+      <Accordion title="Image">
+        Include a visual element in your template.
+
+        <Info>
+          Supported formats: **JPG, JPEG, PNG**. Maximum file size: **5MB**.
+        </Info>
+      </Accordion>
+      <Accordion title="Video">
+        Attach a video file to increase engagement.
+
+        <Info>
+          Supported formats: **MP4, 3GP**. Maximum file size: **16MB**.
+        </Info>
+      </Accordion>
+      <Accordion title="Document">
+        Send PDF guides, invoices, or media files.
+
+        <Info>
+          Supported formats: **PDF, JPG, JPEG, PNG, MP4**. Maximum file size: **100MB**.
+        </Info>
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+  <Accordion title="Body">
+    The message body is the primary content of your template and is the only required field. You can enhance your message using [WhatsApp formatting](https://faq.whatsapp.com/539178204879377), contact attributes, and variables.
+
+    <AccordionGroup>
+      <Accordion title="Contact Attributes">
+        Click the **"\<\>"** icon to insert dynamic contact data. These placeholders are automatically replaced with the specific recipient's information.
+
+        <Info>
+          Ideal for personalization using fields like First Name, Phone Number, or Address.
+        </Info>
+      </Accordion>
+      <Accordion title="Variables">
+        Add custom variables by clicking the **"\<\>"** icon and selecting **"Add new variable."** These values can be populated via the Inbox, Automations, or API.
+
+        <Info>
+          Ideal for transaction-specific data such as Order IDs, Appointment Dates, or Pricing.
+        </Info>
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+  <Accordion title="Footer">
+    An optional line of text at the bottom of your message, commonly used for company signatures or "Reply STOP to unsubscribe" notices.
+  </Accordion>
+  <Accordion title="Buttons">
+    Interactive buttons drive higher engagement and allow customers to take immediate action. You can add up to **10 buttons** in total.
+
+    <AccordionGroup>
+      <Accordion title="Quick Reply">
+        A preset response button. When clicked, it sends the button text as a reply message.
+
+        <Info>
+          These are highly effective for [Automations](https://docs.heyy.io/quick-start/automations/getting-started), such as triggering specific opt-out or support flows.
+        </Info>
+      </Accordion>
+      <Accordion title="Visit Website">
+        A CTA button that opens a specific URL. You can use variables to create personalized links for each recipient.
+
+        <Info>
+          Maximum of **two** "Visit Website" buttons allowed per template.
+        </Info>
+      </Accordion>
+      <Accordion title="Call Phone Number">
+        Triggers the user's phone app to pre-dial a specific number.
+
+        <Info>
+          Maximum of **one** "Call Phone Number" button allowed per template.
+        </Info>
+      </Accordion>
+    </AccordionGroup>
+    <Info>
+      If you add more than 3 buttons, WhatsApp displays the first 2 and collapses the remaining options into a **"See all options"** menu.
+    </Info>
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+  By default, all templates are submitted under the **Utility** category to Meta for review. This process typically takes up to **24 hours**. Please note that newer WhatsApp Business accounts may experience slightly longer review times than established accounts.
+</Info>
+
+## Updating Templates
+
+At this time, only the **name** of an existing template can be edited. To change the content, header, or buttons of a template, please create a new one.
+
+<Info>
+  **Why can't I edit template content?** Modifying an existing template triggers a new Meta approval process. This often leads to extended downtime or technical errors where a template remains disabled indefinitely, disrupting your business automations and active campaigns. Creating a new template ensures your existing flows remain stable.
+</Info>
