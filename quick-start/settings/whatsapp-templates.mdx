@@ -15,6 +15,10 @@ description: "Meta requires pre-approved templates to initiate conversations wit
 
 To initiate a new approval request, click the **"New template"** button in the top right corner of the dashboard. Use the following sections to define your message structure:
 
+<Info>
+  **Approval Process:** By default, all templates are submitted under the **Utility** category. Review typically takes up to **24 hours**, though newer accounts may experience longer wait times.
+</Info>
+
 ### Basic Information
 
 - **Name**: Enter a descriptive, internal name for your template to help your team identify it quickly.
@@ -24,24 +28,19 @@ To initiate a new approval request, click the **"New template"** button in the t
 
 Headers appear at the very top of your message. You can choose one of the following formats:
 
-<AccordionGroup>
-  <Accordion title="Text Header">
-    Text headers allow for a short title at the top of your message.
+#### Text Header
+Text headers allow for a short title at the top of your message.
 
-    <Info>
-      Supports a maximum of **one** variable. Markdown characters (like bold or italics) are not supported.
-    </Info>
-  </Accordion>
-  <Accordion title="Media Header (Image, Video, Document)">
-    Include a visual or document-based element.
+<Info>
+  Supports a maximum of **one** variable. Markdown characters (like bold or italics) are not supported.
+</Info>
 
-    <Info>
-      - **Image**: Supported formats: **JPG, JPEG, PNG**. Max size: **5MB**.
-      - **Video**: Supported formats: **MP4, 3GP**. Max size: **16MB**.
-      - **Document**: Supported formats: **PDF, JPG, JPEG, PNG, MP4**. Max size: **100MB**.
-    </Info>
-  </Accordion>
-</AccordionGroup>
+#### Media Header (Image, Video, Document)
+Include a visual or document-based element.
+
+- **Image**: Supported formats: **JPG, JPEG, PNG**. Max size: **5MB**.
+- **Video**: Supported formats: **MP4, 3GP**. Max size: **16MB**.
+- **Document**: Supported formats: **PDF, JPG, JPEG, PNG, MP4**. Max size: **100MB**.
 
 ### Message Body
 
@@ -62,32 +61,25 @@ Interactive buttons drive higher engagement. You can add up to **10 buttons** in
   **Note on Button Display:** If you add more than 3 buttons, WhatsApp displays the first 2 and collapses the rest into a **"See all options"** menu.
 </Info>
 
-<AccordionGroup>
-  <Accordion title="Quick Reply">
-    A preset response button. When clicked, it sends the button text as a reply message.
-
-    <Info>
-      Highly effective for [Automations](https://docs.heyy.io/quick-start/automations/getting-started) to trigger specific flows.
-    </Info>
-  </Accordion>
-  <Accordion title="Visit Website">
-    A CTA button that opens a specific URL. You can use variables to create personalized links.
-
-    <Info>
-      Only **two** "Visit Website" buttons are allowed per template.
-    </Info>
-  </Accordion>
-  <Accordion title="Call Phone Number">
-    Triggers the user's phone app to pre-dial a specific number.
-
-    <Info>
-      Only **one** "Call Phone Number" button is allowed per template.
-    </Info>
-  </Accordion>
-</AccordionGroup>
+### Quick Reply
+A preset response button. When clicked, it sends the button text as a reply message.
 
 <Info>
-  **Approval Process:** By default, all templates are submitted under the **Utility** category. Review typically takes up to **24 hours**, though newer accounts may experience longer wait times.
+  Highly effective for [Automations](https://docs.heyy.io/quick-start/automations/getting-started) to trigger specific flows.
+</Info>
+
+#### Visit Website
+  A CTA button that opens a specific URL. You can use variables to create personalized links.
+
+<Info>
+  Only **two** "Visit Website" buttons are allowed per template.
+</Info>
+
+#### Call Phone Number
+  Triggers the user's phone app to pre-dial a specific number.
+
+<Info>
+  Only **one** "Call Phone Number" button is allowed per template.
 </Info>
 
 ---
