@@ -8,26 +8,58 @@ description: "Create custom fields to store additional information about your co
 </Frame>
 
 <Info>
-  Go to [**Settings \> Attributes**](https://app.heyy.io/settings/attributes)
+  Go to [**Settings \> Attributes**](https://app.heyy.io/settings/attributes) to manage your attributes.
 </Info>
 
 ## Attribute Properties
 
 Each attribute has:
 
-- **Name** - Display name for the attribute
-- **ID** - Unique identifier used in integrations and templates
-- **Type** - Data type (Text, Number, Date, etc.)
+- **Name** - Friendly display name for the attribute.
+- **ID** - Unique identifier used in integrations and templates (Can't be edited once added. Only letters, numbers, and underscores are allowed for this field).
+- **Description** - Optional description of the attribute.
+- **Type** - Data type (Text, Number, Single-select, Date, Date + Time).
+
+<AccordionGroup>
+  <Accordion title="Text">
+    Simple text that can store any text.
+  </Accordion>
+
+  <Accordion title="Number">
+    Can store only numbers.
+  </Accordion>
+
+  <Accordion title="Single-select">
+    Dropdown field with predefined options, each option can have color assigned.
+  </Accordion>
+
+  <Accordion title="Date">
+    Date field
+  </Accordion>
+
+  <Accordion title="Date + Time">
+    Full date and time field
+  </Accordion>
+</AccordionGroup>
 
 ## Creating Attributes
 
+<video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full aspect-video rounded-xl"
+  src="/assets/demo.mp4"
+></video>
+
 <Steps>
   <Step title="Click Create Attribute">
-    Click **\+ Create attribute** button
+    Click the **Create attribute** button.
   </Step>
   <Step title="Configure Attribute">
     - Enter a display name
-    - Set the attribute ID (used in API/templates)
+    - Set the attribute ID
     - Select the data type
   </Step>
   <Step title="Save">

@@ -242,5 +242,16 @@
       "x": "https://x.com/Heyy_hq",
       "website": "https://app.heyy.io"
     }
+  },
+  "seo": {
+    "indexing": "all"
+  },
+  "api": {
+    "playground": {
+      "display": "interactive"
+    }
+  },
+  "icons": {
+    "library": "fontawesome"
   }
 }

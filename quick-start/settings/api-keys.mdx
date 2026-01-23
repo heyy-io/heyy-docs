@@ -1,6 +1,6 @@
 ---
 title: "API Keys"
-description: "Generate API keys to integrate Heyy with your third-party applications."
+description: "Generate and manage authentication keys to authenticate your requests when using the Heyy API."
 ---
 
 <Frame>
@@ -8,32 +8,40 @@ description: "Generate API keys to integrate Heyy with your third-party applicat
 </Frame>
 
 <Info>
-  Go to [**Settings \> API Keys**](https://app.heyy.io/settings/api-keys)
+  Go to [**Settings \> API Keys**](https://app.heyy.io/settings/api-keys) to manage your API keys.
 </Info>
 
 ## Creating API Keys
 
+To integrate Heyy with third-party applications, follow these steps:
+
 <Steps>
-  <Step title="Click Create API Key">
-    Click **\+ Create API key** button
+  <Step title="Create Key">
+    Click the **\+ Create API key** button.
   </Step>
   <Step title="Name Your Key">
-    Enter a descriptive name (e.g., "CRM Integration", "Website Bot")
+    Enter a descriptive name to identify the integration (e.g., "CRM Integration" or "Website Bot").
   </Step>
-  <Step title="Copy Key">
-    Copy the generated API key immediately - it won't be shown again
+  <Step title="Save Your Token">
+    Copy the generated API key immediately.
+
+    <Warning>
+      For security, this key is only displayed once. If lost, you must delete the entry and generate a new key.
+    </Warning>
   </Step>
 </Steps>
 
-<Warning>
-  **Security Best Practices:**
+## Security Best Practices
 
-  - Never share API keys publicly or commit them to version control
-  - Rotate keys periodically
-  - Delete unused keys
-  - Use different keys for different integrations
-</Warning>
+To keep your account secure, follow these guidelines:
 
-### API Documentation
+- **Never share keys**: Do not share API keys publicly or commit them to version control repositories.
+- **Rotate periodically**: Update your keys regularly to reduce security risks.
+- **Deactivate unused keys**: Delete any keys that are no longer required for active integrations.
+- **Use unique keys**: Assign a different key to each third-party tool for better tracking and security.
 
-For detailed API documentation, visit the [Heyy API Docs](https://docs.heyy.io/api).
+---
+
+### API Reference
+
+For a full list of endpoints and integration guides, visit our [API Documentation](https://docs.heyy.io/api-reference).
