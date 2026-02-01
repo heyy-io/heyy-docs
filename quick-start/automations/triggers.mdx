@@ -1,0 +1,200 @@
+---
+title: "Triggers"
+sidebarTitle: "Triggers"
+description: "Triggers decide **when** an automation starts. Choose the trigger that matches the moment you want Heyy to respond, then add actions to define what happens next."
+---
+
+## New & reopened chat
+
+<Frame>
+  ![API Keys Settings](/assets/automations-triggers-new-reopened-chat.png)
+</Frame>
+
+Runs whenever a chat is opened, whether it’s the first time a contact messages you or they’re reopening a previously closed conversation. Use this when you want one automation to handle both new and returning contacts without distinguishing between them.
+
+#### Fields
+
+- **Channel** (required): Select the channel where this trigger will run.
+- **When to trigger** (optional): Add a condition to narrow the audience based on specific conditions.
+- **Save text reply to** (optional): Save the contact’s text reply to an automation variable.
+- **Save file reply to** (optional): Save the contact’s file reply to an automation variable.
+
+### Use cases
+
+- **Single welcome flow for all opens:** Send one greeting and qualification flow whether the contact is new or returning, without maintaining two separate automations.
+- **Unified triage:** Route or assign every opened chat the same way (e.g. AI first, then handoff) regardless of first-time vs. reopened.
+- **Always capture the first message:** Use “Save text reply to” so you can store what the contact said when they opened the chat and use it in later steps.
+
+---
+
+## New incoming chat
+
+<Frame>
+  ![API Keys Settings](/assets/automations-triggers-new-incoming-chat.png)
+</Frame>
+
+Runs only when a contact messages you for the first time and a new chat is created. It does not run when an existing chat is reopened. Use this for welcome flows, onboarding, or any logic that should run exclusively for first-time conversations.
+
+#### Fields
+
+- **Channel** (required): Select the channel where this trigger will run.
+- **When to trigger** (optional): Add a condition group to narrow the audience based on specific conditions.
+- **Save text reply to** (optional): Save the contact’s text reply to an automation variable.
+- **Save file reply to** (optional): Save the contact’s file reply to an automation variable.
+
+### Use cases
+
+- **First-time welcome and onboarding:** Send a welcome message, collect basic info, or run a qualification flow only when someone messages you for the first time.
+- **New-lead handling:** Trigger lead scoring, CRM creation, or assignment rules only for brand-new conversations, not when an existing chat is reopened.
+- **Channel-specific first contact:** Use “When to trigger” to run different first-time flows by channel (e.g. WhatsApp vs. Live Chat) or by attribute.
+
+---
+
+## Reopened chat
+
+<Frame>
+  ![API Keys Settings](/assets/automations-triggers-reopened-chat.png)
+</Frame>
+
+Runs when a contact sends a message in a chat that had been closed. Use this when you want different behavior for returning customers, for example, a “welcome back” message or to reassign the chat without triggering the same flow as brand new chats.
+
+#### Fields
+
+- **Channel** (required): Select the channel where this trigger will run.
+- **When to trigger** (optional): Add a condition group to narrow the audience based on specific conditions.
+- **Save text reply to** (optional): Save the contact’s text reply to an automation variable.
+- **Save file reply to** (optional): Save the contact’s file reply to an automation variable.
+
+### Use cases
+
+- **Welcome-back message:** Send a “We’re here to help again” or “Your case is still open” message when a contact reopens a closed chat.
+- **Reassign without full welcome:** Route or assign returning chats to the right team or agent without repeating the first-time welcome flow.
+- **Returning-customer logic:** Run different flows (e.g. loyalty, win-back) only when someone comes back after a closed conversation.
+
+---
+
+## Chat closed
+
+<Frame>
+  ![API Keys Settings](/assets/automations-triggers-chat-closed.png)
+</Frame>
+
+Runs as soon as a conversation is closed by an agent or by the system. Use this for post-conversation steps such as sending a satisfaction survey, logging outcomes, or triggering follow-up campaigns after a defined delay.
+
+#### Fields
+
+- **Channel** (required): Select the channel where this trigger will run.
+- **When to trigger** (optional): Add a condition group to narrow the audience based on specific conditions.
+
+### Use cases
+
+- **Post-conversation survey:** Send a satisfaction or NPS survey (e.g. via email or another channel) as soon as the chat is closed.
+- **Delayed follow-up campaign:** Start a delay, then add the contact to a campaign or send a follow-up message after the conversation has ended.
+- **Logging and reporting:** Trigger an API call or internal notification when a chat is closed to update your CRM or analytics.
+
+---
+
+## Chat assigned
+
+<Frame>
+  ![API Keys Settings](/assets/automations-triggers-chat-assigned.png)
+</Frame>
+
+Runs when a chat is assigned to one or more team members you select. Use this to run automations only when certain users receive the chat, for example, notifying a specialist, updating internal tools, or applying role-specific workflows.
+
+#### Fields
+
+- **Channel** (required): Select the channel where this trigger will run.
+- **Users** (required): Select the users for whom to fire this trigger.
+
+### Use cases
+
+- **Notify the assigned agent:** Send an email or internal notification to the user who received the chat so they know a new conversation was assigned to them.
+- **Role-specific workflows:** Run different automations when a chat is assigned to support vs. sales (e.g. different templates or next steps).
+- **Update external systems:** When a specialist is assigned, call an API to update your ticketing system or CRM with the assignee.
+
+---
+
+## Chat moved
+
+<Frame>
+  ![API Keys Settings](/assets/automations-triggers-chat-moved.png)
+</Frame>
+
+Runs when a chat is moved into one or more of the inboxes you select. Use this to react to routing changes, for example, triggering different handling when a chat lands in a sales vs. support inbox or notifying the right team when a chat is moved to their queue.
+
+#### Fields
+
+- **Channel** (required): Select the channel where this trigger will run.
+- **Inboxes** (required): Select the inboxes for whom to fire this trigger.
+
+### Use cases
+
+- **Inbox-specific handling:** When a chat is moved to Sales, send a sales-focused message or assign to a sales rep; when moved to Support, run a support triage flow.
+- **Notify the team whose inbox received the chat:** Send an internal alert or assign a default agent when a chat lands in a specific team’s inbox.
+- **Sync with routing rules:** Trigger an API or update attributes when a chat is moved so your external routing or reporting stays in sync.
+
+---
+
+## New incoming message
+
+<Frame>
+  ![API Keys Settings](/assets/automations-triggers-new-incoming-message.png)
+</Frame>
+
+Runs on every new message from a contact in an existing conversation. Use this when you want to react to each message—for example, to run keyword-based logic, save replies to variables, or trigger AI or routing only when new content arrives.
+
+#### Fields
+
+- **Channel** (required): Select the channel where this trigger will run.
+- **When to trigger** (optional): Add a condition group to narrow the audience based on specific conditions.
+- **Save text reply to** (optional): Save the contact’s text reply to an automation variable.
+- **Save file reply to** (optional): Save the contact’s file reply to an automation variable.
+
+### Use cases
+
+- **Keyword-based routing:** Run only when the message contains specific words (e.g. “refund”, “cancel”) and then route, assign, or reply accordingly.
+- **Save and reuse the reply:** Use “Save text reply to” or “Save file reply to” so the next steps (e.g. AI Transform, Condition, or a template) can use what the contact just said.
+- **Per-message AI or logic:** Trigger an AI employee or intention recognition on every new message so you can respond or branch based on the latest content.
+
+---
+
+## New Instagram comment
+
+<Frame>
+  ![API Keys Settings](/assets/automations-triggers-new-instagram-comment.png)
+</Frame>
+
+Runs when someone comments on your Instagram content. You can scope it to all posts and reels or to specific media. Use this to auto-reply to comments, route commenters into DMs, or run contests and engagement flows tied to particular posts or reels.
+
+#### Fields
+
+- **Channel** (required): Select the channel where this trigger will run.
+- **When someone comments on** (required): Select between "All posts & reels" or "Specific posts/reels" and then select the posts/reels.
+- **When to trigger** (optional): Add a condition group to narrow the audience based on specific conditions.
+
+### Use cases
+
+- **Campaign-specific comment reply:** Use “Specific posts/reels” to auto-reply to comments on a single post or reel (e.g. contest, product launch) and optionally invite commenters into DMs.
+- **General comment-to-DM flow:** Use “All posts & reels” to reply to comments across your account and invite people into a DM conversation with a consistent message.
+- **Conditional handling:** Use “When to trigger” to reply only when the comment contains certain words or to route high-intent commenters differently.
+
+---
+
+## Manual trigger
+
+<Frame>
+  ![API Keys Settings](/assets/automations-triggers-manual-trigger.png)
+</Frame>
+
+Runs only when started by you or by another automation—from the Inbox, a campaign, an API call, or a [Start Other Automation](/quick-start/automations/logic-actions#start-other-automation) action. Use this for flows that should not start from customer activity, such as scheduled follow-ups, bulk actions, or sub-flows called by other automations.
+
+#### Fields
+
+- **Channel** (required): Select the channel where this trigger will run.
+
+### Use cases
+
+- **Reusable sub-flows:** Build one automation (e.g. send survey, add to campaign) and start it from multiple places—other automations, campaigns, or the Inbox—using the [Start Other Automation](/quick-start/automations/logic-actions#start-other-automation) action and variable mapping.
+- **API- or campaign-driven flows:** Start the automation via API or when a contact enters a campaign, so the flow runs only when you or an external system decides, not on every new message.
+- **Scheduled or bulk actions:** Use manual trigger for flows that run on a schedule, from a bulk action, or when an agent clicks “Run automation” in the Inbox.

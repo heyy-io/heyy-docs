@@ -1,0 +1,126 @@
+---
+title: 'Logic Actions'
+sidebarTitle: "Logic Actions"
+---
+
+## Set Variable
+
+<Frame>
+  ![API Keys Settings](/assets/automations-set-variable.png)
+</Frame>
+
+Sets one or more workflow variables to values you choose. Values can be fixed text or built from workflow variables, contact fields (e.g. first name, email), and contact attributes. Use this to store data for later steps (e.g. after a contact reply or an API call) or to prepare values for conditions and message templates.
+
+### Fields
+
+- **Variables** (required): Add one or more variable–value pairs. For each pair, pick the workflow variable to set and the value (you can use workflow variables, contact fields, and attributes via the dropdown or by typing placeholders).
+
+### Use cases
+
+- **Store the contact’s reply for later:** After a trigger or message action that has “Save text reply to” or “Save file reply to”, use Set Variable to copy that value into a named variable so you can reference it in a Condition, AI action, or the next message.
+- **Prepare values after an API call:** After an API action, use Set Variable to map response fields (via the API’s response mapping) into workflow variables, then use those variables in conditions or message templates.
+- **Build a value for templates or attributes:** Combine workflow variables, contact fields, and fixed text into one variable, then use it in a message body or in Set Attribute so the contact or your CRM sees the formatted value.
+
+---
+
+## Clear Variable
+
+<Frame>
+  ![API Keys Settings](/assets/automations-clear-variable.png)
+</Frame>
+
+Clears one or more workflow variables so they no longer hold a value. Use this when you want to reset data before reusing a variable, or when you no longer need the stored value for the rest of the automation.
+
+### Fields
+
+- **Variables** (required): Select the workflow variables to clear. You can select multiple.
+
+### Use cases
+
+- **Reset before asking again:** Before a message action that asks a question and saves the reply to a variable, use Clear Variable on that variable so you don’t reuse an old answer from a previous run or step.
+- **Clean up after a branch:** When different branches set the same variable, clear it at the start of a shared path so the rest of the automation doesn’t use a value from the wrong branch.
+- **Free up variables you no longer need:** Clear one or more variables in one action when the automation no longer needs them, so you avoid leaking stale data into later steps or attributes.
+
+---
+
+## Condition
+
+<Frame>
+  ![API Keys Settings](/assets/automations-condition.png)
+</Frame>
+
+Splits the flow based on rules you define. You add one or more condition groups; each group has conditions combined with AND/OR. The automation follows the branch where the first matching group evaluates to true. Use this to route by contact data, message content, variables, or attributes (e.g. “if intention = support, assign to support”).
+
+### Fields
+
+- **Condition groups** (required): Add one or more groups (up to 10). Each group has a logical operator (AND or OR) and a list of conditions. Each condition compares a left operand (variable, attribute, contact field, etc.) to a right value using an operator (equals, contains, etc.). The first group that evaluates to true determines which branch runs.
+
+### Use cases
+
+- **Route by intent or attribute:** After AI Intention Recognition or “Save text reply to”, add a Condition that checks the variable or attribute (e.g. “intention equals support”); use different branches to Assign chat, Move chat, or send different messages per branch.
+- **Branch on contact data:** Use conditions on contact fields or attributes (e.g. “language equals Spanish”, “segment equals VIP”) to send localized messages, assign to the right team, or add to different campaigns.
+- **Keyword or content checks:** Use a condition on the saved message (e.g. “body contains refund”) to branch to a dedicated flow (e.g. refund path vs. general support); order groups from most specific to least specific so the right branch runs first.
+
+---
+
+## Start Other Automation
+
+<Frame>
+  ![API Keys Settings](/assets/automations-start-other-automation.png)
+</Frame>
+
+Starts another automation that has a “Manual trigger.” You choose the workflow and optionally map variables from the current automation to the target workflow’s parameters. Use this to reuse common flows (e.g. send survey, add to campaign) from multiple places or to chain automations.
+
+### Fields
+
+- **Workflow** (required): Select the automation to start. Only workflows with a “Manual trigger” appear.
+- **Variables mapping** (optional): Map variables from the current workflow to the target workflow’s parameters. For each target parameter, set the value (e.g. a workflow variable, contact field, or attribute) that the started workflow will receive.
+
+### Use cases
+
+- **Reuse a common sub-flow:** Build one workflow (e.g. send survey, add to campaign, run a checklist) with a Manual trigger, then start it from multiple automations via Start Other Automation; use variable mapping to pass in context (e.g. reason, source).
+- **Chain automations:** After one automation has done its job (e.g. qualified the lead), use Start Other Automation to run another workflow (e.g. add to campaign, notify sales) and pass variables so the second workflow has the data it needs.
+- **Same flow from different entry points:** Trigger the same “sub” workflow from a campaign, from the Inbox, or from different parent automations; mapping ensures the sub-flow receives the right parameters (e.g. campaign ID, contact attribute) no matter who started it.
+
+---
+
+## Delay
+
+<Frame>
+  ![API Keys Settings](/assets/automations-delay.png)
+</Frame>
+
+Pauses the automation for a set time before continuing. You can use a fixed duration or a random range (e.g. 5–10 minutes). Optionally, restrict the delay to certain days and a time window (e.g. weekdays 9–17) so the automation continues only during those hours. Use this for follow-ups, reminders, or staggered actions.
+
+### Fields
+
+- **Type** (required): Choose “Fixed” for a single duration or “Random” for a range.
+- **Delay** (required): The duration to wait (e.g. 5 minutes). For random, this is the minimum.
+- **Max delay** (required if type is “Random”): The maximum duration (e.g. 10 minutes). The actual delay is between the minimum and this value.
+- **Continue time limit** (optional): When enabled, the automation continues only during the specified days and time window (e.g. weekdays 9:00–17:00). Outside that window, the delay effectively pauses until the next allowed time.
+
+### Use cases
+
+- **Follow-up after a delay:** After a trigger (e.g. Chat closed) or another action, add a Delay (e.g. 2 hours) so the next step (e.g. Send message, Add to campaign) runs later; use “Continue time limit” so it only runs during business hours.
+- **Stagger actions:** Use a random delay (e.g. 1–5 minutes) so many automations don’t fire at the same second (e.g. after a campaign or bulk trigger), reducing spikes and making flows feel more natural.
+- **Reminder or re-engagement:** Delay for a set period (e.g. 24 hours), then send a message or add the contact to a campaign if they haven’t replied; combine with conditions or Clear variable so you only act when appropriate.
+
+---
+
+## Randomizer
+
+<Frame>
+  ![API Keys Settings](/assets/automations-randomizer.png)
+</Frame>
+
+Sends the automation down one of several paths at random, according to percentages you set. You define up to six paths (e.g. A, B, C) and assign each a percentage; the percentages must add up to 100. Use this for A/B tests, load balancing between flows, or random branching (e.g. 70% path A, 30% path B).
+
+### Fields
+
+- **Paths** (required): Add one or more paths (up to 6). For each path, set a percentage (0–100). The sum of all percentages must equal 100.
+
+### Use cases
+
+- **A/B test two flows:** Use two paths (e.g. 50% / 50%) to send contacts down different message or assignment flows and compare outcomes (e.g. different welcome messages or AI vs. human first).
+- **Weighted routing:** Use the randomizer to split traffic by percentage (e.g. 80% path A, 20% path B) so most contacts get the standard flow and a smaller group gets a premium or experimental flow.
+- **Load balance across options:** When you have several valid paths (e.g. multiple teams or message variants), use the randomizer to distribute contacts across them by percentage so no single path is overloaded.

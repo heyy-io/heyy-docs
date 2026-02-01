@@ -1,35 +1,76 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Heyy Help Center",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#FE3265",
+    "light": "#FE3265",
+    "dark": "#FE3265"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Quick Start",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "quick-start/introduction",
+              "quick-start/ai-employees",
+              {
+                "group": "Automations",
+                "icon": "share-nodes",
+                "expanded": false,
+                "pages": [
+                  "quick-start/automations/triggers",
+                  "quick-start/automations/live-chat-actions",
+                  "quick-start/automations/whatsapp-actions",
+                  "quick-start/automations/instagram-actions",
+                  "quick-start/automations/facebook-actions",
+                  "quick-start/automations/ai-actions",
+                  "quick-start/automations/logic-actions",
+                  "quick-start/automations/contacts-actions",
+                  "quick-start/automations/chats-actions",
+                  "quick-start/automations/notifications-actions",
+                  "quick-start/automations/campaigns-actions",
+                  "quick-start/automations/apps-actions"
+                ]
+              },
+              "quick-start/inbox",
+              "quick-start/campaigns",
+              "quick-start/contacts",
+              {
+                "group": "Settings",
+                "icon": "gear",
+                "expanded": false,
+                "pages": [
+                  "quick-start/settings/profile",
+                  "quick-start/settings/general",
+                  "quick-start/settings/working-hours",
+                  "quick-start/settings/team",
+                  "quick-start/settings/billing",
+                  "quick-start/settings/usage",
+                  "quick-start/settings/channels",
+                  "quick-start/settings/whatsapp-templates",
+                  "quick-start/settings/quick-replies",
+                  "quick-start/settings/labels",
+                  "quick-start/settings/attributes",
+                  "quick-start/settings/team-inboxes",
+                  "quick-start/settings/views",
+                  "quick-start/settings/api-keys",
+                  "quick-start/settings/webhooks"
+                ]
+              }
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Channels",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "channels/whatsapp",
+              "channels/instagram",
+              "channels/facebook",
+              "channels/live-chat"
             ]
           }
         ]
@@ -38,65 +79,186 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Getting Started",
             "pages": [
-              "api-reference/introduction"
+              "/api-reference/overview"
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "API Reference",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              {
+                "group": "Attribute",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "GET /attributes",
+                  "POST /attributes",
+                  "DELETE /attributes/{attributeId}"
+                ]
+              },
+              {
+                "group": "Automation",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "GET /{channelId}/workflows",
+                  "POST /{channelId}/workflows/{workflowId}"
+                ]
+              },
+              {
+                "group": "Broadcast",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "GET /{channelId}/broadcasts",
+                  "POST /{channelId}/broadcasts",
+                  "GET /{channelId}/broadcasts/{broadcastId}",
+                  "PUT /{channelId}/broadcasts/{broadcastId}",
+                  "DELETE /{channelId}/broadcasts/{broadcastId}",
+                  "POST /{channelId}/broadcasts/{broadcastId}/start",
+                  "GET /{channelId}/broadcasts/{broadcastId}/recipients",
+                  "POST /{channelId}/broadcasts/{broadcastId}/recipients",
+                  "DELETE /{channelId}/broadcasts/{broadcastId}/recipients"
+                ]
+              },
+              {
+                "group": "Business",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "GET /business"
+                ]
+              },
+              {
+                "group": "Channel",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "GET /channels",
+                  "GET /channels/{channelId}"
+                ]
+              },
+              {
+                "group": "Chat",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "GET /{channelId}/chats",
+                  "GET /{channelId}/chats/{chatId}",
+                  "PUT /{channelId}/chats/{chatId}"
+                ]
+              },
+              {
+                "group": "Contact",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "GET /contacts",
+                  "POST /contacts",
+                  "GET /contacts/{contactId}",
+                  "PUT /contacts/{contactId}",
+                  "DELETE /contacts/{contactId}",
+                  "POST /contacts/{contactId}/attributes",
+                  "DELETE /contacts/{contactId}/attributes"
+                ]
+              },
+              {
+                "group": "File",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "POST /upload_file"
+                ]
+              },
+              {
+                "group": "Label",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "GET /labels",
+                  "POST /labels",
+                  "DELETE /labels/{labelId}"
+                ]
+              },
+              {
+                "group": "Message Template",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "GET /message_templates"
+                ]
+              },
+              {
+                "group": "Webhook",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "GET /api_webhooks",
+                  "POST /api_webhooks",
+                  "PUT /api_webhooks/{webhookId}",
+                  "DELETE /api_webhooks/{webhookId}"
+                ]
+              },
+              {
+                "group": "WhatsApp Message",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "POST /{channelId}/whatsapp_messages/send"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Help & Support",
+        "groups": [
+          {
+            "group": "Help",
+            "pages": [
+              "help/faq"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/assets/logo.svg",
+    "dark": "/assets/logo.svg"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "https://wa.me/16504570123"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Get started",
+      "href": "https://app.heyy.io"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "instagram": "https://www.instagram.com/heyy_hq",
+      "linkedin": "https://www.linkedin.com/company/heyyio",
+      "x": "https://x.com/Heyy_hq",
+      "website": "https://app.heyy.io"
     }
+  },
+  "seo": {
+    "indexing": "all"
+  },
+  "api": {
+    "playground": {
+      "display": "interactive"
+    }
+  },
+  "icons": {
+    "library": "fontawesome"
   }
 }

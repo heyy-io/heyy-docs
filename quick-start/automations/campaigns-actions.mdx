@@ -1,0 +1,42 @@
+---
+title: "Campaigns Actions"
+sidebarTitle: "Campaigns Actions"
+---
+
+## Add to Campaign
+
+<Frame>
+  ![API Keys Settings](/assets/automations-add-to-campaign.png)
+</Frame>
+
+Adds the contact in the current chat to a campaign you choose. The contact will then receive the campaign’s messages according to the campaign’s schedule and rules. Use this when the contact has opted in or qualified (e.g. after they reply “Yes” or complete a form) so they are included in the campaign audience.
+
+### Fields
+
+- **Campaign** (required): Select the campaign to add the contact to. You can search by campaign name.
+
+### Use cases
+
+- **After explicit opt-in:** Use Add to Campaign after the contact confirms (e.g. replies “Yes” to a consent question or taps a subscribe button); add a Condition before so it runs only when the reply matches your criteria.
+- **After qualification:** After AI Intention Recognition or a Condition (e.g. “intention = sales”), use Add to Campaign so the contact receives the campaign’s messages according to its schedule and rules.
+- **With Subscribe:** Combine Add to Campaign with Subscribe when the contact must be subscribed to receive campaign messages (e.g. after they opt in or complete a form).
+
+---
+
+## Remove from Campaign
+
+<Frame>
+  ![API Keys Settings](/assets/automations-remove-from-campaign.png)
+</Frame>
+
+Removes the contact in the current chat from a campaign you choose. The contact will no longer receive that campaign’s messages. Use this when the contact opts out of a campaign (e.g. replies “Stop”) or when they no longer belong in the audience (e.g. they’ve already converted).
+
+### Fields
+
+- **Campaign** (required): Select the campaign to remove the contact from. You can search by campaign name.
+
+### Use cases
+
+- **Opt-out keywords:** In a “New incoming message” automation, add a Condition that checks for opt-out keywords (e.g. “stop”, “unsubscribe”), then use Remove from Campaign so the contact no longer receives that campaign’s messages.
+- **Explicit opt-out:** When the contact explicitly opts out of a campaign (e.g. replies “Stop” or taps “Unsubscribe”), use Remove from Campaign in the branch that handles that request.
+- **Logic-based removal:** When your logic determines the contact should no longer receive the campaign (e.g. they’ve converted, churned, or no longer fit the audience), use Remove from Campaign so they are excluded from future messages.
