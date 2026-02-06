@@ -6,7 +6,7 @@ sidebarTitle: "Logic Actions"
 ## Set Variable
 
 <Frame>
-  ![API Keys Settings](/assets/automations-set-variable.png)
+  ![Set variable action](/assets/automations-set-variable.png)
 </Frame>
 
 Sets one or more workflow variables to values you choose. Values can be fixed text or built from workflow variables, contact fields (e.g. first name, email), and contact attributes. Use this to store data for later steps (e.g. after a contact reply or an API call) or to prepare values for conditions and message templates.
@@ -26,7 +26,7 @@ Sets one or more workflow variables to values you choose. Values can be fixed te
 ## Clear Variable
 
 <Frame>
-  ![API Keys Settings](/assets/automations-clear-variable.png)
+  ![Clear variable action](/assets/automations-clear-variable.png)
 </Frame>
 
 Clears one or more workflow variables so they no longer hold a value. Use this when you want to reset data before reusing a variable, or when you no longer need the stored value for the rest of the automation.
@@ -46,7 +46,7 @@ Clears one or more workflow variables so they no longer hold a value. Use this w
 ## Condition
 
 <Frame>
-  ![API Keys Settings](/assets/automations-condition.png)
+  ![Condition action](/assets/automations-condition.png)
 </Frame>
 
 Splits the flow based on rules you define. You add one or more condition groups; each group has conditions combined with AND/OR. The automation follows the branch where the first matching group evaluates to true. Use this to route by contact data, message content, variables, or attributes (e.g. “if intention = support, assign to support”).
@@ -66,7 +66,7 @@ Splits the flow based on rules you define. You add one or more condition groups;
 ## Start Other Automation
 
 <Frame>
-  ![API Keys Settings](/assets/automations-start-other-automation.png)
+  ![Start other automation action](/assets/automations-start-other-automation.png)
 </Frame>
 
 Starts another automation that has a “Manual trigger.” You choose the workflow and optionally map variables from the current automation to the target workflow’s parameters. Use this to reuse common flows (e.g. send survey, add to campaign) from multiple places or to chain automations.
@@ -87,7 +87,7 @@ Starts another automation that has a “Manual trigger.” You choose the workfl
 ## Delay
 
 <Frame>
-  ![API Keys Settings](/assets/automations-delay.png)
+  ![Delay action](/assets/automations-delay.png)
 </Frame>
 
 Pauses the automation for a set time before continuing. You can use a fixed duration or a random range (e.g. 5–10 minutes). Optionally, restrict the delay to certain days and a time window (e.g. weekdays 9–17) so the automation continues only during those hours. Use this for follow-ups, reminders, or staggered actions.
@@ -110,7 +110,7 @@ Pauses the automation for a set time before continuing. You can use a fixed dura
 ## Randomizer
 
 <Frame>
-  ![API Keys Settings](/assets/automations-randomizer.png)
+  ![Randomizer action](/assets/automations-randomizer.png)
 </Frame>
 
 Sends the automation down one of several paths at random, according to percentages you set. You define up to six paths (e.g. A, B, C) and assign each a percentage; the percentages must add up to 100. Use this for A/B tests, load balancing between flows, or random branching (e.g. 70% path A, 30% path B).
