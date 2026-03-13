@@ -1,0 +1,36 @@
+---
+title: Authentication
+description: How to authenticate requests to the Heyy API.
+---
+
+The Heyy API uses bearer tokens passed in the `Authorization` header to authenticate calls.
+
+### Obtaining your API key
+
+You can create and manage API keys in the Heyy web app:
+
+1. Log in to the [Heyy App](https://app.heyy.io).
+2. Go to **Settings → API Keys**.
+3. Click **Create API Key** to generate a new key.
+4. Copy the key and store it somewhere safe.
+
+> **Important**
+> For security reasons, the full key is only shown once when it is created. If you lose it, you will need to create a new key.
+
+### Sending the bearer token
+
+Include your API token in every request using the `Authorization` header with the `Bearer` scheme:
+
+```bash
+curl https://api.heyy.io/v2.0/... \
+  -H "Authorization: Bearer <YOUR-API-TOKEN>"
+```
+
+Guidelines:
+
+- Always send requests over **HTTPS**. Requests over `http://` may fail or be rejected.
+- Keep your API tokens secret and **never** embed them in client-side code or public repositories.
+- If you suspect a token is compromised, revoke it in the Heyy dashboard and create a new one.
+
+All operations allowed by the Heyy API are scoped to your account, so any request made with your token has access to your workspace data.
+

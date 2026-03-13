@@ -81,11 +81,13 @@
           {
             "group": "Getting Started",
             "pages": [
-              "/api-reference/overview"
+              "/api-reference/overview",
+              "api-reference/authentication",
+              "api-reference/versioning"
             ]
           },
           {
-            "group": "API Reference",
+            "group": "Heyy API",
             "pages": [
               {
                 "group": "Attribute",
@@ -190,7 +192,21 @@
                 ]
               },
               {
-                "group": "Webhook",
+                "group": "WhatsApp Message",
+                "expanded": false,
+                "openapi": "/api-reference/openapi.json",
+                "pages": [
+                  "POST /{channelId}/whatsapp_messages/send"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Webhooks",
+            "pages": [
+              "api-reference/webhook-object-model",
+              {
+                "group": "Manage webhooks",
                 "expanded": false,
                 "openapi": "/api-reference/openapi.json",
                 "pages": [
@@ -198,14 +214,6 @@
                   "POST /api_webhooks",
                   "PUT /api_webhooks/{webhookId}",
                   "DELETE /api_webhooks/{webhookId}"
-                ]
-              },
-              {
-                "group": "WhatsApp Message",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "POST /{channelId}/whatsapp_messages/send"
                 ]
               }
             ]

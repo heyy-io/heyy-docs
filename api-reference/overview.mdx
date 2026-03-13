@@ -1,7 +1,6 @@
 ---
-title: 'Developer Overview'
+title: 'Overview'
 description: 'Welcome to the Heyy Developer Guide! Whether you’re integration a simple API or building complex integrations, this guide will help you implement our API.'
-icon: "book-open"
 ---
 
 <Frame>
@@ -9,18 +8,26 @@ icon: "book-open"
   <img className="hidden dark:block" src="/assets/banner-dark.svg" alt="Heyy banner" />
 </Frame>
 
-### Getting Started
+## Welcome to the Heyy API
 
-To begin, you'll need an API key:
+The Heyy API is a REST API that lets you build rich messaging experiences on top of Heyy. Use it to:
 
-1. Log in to the [Heyy App](https://app.heyy.io).
-2. Navigate to [Settings > API Keys](https://app.heyy.io/settings/api-keys).
-3. Click the **Create API Key** button.
-4. Then copy the newly created API keys and store it somewhere sage
+- Send and receive messages across your connected channels.
+- Manage contacts, chats, broadcasts, and more.
+- Automate repetitive workflows and integrate Heyy with your existing tools.
 
-<Note>
-For security reasons the key will only appear once and then not be visible anymore.
-</Note>
+Whether you are adding a simple integration or building a full customer messaging platform, this documentation will help you get started quickly and stay productive.
 
-With your API key, you're all set to start using our API.
-Happy coding!
+## Next steps
+
+<Columns cols={3}>
+  <Card title="Authentication" icon="key" href="/api-reference/authentication">
+    How to authenticate requests with API keys.
+  </Card>
+  <Card title="Versioning" icon="code-branch" href="/api-reference/versioning">
+    How we version the API.
+  </Card>
+  <Card title="Webhooks" icon="share-nodes" href="/api-reference/webhook-object-model">
+    How webhook work and their payloads.
+  </Card>
+</Columns>

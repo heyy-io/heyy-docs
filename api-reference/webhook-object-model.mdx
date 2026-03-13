@@ -1,0 +1,123 @@
+---
+title: Webhook Object Model
+description: Webhook payloads are the actual objects you will receive on trigger.
+---
+
+The webhook payload object is sent whenever an event triggers that you have subscribed to. Message webhooks re-use the same object. We have not added other events yet, but platform events will likely use a slightly different object structure due to their different nature.
+
+The Heyy API currently supports the following webhook event types:
+
+- `message_inbound`
+- `message_outbound`
+- `message_status`
+- `message_echo`
+
+---
+
+## `message_inbound` webhook payload
+
+The `message_inbound` event is fired when a new inbound message is received on one of your channels.
+
+```json
+{
+  "id": "c9c1a4f4-4f2c-4d0a-8c98-3b8a7c3f5e01",
+  "event": "message_inbound",
+  "message": {
+    "id": "0f1a2b3c-4d5e-6789-abcd-ef0123456789"
+    // ... inbound message fields (to be documented)
+  }
+}
+```
+
+Use this event to react to new customer messages, for example by:
+
+- Creating or updating conversations in your own system.
+- Triggering internal workflows.
+- Logging messages for analytics or compliance.
+
+---
+
+## `message_outbound` webhook payload
+
+The `message_outbound` event is fired when an outbound message is created and sent from Heyy (for example, by an agent, an automation, or an API call).
+
+```json
+{
+  "id": "9b8a7c6d-5e4f-3a2b-1c0d-fe9876543210",
+  "event": "message_outbound",
+  "message": {
+    "id": "123e4567-e89b-12d3-a456-426614174000"
+    // ... outbound message fields (to be documented)
+  }
+}
+```
+
+You can use this event to:
+
+- Mirror outbound messages into your own data store.
+- Keep external CRMs or analytics systems in sync.
+- Track which system or agent generated which outbound messages.
+
+---
+
+## `message_status` webhook payload
+
+The `message_status` event is fired when the delivery status of a message changes (for example, from `sent` to `delivered` or `read` or `failed`, depending on the channel).
+
+```json
+{
+  "id": "5f4e3d2c-1b0a-9c8d-7e6f-5a4b3c2d1e0f",
+  "event": "message_status",
+  "message": {
+    "id": "321e6547-e89b-12d3-a456-426614174000"
+    // ... status-related fields (to be documented)
+  }
+}
+```
+
+Typical uses for this event include:
+
+- Updating message delivery/read status in your own UI.
+- Powering reporting or analytics dashboards.
+- Triggering follow-up automations when a message reaches a specific status.
+
+---
+
+## `message_echo` webhook payload
+
+The `message_echo` event is fired when a previously sent message is echoed back to your system by a downstream channel or integration (for example, when a channel confirms what was sent).
+
+The payload uses the same structure as the other message webhooks:
+
+```json
+{
+  "id": "7c6b5a4d-3e2f-1a0b-9c8d-7e6f5a4b3c2d",
+  "event": "message_echo",
+  "message": {
+    "id": "789e0123-e89b-12d3-a456-426614174000"
+    // ... echo-specific or channel-specific fields (to be documented)
+  }
+}
+```
+
+You can use this event to:
+
+- Reconcile messages between Heyy and downstream channels.
+- Validate that a message was accepted and reflected correctly by a third-party system.
+
+---
+
+## Forward compatibility
+
+As Heyy evolves, we may:
+
+- Add new webhook event types.
+- Add new fields to existing payloads.
+
+To keep your integration robust:
+
+- Always **ignore unknown fields**.
+- Rely on the `id` and `event` fields for routing logic.
+- Treat the `message` object as an extensible resource that can gain additional properties over time.
+
+

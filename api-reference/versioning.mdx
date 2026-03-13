@@ -1,0 +1,37 @@
+---
+title: Versioning
+description: How Heyy versions its public API and deprecates older versions.
+---
+
+The Heyy API is versioned in the request path, following semantic versioning principles.
+
+### Versioning model
+
+- We use **major** and **minor** versions (for example, `v1.0`, `v2.0`).
+- Major versions are encoded in the base path of the API:
+
+```bash
+GET https://api.heyy.io/v1.0/...
+GET https://api.heyy.io/v2.0/...
+```
+
+Minor and patch updates within a major version (for example, from `v2.0` to `v2.1`) are designed to be **backwards compatible** for existing clients.
+
+### Current version
+
+The current latest version of the Heyy API is **v2.0**.
+
+### Deprecation policy
+
+When we release a new major version:
+
+- The previous major version (for example, **v1.x** when **v2.x** is current) remains **available and supported for up to 6 months**.
+- We will clearly communicate deprecation timelines and the exact sunset date in advance.
+
+This window is intended to give you enough time to:
+
+- Test your integration against the new version.
+- Roll out changes safely across your environments.
+
+If you need help planning or executing a migration between versions, please contact our support team and we’ll be happy to assist.
+
