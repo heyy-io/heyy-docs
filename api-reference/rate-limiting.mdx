@@ -5,15 +5,32 @@ description: How API rate limits work and how to handle 429 responses.
 
 API rate limits are in place to protect the Heyy API from traffic spikes that could put our systems at risk. We measure the number of requests sent to the API and throttle when they exceed the allowed amount. When you exceed the limit, we respond with **429 Too Many Requests** and include the following headers:
 
-| Header Name | Description |
-| ----------- | ----------- |
-| `X-RateLimit-Limit` | Maximum number of requests allowed for the app. |
-| `X-RateLimit-Remaining` | Number of requests left in the current window. |
-| `X-RateLimit-Reset` | Time when the request count resets to the maximum. Shown as a UNIX timestamp. |
+<table style={{ tableLayout: 'auto' }}>
+  <thead>
+    <tr>
+      <th style={{ whiteSpace: 'nowrap' }}>Header Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ whiteSpace: 'nowrap' }}><code>X-RateLimit-Limit</code></td>
+      <td>Maximum number of requests allowed for the app.</td>
+    </tr>
+    <tr>
+      <td style={{ whiteSpace: 'nowrap' }}><code>X-RateLimit-Remaining</code></td>
+      <td>Number of requests left in the current minute.</td>
+    </tr>
+    <tr>
+      <td style={{ whiteSpace: 'nowrap' }}><code>X-RateLimit-Reset</code></td>
+      <td>Time when the request count resets to the maximum. Shown as a UNIX timestamp.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Rate limits by plan
 
-Although the permitted limit is applied over 1 minute, we distribute it evenly into **10-second windows**. Every 10 seconds, the number of permitted requests resets. For example, a limit of 1000 per minute means you can send at most **166 requests per 10-second period** (1000 ÷ 6).
+Limits are applied per **1-minute** window. The table below shows the maximum number of requests allowed per minute for each plan.
 
 | Plan | Requests per minute |
 | ---- | -------------------- |
@@ -31,7 +48,7 @@ When you are rate limited, the API returns **429 Too Many Requests** with this b
 {
   "error": {
     "messageKey": "rate_limit_exceeded",
-    "message": "Too many requests. Limit is applied per minute (evenly spread over 10-second windows) per tenant.Please retry after the time indicated by the X-RateLimit-Reset header."
+    "message": "Too many requests. Limit is applied per minute per tenant. Please retry after the time indicated by the X-RateLimit-Reset header."
   }
 }
 ```
