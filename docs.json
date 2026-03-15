@@ -83,7 +83,9 @@
             "pages": [
               "/api-reference/overview",
               "api-reference/authentication",
-              "api-reference/versioning"
+              "api-reference/versioning",
+              "api-reference/rate-limiting",
+              "api-reference/error-handling"
             ]
           },
           {

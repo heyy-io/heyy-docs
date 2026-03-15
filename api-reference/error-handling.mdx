@@ -1,0 +1,30 @@
+---
+title: Error Handling
+description: How the Heyy API reports errors and how to handle them.
+---
+
+The Heyy API uses conventional HTTP response codes to indicate success or failure. Response codes in the **2xx** range indicate success. Codes in the **4xx** range indicate a client error—the request failed given the information provided. Codes in the **5xx** range indicate an error on Heyy's servers.
+
+## HTTP error codes in use
+
+The API uses the following HTTP codes to communicate errors:
+
+| HTTP Code | Error type        | Description                                                                                                                                             |
+| --------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400       | Client error      | Returned when there is a type mismatch in the request body, invalid fields, or other structural issues in the request.                                   |
+| 401       | Unauthorized      | Returned when the request could not be authenticated (e.g. missing or invalid API key).                                                                   |
+| 404       | Not found         | Returned when the requested resource does not exist.                                                                                                     |
+| 429       | Too many requests | Returned when you exceed the [rate limit](/api-reference/rate-limiting). Throttle requests and use the rate limit headers to retry appropriately.       |
+| 500       | Unexpected error  | Returned when an unexpected problem occurs on our servers. Retry with exponential backoff.                                                              |
+
+## Error object
+
+Every error response uses the same structure: a single `error` object with `messageKey` and `message`.
+
+```json
+{
+  "error": {
+    "messageKey": "contact_not_found",
+    "message": "No contact could be found for this resource identifier. Please make sure to use the correct contact ID."
+  }
+}

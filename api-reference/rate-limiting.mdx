@@ -1,0 +1,39 @@
+---
+title: Rate Limiting
+description: How API rate limits work and how to handle 429 responses.
+---
+
+API rate limits are in place to protect the Heyy API from traffic spikes that could put our systems at risk. We measure the number of requests sent to the API and throttle when they exceed the allowed amount. When you exceed the limit, we respond with **429 Too Many Requests** and include the following headers:
+
+| Header Name | Description |
+| ----------- | ----------- |
+| `X-RateLimit-Limit` | Maximum number of requests allowed for the app. |
+| `X-RateLimit-Remaining` | Number of requests left in the current window. |
+| `X-RateLimit-Reset` | Time when the request count resets to the maximum. Shown as a UNIX timestamp. |
+
+## Rate limits by plan
+
+Although the permitted limit is applied over 1 minute, we distribute it evenly into **10-second windows**. Every 10 seconds, the number of permitted requests resets. For example, a limit of 1000 per minute means you can send at most **166 requests per 10-second period** (1000 ÷ 6).
+
+| Plan | Requests per minute |
+| ---- | -------------------- |
+| Free | 10 |
+| Hobby | 100 |
+| Pro | 500 |
+| Ultra | 1,000 |
+| Enterprise | Custom |
+
+## Error response example
+
+When you are rate limited, the API returns **429 Too Many Requests** with this body:
+
+```json
+{
+  "error": {
+    "messageKey": "rate_limit_exceeded",
+    "message": "Too many requests. Limit is applied per minute (evenly spread over 10-second windows) per tenant.Please retry after the time indicated by the X-RateLimit-Reset header."
+  }
+}
+```
+
+Use the `X-RateLimit-Reset` header to know when you can send requests again, and consider implementing exponential backoff or queuing to avoid hitting the limit repeatedly.
