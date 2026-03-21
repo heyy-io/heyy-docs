@@ -223,6 +223,17 @@
         ]
       },
       {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Changelog",
+            "pages": [
+              "changelog"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Help & Support",
         "groups": [
           {
@@ -238,6 +249,11 @@
   "logo": {
     "light": "/assets/logo.svg",
     "dark": "/assets/logo.svg"
+  },
+  "integrations": {
+    "telemetry": {
+      "enabled": true
+    }
   },
   "navbar": {
     "links": [

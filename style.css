@@ -1,0 +1,46 @@
+.changelog-month-header {
+  position: relative;
+  padding-block: 40px;
+}
+
+.changelog-month-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  margin-inline: 0;
+  z-index: 1;
+  background-color: rgb(var(--gray-50) / 0.5);
+  mask-image: linear-gradient(0deg, #fff, rgba(255, 255, 255, 0.6));
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(229 229 229 / 0.2)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  border-top: 1px solid rgb(0 0 0/0.05);
+  border-bottom: 1px solid rgb(0 0 0/0.05);
+}
+
+.dark .changelog-month-bg {
+  background-color: rgb(var(--gray-800) / 0.25);
+  mask-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.8)
+  );
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  border-top: 1px solid rgb(255 255 255/0.05);
+  border-bottom: 1px solid rgb(255 255 255/0.05);
+}
+
+.changelog-month-content {
+  position: relative;
+  z-index: 2;
+}
+
+.changelog-month-kicker {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
