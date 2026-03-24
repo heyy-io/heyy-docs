@@ -14,10 +14,6 @@ description: "Manage your team members and their roles within your Heyy workspac
 
 ## Inviting Team Members
 
-<Frame>
-  ![Invite team member](/assets/settings-team-example-1.gif)
-</Frame>
-
 <Steps>
   <Step title="Click Invite Member">
     Click the **\+ Invite member** button in the top right
@@ -30,9 +26,289 @@ description: "Manage your team members and their roles within your Heyy workspac
   </Step>
 </Steps>
 
-## Managing Existing Members
+## Roles and Permissions
 
-Use the action menu (three dots) next to each team member to:
+Heyy has three different user roles. Here is an abstract definition of what each user role is able to see and do in Heyy.
 
-- Edit their role
-- Remove them from the workspace
+<div className="not-prose my-6 w-full">
+<table className="min-w-[28rem] w-full table-fixed border-separate border-spacing-0 overflow-hidden rounded-lg text-sm">
+  <colgroup>
+    <col style={{ width: "52%" }} />
+    <col style={{ width: "12%" }} />
+    <col style={{ width: "12%" }} />
+    <col style={{ width: "12%" }} />
+  </colgroup>
+  <thead>
+    <tr className="bg-zinc-50 dark:bg-zinc-900/50">
+      <th
+        scope="col"
+        className="border-b border-zinc-200/80 px-4 py-3 text-left font-semibold dark:border-zinc-600/70"
+        style={{ width: "52%" }}
+      >
+        Permission
+      </th>
+      <th
+        scope="col"
+        className="border-b border-zinc-200/80 px-2 py-3 text-center font-semibold dark:border-zinc-600/70"
+        style={{ width: "12%" }}
+      >
+        Member
+      </th>
+      <th
+        scope="col"
+        className="border-b border-zinc-200/80 px-2 py-3 text-center font-semibold dark:border-zinc-600/70"
+        style={{ width: "12%" }}
+      >
+        Manager
+      </th>
+      <th
+        scope="col"
+        className="border-b border-zinc-200/80 px-2 py-3 text-center font-semibold dark:border-zinc-600/70"
+        style={{ width: "12%" }}
+      >
+        Admin
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Unified Inbox</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>View and manage contacts</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Export contacts</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Campaigns</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Automations</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Create / update WhatsApp templates</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Create / update Quick Replies</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Create / update Labels</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Create / update Attributes</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Create / update Team Inboxes</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Create / update Views</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>AI Employees</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>General workspace settings</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Working hours</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Team management</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Channels</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Delete WhatsApp templates</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Delete Quick Replies</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Delete Labels</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Delete Attributes</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Delete Team Inboxes</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Delete Views</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>API keys</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Webhooks</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Billing</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+    <tr>
+      <td className="border-b border-zinc-200/80 px-4 py-2 align-top dark:border-zinc-600/70" style={{ width: "52%" }}>Usage</td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}></td>
+      <td className="border-b border-zinc-200/80 px-3 py-3 text-center dark:border-zinc-600/70" style={{ width: "12%" }}>
+        <Icon icon="circle-check" iconType="solid" size={18} />
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<Note>
+  You can invite **partners verified by us** by clicking the **Invite partner** button, for help with marketing, automation, and other workspace tasks. **Partner** has the same permissions as **Admin**, except **[Billing](/quick-start/settings/billing)** and **[Usage](/quick-start/settings/usage)**. Partner seats are not counted toward your team seat total.
+</Note>
