@@ -7,31 +7,23 @@ The webhook payload object is sent whenever an event triggers that you have subs
 
 The Heyy API currently supports the following webhook event types:
 
-- `message_inbound`
-- `message_outbound`
-- `message_status`
-- `message_echo`
-
-<Note>
-To listen to all outbound messages, including those not sent via Heyy (e.g. from the WhatsApp Business app, Instagram app, or Messenger app), subscribe to both `message_outbound` and `message_echo` events.
-</Note>
+- `message.received`
+- `message.sent`
+- `message.updated`
 
 ---
 
-## `message_inbound` webhook payload
+## `message.received` webhook payload
 
-The `message_inbound` event is fired when a new inbound message is received on one of your channels.
+The `message.received` event is fired when a new inbound message is received on one of your channels.
 
 ```json
 {
   "id": "f8a2b1c3-4d5e-4f6a-9b0c-1d2e3f4a5b6c",
-  "event": "message_inbound",
-  "message": {
+  "tenantId": "a98d0e1f2-a1b4-4c4d-6e7f-8a9b0c1d2e3f",
+  "event": "message.received",
+  "data": {
     "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
-    "createdAt": "2026-03-13T23:29:35.583Z",
-    "updatedAt": "2026-03-13T23:29:35.583Z",
-    "chatId": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
-    "channelId": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
     "type": "message",
     "sender": "inbound",
     "sources": [
@@ -54,7 +46,27 @@ The `message_inbound` event is fired when a new inbound message is received on o
     "vendorDetails": null,
     "isSensitive": false,
     "aiGenerationId": null,
-    "metadata": {}
+    "metadata": {},
+    "chat": {
+      "id": "5f3700cd-a5cf-4b2b-be5a-23b013025c11"
+    },
+    "handle": {
+      "id": "1a9559d7-3c53-4cd5-a076-962193b206e9",
+      "type": "phone_number",
+      "value": "+12135550123"
+    },
+    "contact": {
+      "id": "259c9fec-c831-41ad-8a43-3fdad389d015",
+      "firstName": "John",
+      "lastName": "Doe",
+      "phoneNumber": "+12135550123",
+      "email": "john@example.com"
+    },
+    "channel": {
+      "id": "h9dd4c3e-b049-4903-b047-e2717f1e88e3",
+      "type": "whatsapp",
+      "name": "Examply"
+    }
   }
 }
 ```
@@ -67,20 +79,17 @@ Use this event to react to new customer messages, for example by:
 
 ---
 
-## `message_outbound` webhook payload
+## `message.sent` webhook payload
 
-The `message_outbound` event is fired when an outbound message is created and sent **from Heyy** (for example, by an agent, an automation, or an API call). Outbound messages sent **not through Heyy** (e.g. from the WhatsApp Business app, Instagram app, or Messenger app) are delivered via the `message_echo` event instead.
+The `message.sent` event is fired when an outbound message is created and sent **from Heyy** (for example, by an agent, an automation, or an API call).
 
 ```json
 {
   "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
-  "event": "message_outbound",
-  "message": {
+  "tenantId": "a98d0e1f2-a1b4-4c4d-6e7f-8a9b0c1d2e3f",
+  "event": "message.sent",
+  "data": {
     "id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
-    "createdAt": "2026-03-13T23:15:24.646Z",
-    "updatedAt": "2026-03-13T23:15:24.646Z",
-    "chatId": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c",
-    "channelId": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d",
     "type": "message",
     "sender": "outbound",
     "sources": [
@@ -103,7 +112,27 @@ The `message_outbound` event is fired when an outbound message is created and se
     "vendorDetails": null,
     "isSensitive": false,
     "aiGenerationId": null,
-    "metadata": {}
+    "metadata": {},
+    "chat": {
+      "id": "5f3700cd-a5cf-4b2b-be5a-23b013025c11"
+    },
+    "handle": {
+      "id": "1a9559d7-3c53-4cd5-a076-962193b206e9",
+      "type": "phone_number",
+      "value": "+12135550123"
+    },
+    "contact": {
+      "id": "259c9fec-c831-41ad-8a43-3fdad389d015",
+      "firstName": "John",
+      "lastName": "Doe",
+      "phoneNumber": "+12135550123",
+      "email": "john@example.com"
+    },
+    "channel": {
+      "id": "h9dd4c3e-b049-4903-b047-e2717f1e88e3",
+      "type": "whatsapp",
+      "name": "Examply"
+    }
   }
 }
 ```
@@ -116,20 +145,17 @@ You can use this event to:
 
 ---
 
-## `message_status` webhook payload
+## `message.updated` webhook payload
 
-The `message_status` event is fired when the delivery status of a message changes (for example, from `sent` to `delivered` or `read` or `failed`, depending on the channel).
+The `message.updated` event is fired when the delivery status of a message changes (for example, from `sent` to `delivered` or `read` or `failed`, depending on the channel).
 
 ```json
 {
   "id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f",
-  "event": "message_status",
-  "message": {
+  "tenantId": "a98d0e1f2-a1b4-4c4d-6e7f-8a9b0c1d2e3f",
+  "event": "message.updated",
+  "data": {
     "id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a",
-    "createdAt": "2026-03-13T23:26:56.636Z",
-    "updatedAt": "2026-03-13T23:26:59.512Z",
-    "chatId": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b",
-    "channelId": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c",
     "type": "message",
     "sender": "outbound",
     "sources": [
@@ -168,7 +194,27 @@ The `message_status` event is fired when the delivery status of a message change
     "vendorDetails": null,
     "isSensitive": false,
     "aiGenerationId": null,
-    "metadata": {}
+    "metadata": {},
+    "chat": {
+      "id": "5f3700cd-a5cf-4b2b-be5a-23b013025c11"
+    },
+    "handle": {
+      "id": "1a9559d7-3c53-4cd5-a076-962193b206e9",
+      "type": "phone_number",
+      "value": "+12135550123"
+    },
+    "contact": {
+      "id": "259c9fec-c831-41ad-8a43-3fdad389d015",
+      "firstName": "John",
+      "lastName": "Doe",
+      "phoneNumber": "+12135550123",
+      "email": "john@example.com"
+    },
+    "channel": {
+      "id": "h9dd4c3e-b049-4903-b047-e2717f1e88e3",
+      "type": "whatsapp",
+      "name": "Examply"
+    }
   }
 }
 ```
@@ -178,62 +224,6 @@ Typical uses for this event include:
 - Updating message delivery/read status in your own UI.
 - Powering reporting or analytics dashboards.
 - Triggering follow-up automations when a message reaches a specific status.
-
----
-
-## `message_echo` webhook payload
-
-The `message_echo` event is fired when an **outbound** message was sent **outside of Heyy** in the same channel. For example, a reply sent from the WhatsApp Business app (coexistence), the Instagram app, the Messenger app.
-
-The payload uses the same structure as the other message webhooks:
-
-```json
-{
-  "id": "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e",
-  "event": "message_echo",
-  "message": {
-    "id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a",
-    "createdAt": "2026-03-13T23:26:56.636Z",
-    "updatedAt": "2026-03-13T23:26:59.512Z",
-    "chatId": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b",
-    "channelId": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c",
-    "type": "message",
-    "sender": "unknown",
-    "sources": [
-      {
-        "type": "inbox",
-        "userId": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
-      }
-    ],
-    "status": "delivered",
-    "scheduledAt": null,
-    "content": {
-      "body": "Hello world"
-    },
-    "forwarded": false,
-    "reactions": [],
-    "errors": [],
-    "history": [
-      {
-        "event": "status_update",
-        "newStatus": "delivered",
-        "timestamp": "2026-03-13T23:26:58.000Z"
-      }
-    ],
-    "vendorId": "wamid.HBgNOTcyNTQ0Nzc5NzcwFQIAERgSMzFDRURBNTA2RERyMUEwMUM0AA==",
-    "timestamp": "2026-03-13T23:26:57.275Z",
-    "vendorDetails": null,
-    "isSensitive": false,
-    "aiGenerationId": null,
-    "metadata": {}
-  }
-}
-```
-
-You can use this event to:
-
-- Keep your records in sync when agents or users reply from the channel’s native app (e.g. WhatsApp Business, Instagram, Messenger) instead of the Heyy inbox.
-- Reconcile outbound messages across Heyy and other clients so conversations stay consistent.
 
 ---
 
