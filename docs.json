@@ -67,10 +67,11 @@
           {
             "group": "Channels",
             "pages": [
+              "channels/live-chat",
               "channels/whatsapp",
               "channels/instagram",
               "channels/facebook",
-              "channels/live-chat"
+              "channels/sms"
             ]
           }
         ]

@@ -181,6 +181,111 @@ Runs when someone comments on your Instagram content. You can scope it to all po
 
 ---
 
+## Contact created
+
+<Frame>
+  ![Contact created trigger](/assets/automations-triggers-contact-created.png)
+</Frame>
+
+Runs when a new contact is created in Heyy. Use this to enrich or route contacts as soon as they enter your system—before any chat exists.
+
+#### Fields
+
+- **When to trigger** (optional): Add a condition group to narrow which contacts should start this automation (e.g. only contacts from a specific source or with certain attributes).
+
+### Use cases
+
+- **Enrichment on create:** Call an API to enrich the contact (company, location, lead score) and store results in attributes.
+- **Auto-label new contacts:** Add labels such as “new”, “lead”, or “needs_enrichment” immediately after creation.
+- **Kick off lifecycle:** Subscribe the contact to a journey or campaign the moment they’re created.
+
+---
+
+## Contact attribute updated
+
+<Frame>
+  ![Contact attribute updated trigger](/assets/automations-triggers-contact-attribute-updated.png)
+</Frame>
+
+Runs when one or more selected contact attributes change. Use this to react to changes in profile data (e.g. lead status, plan, region) and trigger follow-ups or routing when the data becomes available.
+
+#### Fields
+
+- **Attributes** (required): Select which contact attributes should trigger this automation when they’re updated.
+- **When to trigger** (optional): Add a condition group to narrow which updates should start the automation (e.g. only when status becomes “qualified”).
+
+### Use cases
+
+- **React to qualification:** When `lead_status` becomes “qualified”, notify sales or start a sales outreach flow.
+- **Keep systems in sync:** When key attributes change, call an API to update your CRM or data warehouse.
+- **Progression-based automation:** When `onboarding_step` changes, send the next message or subscribe the contact to the next journey stage.
+
+---
+
+## Label added
+
+<Frame>
+  ![Label added trigger](/assets/automations-triggers-label-added.png)
+</Frame>
+
+Runs when one or more selected labels are added to a contact. Use this to trigger workflows based on segmentation and tagging.
+
+#### Fields
+
+- **Labels** (required): Select the labels that should trigger this automation when added.
+- **When to trigger** (optional): Add a condition group to narrow which labeled contacts should start the automation.
+
+### Use cases
+
+- **Start segmented flows:** When “VIP” is added, start a priority handling automation or notify a manager.
+- **Ops handoff:** When “needs_follow_up” is added, assign a task, send a reminder, or add the contact to a follow-up campaign.
+- **Qualification tags:** When “high_intent” is added, start an AI or routing flow to get them to the right team faster.
+
+---
+
+## Label removed
+
+<Frame>
+  ![Label removed trigger](/assets/automations-triggers-label-removed.png)
+</Frame>
+
+Runs when one or more selected labels are removed from a contact. Use this when removing a tag should end, change, or reverse part of a workflow.
+
+#### Fields
+
+- **Labels** (required): Select the labels that should trigger this automation when removed.
+- **When to trigger** (optional): Add a condition group to narrow which contacts should start the automation.
+
+### Use cases
+
+- **End a lifecycle:** When “trial” is removed, subscribe to a post-trial journey or update the contact’s status in external systems.
+- **Reverse segmentation:** When a label is removed (e.g. “needs_follow_up”), clear reminders, stop related automations, or update CRM flags.
+- **Clean up attributes:** When a temporary label is removed, clear temporary automation variables or attributes tied to that segment.
+
+---
+
+## Webhook received
+
+<Frame>
+  ![Webhook received trigger](/assets/automations-triggers-webhook-received.png)
+</Frame>
+
+Runs when Heyy receives a webhook event from one of your webhook endpoints. Use this to start automations from external systems (e.g. Stripe, Shopify, internal tools), map payload data into attributes/variables, and optionally identify which contact the webhook belongs to.
+
+#### Fields
+
+- **Webhook endpoint** (required): Choose the webhook endpoint that should trigger this automation.
+- **Search contact by** (optional): Configure how Heyy should find the contact in the webhook payload (e.g. by contact ID, email, or phone number).
+- **Data mapping** (optional): Map values from the webhook JSON payload into contact attributes or automation variables.
+
+### Use cases
+
+- **External events → messaging:** When a payment succeeds or an order ships, start an automation that sends an update to the customer.
+- **Sync enrichment data:** When your backend posts enrichment results, map fields into contact attributes and branch based on them.
+- **Unified automation entry point:** Trigger the same automation from multiple systems by posting to the endpoint and mapping fields into variables.
+
+---
+
 ## Manual trigger
 
 <Frame>
