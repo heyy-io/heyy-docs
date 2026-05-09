@@ -13,11 +13,662 @@ The Heyy API currently supports the following webhook event types:
 
 ---
 
-## `message.received` webhook payload
+## Message object events
 
-The `message.received` event is fired when a new inbound message is received on one of your channels.
+Heyy currently sends message object webhooks for the following events:
 
-```json
+- `message.received`: A new inbound message was received on one of your channels.
+- `message.sent`: A new outbound message was created and sent from Heyy (by an agent, automation, or API call).
+- `message.updated`: An existing message changed (most commonly delivery status transitions like `sent` → `delivered` → `read`).
+
+All message webhooks share the same payload structure.
+
+### Payload fields
+
+<ResponseField name="id" type="string" required>
+  Unique identifier for this webhook payload delivery.
+</ResponseField>
+
+<ResponseField name="tenantId" type="string" required>
+  The tenant that triggered this webhook event.
+</ResponseField>
+
+<ResponseField name="event" type='"message.received" | "message.sent" | "message.updated"' required>
+  The event type for this webhook payload.
+</ResponseField>
+
+<ResponseField name="data" type="Message" required>
+  The message object associated with the event.
+  <Expandable title="properties">
+
+<ResponseField name="id" type="string" required>
+  Message id.
+</ResponseField>
+
+<ResponseField name="createdAt" type="string" required>
+  ISO datetime when the message was created.
+</ResponseField>
+
+<ResponseField name="updatedAt" type="string" required>
+  ISO datetime when the message was last updated.
+</ResponseField>
+
+<ResponseField name="chatId" type="string" required>
+  Chat id this message belongs to.
+</ResponseField>
+
+<ResponseField name="channelId" type="string" required>
+  Channel id this message belongs to.
+</ResponseField>
+
+<ResponseField name="type" type='"message"' required>
+  Message type.
+</ResponseField>
+
+<ResponseField name="sender" type='"outbound" | "inbound" | "unknown" | "system"' required>
+  Who sent the message.
+</ResponseField>
+
+<ResponseField name="sources" type="MessageSource[]" required>
+  Provenance for the message (where it originated).
+  <Expandable title="items">
+
+<ResponseField name="type" type='"campaign" | "automation" | "inbox" | "vendor" | "api" | "ai_agent" | "system"' required>
+  The source type.
+</ResponseField>
+
+<ResponseField name="campaignExecutionId" type="string">
+  Present when `type` is `"campaign"`.
+</ResponseField>
+
+<ResponseField name="automationActionExecutionId" type="string">
+  Present when `type` is `"automation"`.
+</ResponseField>
+
+<ResponseField name="userId" type="string">
+  Present when `type` is `"inbox"`.
+</ResponseField>
+
+<ResponseField name="apiKeyId" type="string">
+  Present when `type` is `"api"`.
+</ResponseField>
+
+<ResponseField name="aiAgentId" type="string">
+  Present when `type` is `"ai_agent"`.
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="status" type='"none" | "pending" | "sent" | "delivered" | "read" | "scheduled" | "deleted" | "failed"' required>
+  Message delivery status.
+</ResponseField>
+
+<ResponseField name="scheduledAt" type="string | null" required>
+  Scheduled send time (ISO datetime) if scheduled; otherwise `null`.
+</ResponseField>
+
+<ResponseField name="content" type="object" required>
+  Message content.
+  <Expandable title="properties">
+
+<ResponseField name="body" type="string | null">
+  Text body of the message (if present).
+</ResponseField>
+
+<ResponseField name="attachments" type="MessageAttachment[]">
+  Attachments for the message (if present).
+  <Expandable title="items">
+
+<ResponseField name="id" type="string" required>
+  Attachment id.
+</ResponseField>
+
+<ResponseField name="type" type='"image" | "video" | "document" | "audio" | "location" | "contact" | "button" | "list_section" | "quick_reply" | "comment" | "ai_tool_call" | "referral" | "content_reference"' required>
+  Attachment type discriminator.
+</ResponseField>
+
+<ResponseField name="file" type="File | null">
+  Present for media attachments (`image`, `video`, `document`, `audio`) when available.
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      File id.
+    </ResponseField>
+
+    <ResponseField name="createdAt" type="string">
+      File created timestamp.
+    </ResponseField>
+
+    <ResponseField name="type" type='"image" | "video" | "audio" | "document"'>
+      File type.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      File name.
+    </ResponseField>
+
+    <ResponseField name="contentType" type="string">
+      MIME type.
+    </ResponseField>
+
+    <ResponseField name="url" type="string">
+      Download URL.
+    </ResponseField>
+
+    <ResponseField name="size" type="number">
+      File size in bytes.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="isVoice" type="boolean">
+  Present for `audio` attachments; indicates a voice note.
+</ResponseField>
+
+<ResponseField name="latitude" type="number | null">
+  Present for `location` attachments.
+</ResponseField>
+
+<ResponseField name="longitude" type="number | null">
+  Present for `location` attachments.
+</ResponseField>
+
+<ResponseField name="name" type="string | null">
+  Present for `location` attachments.
+</ResponseField>
+
+<ResponseField name="address" type="string | null">
+  Present for `location` attachments.
+</ResponseField>
+
+<ResponseField name="addresses" type="object[]">
+  Present for `contact` attachments.
+</ResponseField>
+
+<ResponseField name="emails" type="object[]">
+  Present for `contact` attachments.
+</ResponseField>
+
+<ResponseField name="name" type="object">
+  Present for `contact` attachments.
+</ResponseField>
+
+<ResponseField name="org" type="object">
+  Present for `contact` attachments.
+</ResponseField>
+
+<ResponseField name="phones" type="object[]">
+  Present for `contact` attachments.
+</ResponseField>
+
+<ResponseField name="urls" type="object[]">
+  Present for `contact` attachments.
+</ResponseField>
+
+<ResponseField name="buttonType" type='"quick_reply" | "url" | "phone_number" | "list_title"'>
+  Present for `button` attachments.
+</ResponseField>
+
+<ResponseField name="text" type="string | null">
+  Present for `button` and `list_section` attachments.
+</ResponseField>
+
+<ResponseField name="data" type="object | null">
+  Present for `button` attachments when available.
+  <Expandable title="properties">
+    <ResponseField name="type" type='"phone_number" | "static_url" | "dynamic_url"'>
+      Present for `button` attachments.
+    </ResponseField>
+
+    <ResponseField name="phoneNumber" type="string">
+      Present for `button` attachments with `data.type = "phone_number"`.
+    </ResponseField>
+
+    <ResponseField name="url" type="string">
+      Present for `button` attachments with a URL.
+    </ResponseField>
+
+    <ResponseField name="urlExtension" type="string">
+      Present for `button` attachments with `data.type = "dynamic_url"`.
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="payload" type="string | null">
+  Present for `button` attachments and for `quick_reply` attachments.
+</ResponseField>
+
+<ResponseField name="title" type="string | null">
+  Present for `list_section` attachments.
+</ResponseField>
+
+<ResponseField name="rows" type="object[]">
+  Present for `list_section` attachments.
+</ResponseField>
+
+<ResponseField name="rows[].id" type="string">
+  Present for `list_section` attachments.
+</ResponseField>
+
+<ResponseField name="rows[].title" type="string">
+  Present for `list_section` attachments.
+</ResponseField>
+
+<ResponseField name="rows[].description" type="string | null">
+  Present for `list_section` attachments.
+</ResponseField>
+
+<ResponseField name="toolCallId" type="string">
+  Present for `ai_tool_call` attachments.
+</ResponseField>
+
+<ResponseField name="toolName" type="string">
+  Present for `ai_tool_call` attachments.
+</ResponseField>
+
+<ResponseField name="input" type="any">
+  Present for `ai_tool_call` attachments.
+</ResponseField>
+
+<ResponseField name="output" type="any">
+  Present for `ai_tool_call` attachments.
+</ResponseField>
+
+<ResponseField name="providerDetails" type="any">
+  Present for `ai_tool_call` attachments.
+</ResponseField>
+
+<ResponseField name="source" type='"whatsapp"'>
+  Present for `referral` attachments.
+</ResponseField>
+
+<ResponseField name="sourceUrl" type="string">
+  Present for `referral` attachments.
+</ResponseField>
+
+<ResponseField name="sourceType" type="string">
+  Present for `referral` attachments.
+</ResponseField>
+
+<ResponseField name="sourceId" type="string">
+  Present for `referral` attachments.
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Present for `referral` attachments.
+</ResponseField>
+
+<ResponseField name="body" type="string">
+  Present for `referral` attachments.
+</ResponseField>
+
+<ResponseField name="mediaType" type="string">
+  Present for `referral` attachments.
+</ResponseField>
+
+<ResponseField name="imageUrl" type="string">
+  Present for `referral` attachments.
+</ResponseField>
+
+<ResponseField name="videoUrl" type="string">
+  Present for `referral` attachments.
+</ResponseField>
+
+<ResponseField name="thumbnailUrl" type="string">
+  Present for `referral` attachments.
+</ResponseField>
+
+<ResponseField name="ctwaClid" type="string">
+  Present for `referral` attachments.
+</ResponseField>
+
+<ResponseField name="contentType" type='"story"'>
+  Present for `content_reference` attachments.
+</ResponseField>
+
+<ResponseField name="url" type="string">
+  Present for `content_reference` attachments.
+</ResponseField>
+
+<ResponseField name="externalId" type="string">
+  Present for `content_reference` attachments.
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="header" type="string | null">
+  Optional header text (if present).
+</ResponseField>
+
+<ResponseField name="footer" type="string | null">
+  Optional footer text (if present).
+</ResponseField>
+
+<ResponseField name="payload" type="string">
+  Optional payload (e.g. interactive response payload) if present.
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="forwarded" type="boolean" required>
+  Whether the message was forwarded.
+</ResponseField>
+
+<ResponseField name="replyTo" type="MessagePreview">
+  Present when the message is a reply to another message.
+  <Expandable title="properties">
+    <ResponseField name="id" type="string" required>
+      Replied-to message id.
+    </ResponseField>
+
+    <ResponseField name="vendorId" type="string | null" required>
+      Vendor message id (if available).
+    </ResponseField>
+
+    <ResponseField name="sender" type='"outbound" | "inbound" | "unknown" | "system"' required>
+      Sender of the replied-to message.
+    </ResponseField>
+
+    <ResponseField name="type" type='"text" | "media" | "audio" | "location" | "contact"' required>
+      Preview type.
+    </ResponseField>
+
+    <ResponseField name="timestamp" type="string" required>
+      Timestamp of the replied-to message.
+    </ResponseField>
+
+    <ResponseField name="text" type="string | null" required>
+      Preview text (if applicable).
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="reactions" type="object[]" required>
+  Message reactions.
+  <Expandable title="items">
+    <ResponseField name="sender" type='"outbound" | "inbound" | "unknown" | "system"' required>
+      Reaction sender.
+    </ResponseField>
+
+    <ResponseField name="userId" type="string">
+      Present for inbox/user reactions.
+    </ResponseField>
+
+    <ResponseField name="text" type="string" required>
+      Reaction text/emoji.
+    </ResponseField>
+
+    <ResponseField name="timestamp" type="string" required>
+      Reaction timestamp.
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="errors" type="object[]" required>
+  Errors associated with this message (if any).
+  <Expandable title="items">
+    <ResponseField name="messageKey" type="string" required>
+      Machine-readable error key.
+    </ResponseField>
+
+    <ResponseField name="message" type="string" required>
+      Human-readable error message.
+    </ResponseField>
+
+    <ResponseField name="vendorError" type="object">
+      Vendor-specific error details (if provided).
+      <Expandable title="properties">
+        <ResponseField name="code" type="number | null">
+          Vendor error code.
+        </ResponseField>
+
+        <ResponseField name="title" type="string | null">
+          Vendor error title.
+        </ResponseField>
+
+        <ResponseField name="type" type="string | null">
+          Vendor error type.
+        </ResponseField>
+
+        <ResponseField name="message" type="string | null">
+          Vendor error message.
+        </ResponseField>
+
+        <ResponseField name="errorData" type="object">
+          Vendor error data payload.
+          <Expandable title="properties">
+            <ResponseField name="messagingProduct" type="string">
+              Vendor messaging product (if present).
+            </ResponseField>
+
+            <ResponseField name="details" type="string">
+              Vendor error details (if present).
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="fbtraceId" type="string | null">
+          Vendor trace id (if present).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="history" type="object[]" required>
+  Status transition history entries.
+  <Expandable title="items">
+    <ResponseField name="event" type='"status_update"' required>
+      History event type.
+    </ResponseField>
+
+    <ResponseField name="newStatus" type='"none" | "pending" | "sent" | "delivered" | "read" | "scheduled" | "deleted" | "failed"' required>
+      New status after the update.
+    </ResponseField>
+
+    <ResponseField name="timestamp" type="string" required>
+      Status update timestamp.
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="vendorId" type="string | null" required>
+  Vendor message id (if available).
+</ResponseField>
+
+<ResponseField name="timestamp" type="string" required>
+  Message timestamp (ISO datetime).
+</ResponseField>
+
+<ResponseField name="vendorDetails" type="object | null" required>
+  Vendor-specific details (if available).
+  <Expandable title="properties">
+
+<ResponseField name="whatsapp" type="object">
+  WhatsApp vendor details (if available).
+  <Expandable title="properties">
+
+<ResponseField name="context" type="object">
+  WhatsApp context details (if available).
+  <Expandable title="properties">
+
+<ResponseField name="frequentlyForwarded" type="boolean">
+  Whether WhatsApp marks this as frequently forwarded.
+</ResponseField>
+
+<ResponseField name="referredProduct" type="object">
+  Referred product details (if present).
+  <Expandable title="properties">
+
+<ResponseField name="catalogId" type="string">
+  Catalog id.
+</ResponseField>
+
+<ResponseField name="productRetailerId" type="string">
+  Product retailer id.
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="order" type="object">
+  WhatsApp order details (if present).
+  <Expandable title="properties">
+
+<ResponseField name="catalogId" type="string | null">
+  Catalog id (if present).
+</ResponseField>
+
+<ResponseField name="productItems" type="object[]">
+  Ordered product items (if present).
+  <Expandable title="items">
+
+<ResponseField name="productRetailerId" type="string">
+  Product retailer id.
+</ResponseField>
+
+<ResponseField name="quantity" type="string">
+  Quantity.
+</ResponseField>
+
+<ResponseField name="itemPrice" type="string">
+  Item price.
+</ResponseField>
+
+<ResponseField name="currency" type="string">
+  Currency.
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="instagram" type="object">
+  Instagram vendor details (if available).
+  <Expandable title="properties">
+
+<ResponseField name="commentId" type="string">
+  Instagram comment id (if present).
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="metadata" type="object | null" required>
+  Integration metadata (if present).
+  <Expandable title="properties">
+
+<ResponseField name="campaignContactId" type="string">
+  Campaign contact id (if present).
+</ResponseField>
+
+<ResponseField name="campaignExecutionId" type="string">
+  Campaign execution id (if present).
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="isSensitive" type="boolean" required>
+  Whether this message is marked sensitive.
+</ResponseField>
+
+<ResponseField name="aiGenerationId" type="string | null" required>
+  AI generation id (if the message was generated by AI); otherwise `null`.
+</ResponseField>
+
+<ResponseField name="chat" type="object" required>
+  The chat this message belongs to.
+  <Expandable title="properties">
+    <ResponseField name="id" type="string" required>
+      Chat id.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="handle" type="object" required>
+  The contact handle (identity) used for this chat.
+  <Expandable title="properties">
+    <ResponseField name="id" type="string" required>
+      Handle id.
+    </ResponseField>
+
+    <ResponseField name="type" type='"phone_number" | "email" | "instagram" | "messenger" | "live_chat"' required>
+      Handle type.
+    </ResponseField>
+
+    <ResponseField name="value" type="string" required>
+      Handle value (for example, a phone number in E.164 format, an email address, an Instagram id etc.).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="contact" type="object" required>
+  The contact associated with the message.
+  <Expandable title="properties">
+    <ResponseField name="id" type="string" required>
+      Contact id.
+    </ResponseField>
+
+    <ResponseField name="firstName" type="string">
+      Contact first name (if present).
+    </ResponseField>
+
+    <ResponseField name="lastName" type="string">
+      Contact last name (if present).
+    </ResponseField>
+
+    <ResponseField name="phoneNumber" type="string | null">
+      Contact phone number (if present).
+    </ResponseField>
+
+    <ResponseField name="email" type="string | null">
+      Contact email (if present).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="channel" type="object" required>
+  The channel this message was sent/received on.
+  <Expandable title="properties">
+    <ResponseField name="id" type="string" required>
+      Channel id.
+    </ResponseField>
+
+    <ResponseField name="type" type='"whatsapp"' required>
+      Channel type.
+    </ResponseField>
+
+    <ResponseField name="name" type="string" required>
+      Channel display name.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json message.received
 {
   "id": "f8a2b1c3-4d5e-4f6a-9b0c-1d2e3f4a5b6c",
   "tenantId": "a98d0e1f2-a1b4-4c4d-6e7f-8a9b0c1d2e3f",
@@ -34,8 +685,7 @@ The `message.received` event is fired when a new inbound message is received on 
     "status": "delivered",
     "scheduledAt": null,
     "content": {
-      "body": "Hello world",
-      "attachments": []
+      "body": "Hello world"
     },
     "forwarded": false,
     "reactions": [],
@@ -71,19 +721,7 @@ The `message.received` event is fired when a new inbound message is received on 
 }
 ```
 
-Use this event to react to new customer messages, for example by:
-
-- Creating or updating conversations in your own system.
-- Triggering internal workflows.
-- Logging messages for analytics or compliance.
-
----
-
-## `message.sent` webhook payload
-
-The `message.sent` event is fired when an outbound message is created and sent **from Heyy** (for example, by an agent, an automation, or an API call).
-
-```json
+```json message.sent
 {
   "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
   "tenantId": "a98d0e1f2-a1b4-4c4d-6e7f-8a9b0c1d2e3f",
@@ -137,19 +775,7 @@ The `message.sent` event is fired when an outbound message is created and sent *
 }
 ```
 
-You can use this event to:
-
-- Mirror outbound messages into your own data store.
-- Keep external CRMs or analytics systems in sync.
-- Track which system or agent generated which outbound messages.
-
----
-
-## `message.updated` webhook payload
-
-The `message.updated` event is fired when the delivery status of a message changes (for example, from `sent` to `delivered` or `read` or `failed`, depending on the channel).
-
-```json
+```json message.updated
 {
   "id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f",
   "tenantId": "a98d0e1f2-a1b4-4c4d-6e7f-8a9b0c1d2e3f",
@@ -219,25 +845,4 @@ The `message.updated` event is fired when the delivery status of a message chang
 }
 ```
 
-Typical uses for this event include:
-
-- Updating message delivery/read status in your own UI.
-- Powering reporting or analytics dashboards.
-- Triggering follow-up automations when a message reaches a specific status.
-
----
-
-## Forward compatibility
-
-As Heyy evolves, we may:
-
-- Add new webhook event types.
-- Add new fields to existing payloads.
-
-To keep your integration robust:
-
-- Always **ignore unknown fields**.
-- Rely on the `id` and `event` fields for routing logic.
-- Treat the `message` object as an extensible resource that can gain additional properties over time.
-
-
+</ResponseExample>
