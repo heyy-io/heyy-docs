@@ -1,0 +1,25 @@
+---
+title: "Contact attribute updated"
+description: "Automation trigger: Contact attribute updated."
+---
+
+## Contact attribute updated
+
+<Frame>
+  ![Contact attribute updated trigger](/assets/automations-triggers-contact-attribute-updated.png)
+</Frame>
+
+Runs when one or more selected contact attributes change. Use this to react to changes in profile data (e.g. lead status, plan, region) and trigger follow-ups or routing when the data becomes available.
+
+#### Fields
+
+- **Attributes** (required): Select which contact attributes should trigger this automation when they’re updated.
+- **When to trigger** (optional): Add a condition group to narrow which updates should start the automation (e.g. only when status becomes “qualified”).
+
+### Use cases
+
+- **React to qualification:** When `lead_status` becomes “qualified”, notify sales or start a sales outreach flow.
+- **Keep systems in sync:** When key attributes change, call an API to update your CRM or data warehouse.
+- **Progression-based automation:** When `onboarding_step` changes, send the next message or subscribe the contact to the next journey stage.
+
+---

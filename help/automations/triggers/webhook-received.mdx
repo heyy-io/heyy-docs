@@ -1,0 +1,26 @@
+---
+title: "Webhook received"
+description: "Automation trigger: Webhook received."
+---
+
+## Webhook received
+
+<Frame>
+  ![Webhook received trigger](/assets/automations-triggers-webhook-received.png)
+</Frame>
+
+Runs when Heyy receives a webhook event from one of your webhook endpoints. Use this to start automations from external systems (e.g. Stripe, Shopify, internal tools), map payload data into attributes/variables, and optionally identify which contact the webhook belongs to.
+
+#### Fields
+
+- **Webhook endpoint** (required): Choose the webhook endpoint that should trigger this automation.
+- **Search contact by** (optional): Configure how Heyy should find the contact in the webhook payload (e.g. by contact ID, email, or phone number).
+- **Data mapping** (optional): Map values from the webhook JSON payload into contact attributes or automation variables.
+
+### Use cases
+
+- **External events → messaging:** When a payment succeeds or an order ships, start an automation that sends an update to the customer.
+- **Sync enrichment data:** When your backend posts enrichment results, map fields into contact attributes and branch based on them.
+- **Unified automation entry point:** Trigger the same automation from multiple systems by posting to the endpoint and mapping fields into variables.
+
+---

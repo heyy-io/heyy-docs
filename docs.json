@@ -8,239 +8,536 @@
     "dark": "#FE3265"
   },
   "favicon": "/favicon.svg",
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "cursor",
+      "vscode"
+    ]
+  },
+  "fonts": {
+    "heading": {
+      "family": "Satoshi",
+      "source": "/fonts/Satoshi-Variable.woff2",
+      "format": "woff2",
+      "weight": 700
+    }
+  },
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentation",
+        "tab": "Help Center",
+        "icon": "life-buoy",
         "groups": [
           {
-            "group": "Quick Start",
+            "group": "QUICK START",
             "pages": [
-              "quick-start/introduction",
-              "quick-start/ai-employees",
+              "help/index"
+            ]
+          },
+          {
+            "group": "AI EMPLOYEES",
+            "pages": [
+              "help/ai-employees/index",
               {
-                "group": "Automations",
-                "icon": "share-nodes",
-                "expanded": false,
+                "group": "Getting started",
                 "pages": [
-                  "quick-start/automations/triggers",
-                  "quick-start/automations/live-chat-actions",
-                  "quick-start/automations/whatsapp-actions",
-                  "quick-start/automations/instagram-actions",
-                  "quick-start/automations/facebook-actions",
-                  "quick-start/automations/ai-actions",
-                  "quick-start/automations/logic-actions",
-                  "quick-start/automations/contacts-actions",
-                  "quick-start/automations/chats-actions",
-                  "quick-start/automations/notifications-actions",
-                  "quick-start/automations/campaigns-actions",
-                  "quick-start/automations/apps-actions"
+                  "help/ai-employees/getting-started/hire-an-ai-employee",
+                  "help/ai-employees/getting-started/set-your-employee-live",
+                  "help/ai-employees/getting-started/run-your-first-test-conversation",
+                  "help/ai-employees/getting-started/connect-to-real-customer-traffic"
                 ]
               },
-              "quick-start/inbox",
-              "quick-start/campaigns",
-              "quick-start/contacts",
               {
-                "group": "Settings",
-                "icon": "gear",
-                "expanded": false,
+                "group": "Identity & guidelines",
                 "pages": [
-                  "quick-start/settings/profile",
-                  "quick-start/settings/general",
-                  "quick-start/settings/working-hours",
-                  "quick-start/settings/team",
-                  "quick-start/settings/billing",
-                  "quick-start/settings/usage",
-                  "quick-start/settings/channels",
-                  "quick-start/settings/whatsapp-templates",
-                  "quick-start/settings/quick-replies",
-                  "quick-start/settings/labels",
-                  "quick-start/settings/attributes",
-                  "quick-start/settings/team-inboxes",
-                  "quick-start/settings/views",
-                  "quick-start/settings/api-keys",
-                  "quick-start/settings/webhooks"
+                  "help/ai-employees/identity-and-guidelines/define-brand-voice-and-role",
+                  "help/ai-employees/identity-and-guidelines/set-tone-and-answer-length",
+                  "help/ai-employees/identity-and-guidelines/write-conversation-guidelines",
+                  "help/ai-employees/identity-and-guidelines/set-conversation-goals",
+                  "help/ai-employees/identity-and-guidelines/set-boundaries-and-escalation",
+                  "help/ai-employees/identity-and-guidelines/use-mentions-in-guidelines"
+                ]
+              },
+              {
+                "group": "Content & Actions",
+                "pages": [
+                  "help/ai-employees/content-and-actions/add-your-website",
+                  "help/ai-employees/content-and-actions/upload-documents",
+                  "help/ai-employees/content-and-actions/add-plain-text-knowledge",
+                  "help/ai-employees/content-and-actions/build-qa-knowledge-base",
+                  "help/ai-employees/content-and-actions/keep-knowledge-accurate",
+                  "help/ai-employees/content-and-actions/when-the-ai-can-take-action",
+                  "help/ai-employees/content-and-actions/call-an-external-api"
+                ]
+              },
+              {
+                "group": "Customer context",
+                "pages": [
+                  "help/ai-employees/customer-context/read-contact-fields",
+                  "help/ai-employees/customer-context/update-contact-fields",
+                  "help/ai-employees/customer-context/choose-attributes-to-expose"
+                ]
+              },
+              {
+                "group": "Testing & Going live",
+                "pages": [
+                  "help/ai-employees/testing-and-going-live/test-in-playground",
+                  "help/ai-employees/testing-and-going-live/add-to-automation",
+                  "help/ai-employees/testing-and-going-live/channel-and-context",
+                  "help/ai-employees/testing-and-going-live/exit-conditions",
+                  "help/ai-employees/testing-and-going-live/reply-timeouts",
+                  "help/ai-employees/testing-and-going-live/hand-off-to-human",
+                  "help/ai-employees/testing-and-going-live/automation-guideline-overrides"
                 ]
               }
             ]
           },
           {
-            "group": "Channels",
+            "group": "MANAGING YOUR INBOX",
             "pages": [
-              "channels/live-chat",
-              "channels/whatsapp",
-              "channels/instagram",
-              "channels/facebook",
-              "channels/sms"
+              {
+                "group": "Inbox",
+                "pages": [
+                  "help/inbox/inbox-tour",
+                  "help/inbox/start-a-new-chat",
+                  "help/inbox/send-a-message",
+                  "help/inbox/use-quick-replies",
+                  "help/inbox/message-actions",
+                  "help/inbox/chat-actions",
+                  "help/inbox/contact-card"
+                ]
+              },
+              {
+                "group": "Find & organize chats",
+                "pages": [
+                  "help/inbox/find-and-organize/global-search",
+                  "help/inbox/find-and-organize/advanced-filters",
+                  "help/inbox/find-and-organize/saved-inbox-views",
+                  "help/inbox/find-and-organize/team-and-user-inboxes",
+                  "help/inbox/find-and-organize/search-and-filter-chats",
+                  "help/inbox/find-and-organize/quick-actions",
+                  "help/inbox/find-and-organize/bulk-actions"
+                ]
+              },
+              {
+                "group": "Chat fundamentals",
+                "pages": [
+                  "help/inbox/chat-fundamentals/chat-lifecycle",
+                  "help/inbox/chat-fundamentals/contact-subscription",
+                  "help/inbox/chat-fundamentals/conversation-window",
+                  "help/inbox/chat-fundamentals/sensitive-chats"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "MESSAGING CHANNELS",
+            "pages": [
+              {
+                "group": "WhatsApp",
+                "pages": [
+                  "help/messaging-channels/whatsapp/getting-started",
+                  "help/messaging-channels/whatsapp/whatsapp-templates",
+                  "help/messaging-channels/whatsapp/guides",
+                  "help/messaging-channels/whatsapp/common-issues"
+                ]
+              },
+              {
+                "group": "Instagram",
+                "pages": [
+                  "help/messaging-channels/instagram/getting-started",
+                  "help/messaging-channels/instagram/common-issues",
+                  "help/messaging-channels/instagram/message-errors"
+                ]
+              },
+              {
+                "group": "Facebook Messenger",
+                "pages": [
+                  "help/messaging-channels/facebook-messenger/getting-started",
+                  "help/messaging-channels/facebook-messenger/common-issues",
+                  "help/messaging-channels/facebook-messenger/message-errors"
+                ]
+              },
+              {
+                "group": "Live chat",
+                "pages": [
+                  "help/messaging-channels/live-chat/getting-started",
+                  "help/messaging-channels/live-chat/common-issues",
+                  "help/messaging-channels/live-chat/message-errors"
+                ]
+              },
+              {
+                "group": "SMS",
+                "pages": [
+                  "help/messaging-channels/sms/getting-started",
+                  "help/messaging-channels/sms/common-issues",
+                  "help/messaging-channels/sms/message-errors"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "CONTACTS",
+            "pages": [
+              {
+                "group": "Mini-CRM",
+                "pages": [
+                  "help/contacts/mini-crm/contacts-tour",
+                  "help/contacts/mini-crm/column-order-and-visible-fields",
+                  "help/contacts/mini-crm/custom-attributes-as-columns",
+                  "help/contacts/mini-crm/labels"
+                ]
+              },
+              {
+                "group": "Search & filters",
+                "pages": [
+                  "help/contacts/search-and-filters/search-contacts",
+                  "help/contacts/search-and-filters/advanced-filters",
+                  "help/contacts/search-and-filters/saved-contact-views",
+                  "help/contacts/search-and-filters/bulk-actions"
+                ]
+              },
+              {
+                "group": "The contact",
+                "pages": [
+                  "help/contacts/the-contact/what-is-a-contact",
+                  "help/contacts/the-contact/contacts-and-channels",
+                  "help/contacts/the-contact/contact-subscription",
+                  "help/contacts/the-contact/contacts-across-heyy"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "AUTOMATIONS",
+            "pages": [
+              "help/automations/index",
+              {
+                "group": "Triggers",
+                "pages": [
+                  "help/automations/triggers/overview",
+                  {
+                    "group": "Chat",
+                    "pages": [
+                      "help/automations/triggers/new-incoming-chat",
+                      "help/automations/triggers/reopened-chat",
+                      "help/automations/triggers/new-and-reopened-chat",
+                      "help/automations/triggers/new-incoming-message",
+                      "help/automations/triggers/chat-closed",
+                      "help/automations/triggers/chat-assigned",
+                      "help/automations/triggers/chat-moved"
+                    ]
+                  },
+                  {
+                    "group": "Contacts & labels",
+                    "pages": [
+                      "help/automations/triggers/contact-created",
+                      "help/automations/triggers/contact-attribute-updated",
+                      "help/automations/triggers/label-added",
+                      "help/automations/triggers/label-removed"
+                    ]
+                  },
+                  {
+                    "group": "External & manual",
+                    "pages": [
+                      "help/automations/triggers/new-instagram-comment",
+                      "help/automations/triggers/webhook-received",
+                      "help/automations/triggers/manual-trigger"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Actions",
+                "expanded": false,
+                "pages": [
+                  "help/automations/live-chat-actions",
+                  "help/automations/whatsapp-actions",
+                  "help/automations/instagram-actions",
+                  "help/automations/facebook-actions",
+                  "help/automations/ai-actions",
+                  "help/automations/logic-actions",
+                  "help/automations/contacts-actions",
+                  "help/automations/chats-actions",
+                  "help/automations/notifications-actions",
+                  "help/automations/campaigns-actions",
+                  "help/automations/apps-actions"
+                ]
+              },
+              {
+                "group": "Journeys",
+                "pages": [
+                  "help/automations/journeys/what-is-a-journey",
+                  "help/automations/journeys/build-a-journey"
+                ]
+              },
+              {
+                "group": "Activity log",
+                "pages": [
+                  "help/automations/activity-log/overview",
+                  "help/automations/activity-log/view-runs-and-debug"
+                ]
+              },
+              {
+                "group": "Use cases",
+                "pages": [
+                  "help/automations/use-cases/coming-soon"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "CAMPAIGNS & OUTREACH",
+            "pages": [
+              {
+                "group": "Build a campaign",
+                "pages": [
+                  "help/campaigns-and-outreach/build/campaigns-tour",
+                  "help/campaigns-and-outreach/build/audience-and-recipients",
+                  "help/campaigns-and-outreach/build/message-and-templates"
+                ]
+              },
+              {
+                "group": "Run & results",
+                "pages": [
+                  "help/campaigns-and-outreach/run/start-and-monitor",
+                  "help/campaigns-and-outreach/run/delivery-and-failures",
+                  "help/campaigns-and-outreach/run/export-and-bulk-actions"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "WORKSPACE & PROFILE",
+            "pages": [
+              {
+                "group": "Your profile",
+                "pages": [
+                  "help/managing-your-profile/profile",
+                  "help/managing-your-profile/security"
+                ]
+              },
+              {
+                "group": "Workspace members",
+                "pages": [
+                  "help/managing-your-workspace/workspace-members/how-to-invite-teammates",
+                  "help/managing-your-workspace/workspace-members/how-to-invite-partners",
+                  "help/managing-your-workspace/workspace-roles"
+                ]
+              },
+              {
+                "group": "Billing & subscription",
+                "pages": [
+                  "help/managing-your-workspace/billing-and-subscription/free-trial",
+                  "help/managing-your-workspace/billing-and-subscription/how-to-cancel-subscription",
+                  "help/managing-your-workspace/billing-and-subscription/how-to-change-billing-information",
+                  "help/managing-your-workspace/billing-and-subscription/how-to-download-invoice"
+                ]
+              },
+              {
+                "group": "Additional guides",
+                "pages": [
+                  "help/managing-your-workspace/additional-guides/switching-workspaces",
+                  "help/managing-your-workspace/additional-guides/deleting-workspace"
+                ]
+              }
             ]
           }
         ]
       },
       {
         "tab": "API Reference",
+        "icon": "code",
+        "dropdowns": [
+          {
+            "dropdown": "Version 2",
+            "icon": "code",
+            "groups": [
+              {
+                "group": "GETTING STARTED",
+                "pages": [
+                  "api-reference/overview",
+                  "api-reference/authentication",
+                  "api-reference/versioning",
+                  "api-reference/rate-limiting",
+                  "api-reference/error-handling"
+                ]
+              },
+              {
+                "group": "HEYY API",
+                "pages": [
+                  {
+                    "group": "Attribute",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "GET /attributes",
+                      "POST /attributes",
+                      "DELETE /attributes/{attributeId}"
+                    ]
+                  },
+                  {
+                    "group": "Automation",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "GET /{channelId}/workflows",
+                      "POST /{channelId}/workflows/{workflowId}"
+                    ]
+                  },
+                  {
+                    "group": "Broadcast",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "GET /{channelId}/broadcasts",
+                      "POST /{channelId}/broadcasts",
+                      "GET /{channelId}/broadcasts/{broadcastId}",
+                      "PUT /{channelId}/broadcasts/{broadcastId}",
+                      "DELETE /{channelId}/broadcasts/{broadcastId}",
+                      "POST /{channelId}/broadcasts/{broadcastId}/start",
+                      "GET /{channelId}/broadcasts/{broadcastId}/recipients",
+                      "POST /{channelId}/broadcasts/{broadcastId}/recipients",
+                      "DELETE /{channelId}/broadcasts/{broadcastId}/recipients"
+                    ]
+                  },
+                  {
+                    "group": "Business",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "GET /business"
+                    ]
+                  },
+                  {
+                    "group": "Channel",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "GET /channels",
+                      "GET /channels/{channelId}"
+                    ]
+                  },
+                  {
+                    "group": "Chat",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "GET /{channelId}/chats",
+                      "GET /{channelId}/chats/{chatId}",
+                      "PUT /{channelId}/chats/{chatId}"
+                    ]
+                  },
+                  {
+                    "group": "Contact",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "GET /contacts",
+                      "POST /contacts",
+                      "GET /contacts/{contactId}",
+                      "PUT /contacts/{contactId}",
+                      "DELETE /contacts/{contactId}",
+                      "POST /contacts/{contactId}/attributes",
+                      "DELETE /contacts/{contactId}/attributes"
+                    ]
+                  },
+                  {
+                    "group": "File",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /upload_file"
+                    ]
+                  },
+                  {
+                    "group": "Label",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "GET /labels",
+                      "POST /labels",
+                      "DELETE /labels/{labelId}"
+                    ]
+                  },
+                  {
+                    "group": "Message Template",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "GET /message_templates"
+                    ]
+                  },
+                  {
+                    "group": "WhatsApp Message",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /{channelId}/whatsapp_messages/send"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "dropdown": "Version 3 (coming soon)",
+            "icon": "code",
+            "groups": [
+              {
+                "group": "API V3",
+                "pages": [
+                  "api-reference/v3/overview"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Webhooks",
+        "icon": "webhook",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "HEYY WEBHOOKS",
             "pages": [
-              "/api-reference/overview",
-              "api-reference/authentication",
-              "api-reference/versioning",
-              "api-reference/rate-limiting",
-              "api-reference/error-handling"
+              "webhooks/overview",
+              "webhooks/event-types"
             ]
           },
           {
-            "group": "Heyy API",
+            "group": "MESSAGE WEBHOOKS",
             "pages": [
-              {
-                "group": "Attribute",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "GET /attributes",
-                  "POST /attributes",
-                  "DELETE /attributes/{attributeId}"
-                ]
-              },
-              {
-                "group": "Automation",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "GET /{channelId}/workflows",
-                  "POST /{channelId}/workflows/{workflowId}"
-                ]
-              },
-              {
-                "group": "Broadcast",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "GET /{channelId}/broadcasts",
-                  "POST /{channelId}/broadcasts",
-                  "GET /{channelId}/broadcasts/{broadcastId}",
-                  "PUT /{channelId}/broadcasts/{broadcastId}",
-                  "DELETE /{channelId}/broadcasts/{broadcastId}",
-                  "POST /{channelId}/broadcasts/{broadcastId}/start",
-                  "GET /{channelId}/broadcasts/{broadcastId}/recipients",
-                  "POST /{channelId}/broadcasts/{broadcastId}/recipients",
-                  "DELETE /{channelId}/broadcasts/{broadcastId}/recipients"
-                ]
-              },
-              {
-                "group": "Business",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "GET /business"
-                ]
-              },
-              {
-                "group": "Channel",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "GET /channels",
-                  "GET /channels/{channelId}"
-                ]
-              },
-              {
-                "group": "Chat",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "GET /{channelId}/chats",
-                  "GET /{channelId}/chats/{chatId}",
-                  "PUT /{channelId}/chats/{chatId}"
-                ]
-              },
-              {
-                "group": "Contact",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "GET /contacts",
-                  "POST /contacts",
-                  "GET /contacts/{contactId}",
-                  "PUT /contacts/{contactId}",
-                  "DELETE /contacts/{contactId}",
-                  "POST /contacts/{contactId}/attributes",
-                  "DELETE /contacts/{contactId}/attributes"
-                ]
-              },
-              {
-                "group": "File",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "POST /upload_file"
-                ]
-              },
-              {
-                "group": "Label",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "GET /labels",
-                  "POST /labels",
-                  "DELETE /labels/{labelId}"
-                ]
-              },
-              {
-                "group": "Message Template",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "GET /message_templates"
-                ]
-              },
-              {
-                "group": "WhatsApp Message",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "POST /{channelId}/whatsapp_messages/send"
-                ]
-              }
+              "webhooks/events/message-received",
+              "webhooks/events/message-sent",
+              "webhooks/events/message-updated"
             ]
           },
           {
-            "group": "Webhooks",
+            "group": "MANAGE WEBHOOKS",
+            "expanded": false,
+            "openapi": "api-reference/openapi.json",
             "pages": [
-              "api-reference/webhook-object-model",
-              {
-                "group": "Manage webhooks",
-                "expanded": false,
-                "openapi": "/api-reference/openapi.json",
-                "pages": [
-                  "GET /api_webhooks",
-                  "POST /api_webhooks",
-                  "PUT /api_webhooks/{webhookId}",
-                  "DELETE /api_webhooks/{webhookId}"
-                ]
-              }
+              "GET /api_webhooks",
+              "POST /api_webhooks",
+              "PUT /api_webhooks/{webhookId}",
+              "DELETE /api_webhooks/{webhookId}"
             ]
           }
         ]
       },
       {
         "tab": "Changelog",
+        "icon": "megaphone",
         "groups": [
           {
             "group": "Changelog",
             "pages": [
-              "changelog"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Help & Support",
-        "groups": [
-          {
-            "group": "Help",
-            "pages": [
-              "help/faq"
+              "changelog/index"
             ]
           }
         ]
@@ -249,7 +546,8 @@
   },
   "logo": {
     "light": "/assets/logo.svg",
-    "dark": "/assets/logo.svg"
+    "dark": "/assets/logo.svg",
+    "href": "https://app.heyy.io"
   },
   "integrations": {
     "telemetry": {
@@ -259,13 +557,17 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
+        "label": "Join partner program",
+        "href": "https://partners.dub.co/heyy"
+      },
+      {
+        "label": "Contact support",
         "href": "https://wa.me/16504570123"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Get started",
+      "label": "Dashboard",
       "href": "https://app.heyy.io"
     }
   },
@@ -286,6 +588,192 @@
     }
   },
   "icons": {
-    "library": "fontawesome"
-  }
+    "library": "lucide"
+  },
+  "redirects": [
+    {
+      "source": "/api-reference/webhook-object-model",
+      "destination": "/webhooks/event-types"
+    },
+    {
+      "source": "/help/ai-employees/overview",
+      "destination": "/help/ai-employees/index"
+    },
+    {
+      "source": "/help/ai-employees/goals-and-personality",
+      "destination": "/help/ai-employees/identity-and-guidelines/define-brand-voice-and-role"
+    },
+    {
+      "source": "/help/ai-employees/knowledge",
+      "destination": "/help/ai-employees/content-and-actions/add-your-website"
+    },
+    {
+      "source": "/help/ai-employees/tools-and-integrations",
+      "destination": "/help/ai-employees/content-and-actions/when-the-ai-can-take-action"
+    },
+    {
+      "source": "/help/ai-employees/playground",
+      "destination": "/help/ai-employees/testing-and-quality/test-in-playground"
+    },
+    {
+      "source": "/help/ai-employees/use-cases",
+      "destination": "/help/ai-employees/index"
+    },
+    {
+      "source": "/help/ai-employees/use-cases/:path*",
+      "destination": "/help/ai-employees/index"
+    },
+    {
+      "source": "/help/inbox-and-channels/contacts/overview",
+      "destination": "/help/contacts/index"
+    },
+    {
+      "source": "/help/inbox-and-channels/contacts/contacts",
+      "destination": "/help/contacts/index"
+    },
+    {
+      "source": "/help/ai-employees/knowledge-and-answers/:path*",
+      "destination": "/help/ai-employees/content-and-actions/:path*"
+    },
+    {
+      "source": "/help/ai-employees/capabilities-and-actions/:path*",
+      "destination": "/help/ai-employees/content-and-actions/:path*"
+    },
+    {
+      "source": "/help/ai-employees/personality-and-behavior/:path*",
+      "destination": "/help/ai-employees/identity-and-guidelines/:path*"
+    },
+    {
+      "source": "/help/automations/overview",
+      "destination": "/help/automations/index"
+    },
+    {
+      "source": "/help/automations/triggers",
+      "destination": "/help/automations/triggers/overview"
+    },
+    {
+      "source": "/help/automations/triggers#new-incoming-chat",
+      "destination": "/help/automations/triggers/new-incoming-chat"
+    },
+    {
+      "source": "/help/automations/triggers#reopened-chat",
+      "destination": "/help/automations/triggers/reopened-chat"
+    },
+    {
+      "source": "/help/automations/triggers#chat-moved",
+      "destination": "/help/automations/triggers/chat-moved"
+    },
+    {
+      "source": "/help/inbox-and-channels/contacts/labels",
+      "destination": "/help/contacts/mini-crm/labels"
+    },
+    {
+      "source": "/help/inbox-and-channels/contacts/attributes",
+      "destination": "/help/contacts/mini-crm/custom-attributes-as-columns"
+    },
+    {
+      "source": "/help/inbox-and-channels/contacts/views",
+      "destination": "/help/contacts/search-and-filters/saved-contact-views"
+    },
+    {
+      "source": "/help/contacts/labels",
+      "destination": "/help/contacts/mini-crm/labels"
+    },
+    {
+      "source": "/help/contacts/attributes",
+      "destination": "/help/contacts/mini-crm/custom-attributes-as-columns"
+    },
+    {
+      "source": "/help/contacts/views",
+      "destination": "/help/contacts/search-and-filters/saved-contact-views"
+    },
+    {
+      "source": "/help/campaigns-and-outreach/index",
+      "destination": "/help/campaigns-and-outreach/build/campaigns-tour"
+    },
+    {
+      "source": "/help/campaigns-and-outreach/campaigns",
+      "destination": "/help/campaigns-and-outreach/build/campaigns-tour"
+    },
+    {
+      "source": "/help/campaigns-and-outreach/whatsapp-templates",
+      "destination": "/help/messaging-channels/whatsapp/whatsapp-templates"
+    },
+    {
+      "source": "/quick-start/settings/whatsapp-templates",
+      "destination": "/help/messaging-channels/whatsapp/whatsapp-templates"
+    },
+    {
+      "source": "/help/inbox-and-channels/whatsapp-templates",
+      "destination": "/help/messaging-channels/whatsapp/whatsapp-templates"
+    },
+    {
+      "source": "/help/inbox-and-channels/inbox-views",
+      "destination": "/help/inbox/find-and-organize/saved-inbox-views"
+    },
+    {
+      "source": "/help/inbox-and-channels/team-inboxes",
+      "destination": "/help/inbox/find-and-organize/team-and-user-inboxes"
+    },
+    {
+      "source": "/help/inbox-and-channels/quick-replies",
+      "destination": "/help/inbox/use-quick-replies"
+    },
+    {
+      "source": "/help/inbox-and-channels/channels/whatsapp",
+      "destination": "/help/messaging-channels/whatsapp/getting-started"
+    },
+    {
+      "source": "/help/inbox-and-channels/channels/instagram",
+      "destination": "/help/messaging-channels/instagram/getting-started"
+    },
+    {
+      "source": "/help/inbox-and-channels/channels/facebook-messenger",
+      "destination": "/help/messaging-channels/facebook-messenger/getting-started"
+    },
+    {
+      "source": "/help/inbox-and-channels/channels/live-chat",
+      "destination": "/help/messaging-channels/live-chat/getting-started"
+    },
+    {
+      "source": "/help/inbox-and-channels/channels/sms",
+      "destination": "/help/messaging-channels/sms/getting-started"
+    },
+    {
+      "source": "/help/inbox-and-channels/:path*",
+      "destination": "/help/inbox/:path*"
+    },
+    {
+      "source": "/quick-start/:path*",
+      "destination": "/help/index"
+    },
+    {
+      "source": "/help/managing-your-workspace/profile",
+      "destination": "/help/managing-your-profile/profile"
+    },
+    {
+      "source": "/help/managing-your-workspace/managing-your-profile/profile",
+      "destination": "/help/managing-your-profile/profile"
+    },
+    {
+      "source": "/help/managing-your-workspace/managing-your-profile/security",
+      "destination": "/help/managing-your-profile/security"
+    },
+    {
+      "source": "/help/managing-your-workspace/index",
+      "destination": "/help/managing-your-profile/profile"
+    },
+    {
+      "source": "/help/managing-your-workspace/overview",
+      "destination": "/help/managing-your-workspace/workspace-roles"
+    },
+    {
+      "source": "/help/heyy-partners/overview",
+      "destination": "https://partners.dub.co/heyy"
+    },
+    {
+      "source": "/help/heyy-partners/:path*",
+      "destination": "https://partners.dub.co/heyy"
+    }
+  ]
 }

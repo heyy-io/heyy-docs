@@ -1,0 +1,87 @@
+---
+title: message.updated
+sidebarTitle: message.updated
+description: Occurs when an existing message changes, such as a delivery status update.
+---
+
+import { MessageWebhookPayloadFields } from "/snippets/message-webhook-payload-fields.mdx";
+
+Event triggered when an **existing message changes** — most commonly delivery status transitions like `sent` → `delivered` → `read`.
+
+## Payload fields
+
+<MessageWebhookPayloadFields />
+
+<ResponseExample>
+
+```json
+{
+  "id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f",
+  "tenantId": "a98d0e1f2-a1b4-4c4d-6e7f-8a9b0c1d2e3f",
+  "event": "message.updated",
+  "data": {
+    "id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a",
+    "type": "message",
+    "sender": "outbound",
+    "sources": [
+      {
+        "type": "inbox",
+        "userId": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
+      }
+    ],
+    "status": "delivered",
+    "scheduledAt": null,
+    "content": {
+      "body": "Hello world"
+    },
+    "forwarded": false,
+    "reactions": [],
+    "errors": [],
+    "history": [
+      {
+        "event": "status_update",
+        "newStatus": "pending",
+        "timestamp": "2026-03-13T23:26:57.275Z"
+      },
+      {
+        "event": "status_update",
+        "newStatus": "sent",
+        "timestamp": "2026-03-13T23:26:58.000Z"
+      },
+      {
+        "event": "status_update",
+        "newStatus": "delivered",
+        "timestamp": "2026-03-13T23:26:58.000Z"
+      }
+    ],
+    "vendorId": "a1f2e3d4-c5b6-4a97-8e8f-0d1c2b3a4e5f",
+    "timestamp": "2026-03-13T23:26:57.275Z",
+    "vendorDetails": null,
+    "isSensitive": false,
+    "aiGenerationId": null,
+    "metadata": {},
+    "chat": {
+      "id": "5f3700cd-a5cf-4b2b-be5a-23b013025c11"
+    },
+    "handle": {
+      "id": "1a9559d7-3c53-4cd5-a076-962193b206e9",
+      "type": "phone_number",
+      "value": "+12135550123"
+    },
+    "contact": {
+      "id": "259c9fec-c831-41ad-8a43-3fdad389d015",
+      "firstName": "John",
+      "lastName": "Doe",
+      "phoneNumber": "+12135550123",
+      "email": "john@example.com"
+    },
+    "channel": {
+      "id": "h9dd4c3e-b049-4903-b047-e2717f1e88e3",
+      "type": "whatsapp",
+      "name": "Examply"
+    }
+  }
+}
+```
+
+</ResponseExample>

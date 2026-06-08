@@ -28,7 +28,7 @@
   "paths": {
     "/api_webhooks": {
       "get": {
-        "summary": "Get API webhooks",
+        "summary": "Get webhooks",
         "responses": {
           "200": {
             "description": "",
@@ -86,7 +86,7 @@
         }
       },
       "post": {
-        "summary": "Create API webhook",
+        "summary": "Create webhook",
         "requestBody": {
           "required": true,
           "content": {
@@ -183,7 +183,7 @@
     },
     "/api_webhooks/{webhookId}": {
       "put": {
-        "summary": "Update API webhook",
+        "summary": "Update webhook",
         "parameters": [
           {
             "name": "webhookId",
@@ -266,7 +266,7 @@
         }
       },
       "delete": {
-        "summary": "Delete API webhook",
+        "summary": "Delete webhook",
         "parameters": [
           {
             "name": "webhookId",
