@@ -1,0 +1,17 @@
+---
+title: "Call an external API"
+description: "Let your employee invoke a custom HTTP endpoint."
+---
+
+To add a **Custom API** action on the **Actions** tab:
+
+1. Click **Add action** and choose **Custom API**.
+2. Set a **name** the employee (and your team) will recognize.
+3. Configure the **URL**, HTTP method, and headers.
+4. Define **inputs** the model can fill from the conversation or contact fields.
+5. Map **response fields** you want the employee to use in replies.
+6. Test the action from the dialog before saving.
+
+Use custom APIs for lookups, bookings, order status, or any workflow your backend exposes. Keep endpoints idempotent where possible and avoid returning sensitive data the employee should not repeat to contacts.
+
+Pair API actions with [Boundaries](/help/ai-employees/identity-and-guidelines/boundaries) so the employee knows when *not* to call external systems.

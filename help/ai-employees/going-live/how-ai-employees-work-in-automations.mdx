@@ -1,0 +1,29 @@
+---
+title: "How AI employees work in automations"
+description: "Triggers, the AI Employee action, replies, exit points, and what happens next."
+---
+
+AI Employees reach customers through **automations** — not by sitting on a channel alone.
+
+## The flow
+
+1. **Trigger fires** — For example, a new incoming message on WhatsApp or a reopened chat.
+2. **Automation runs** — The workflow executes steps for that contact.
+3. **AI Employee action** — A node selects the channel, employee, and optional per-automation context.
+4. **Employee replies** — The employee uses its [identity](/help/ai-employees/identity-and-guidelines/identity-setup), [content](/help/ai-employees/content/add-your-website), and [capabilities](/help/ai-employees/capabilities/actions-overview) to respond in the thread.
+5. **Exit point fires** (optional) — When a condition matches, the AI step ends and the automation branches — handoff, close, follow-up, etc.
+6. **Next steps** — Assign chat, notify a teammate, send a message, or close — configured on the branches after the AI Employee node.
+
+## What the employee does not control
+
+- **When it runs** — The automation trigger and graph decide that.
+- **Channel routing** — Must match where the trigger fired; see [Channel and context](/help/ai-employees/going-live/channel-and-context).
+- **Handoff routing** — Map [exit points](/help/ai-employees/going-live/use-exit-points-in-automations) to inbox or team actions.
+
+## Before going live
+
+1. Configure the employee in [**AI Employees**](https://app.heyy.io/ai-employees).
+2. [Test in the Playground](/help/ai-employees/going-live/test-in-playground).
+3. [Add the employee to an automation](/help/ai-employees/going-live/add-to-automation) and publish.
+
+AI Employees complement [automations](/help/automations/index) and your [inbox](/help/inbox/inbox-tour) — automations orchestrate *when* an employee runs; the inbox is where humans take over after handoff.

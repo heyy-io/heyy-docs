@@ -1,0 +1,81 @@
+---
+title: "Write your guidelines"
+description: "What guidelines are, how to add them, @mentions, and writing tips."
+---
+
+**Guidelines** are instructions injected into your employee's system prompt. They live below [Identity setup](/help/ai-employees/identity-and-guidelines/identity-setup) on the **Identity & guidelines** tab in [**AI Employees**](https://app.heyy.io/ai-employees) and shape how the employee behaves in specific situations — escalation rules, when to pull @Content, seasonal promos, and more.
+
+Where identity setup sets global defaults, guidelines add the playbook. Active guidelines from all four categories are combined on every reply unless a [guideline override](/help/ai-employees/going-live/automation-guideline-overrides) on a specific automation says otherwise.
+
+<Tip>
+  Finish [Identity setup](/help/ai-employees/identity-and-guidelines/identity-setup) first, then add a few focused guidelines per category. Test each change in the [Playground](/help/ai-employees/going-live/test-in-playground) before going live.
+</Tip>
+
+## How guidelines work
+
+When a customer message reaches your AI employee, Heyy merges active guidelines with identity setup, [content](/help/ai-employees/content/add-your-website), and [capabilities](/help/ai-employees/capabilities/choose-attributes-to-expose) to produce each reply.
+
+Each guideline is a short, titled instruction. You group them into one of four categories — each category has its own accordion and a dedicated article with goals and examples.
+
+<Frame>
+  ![Guideline categories](/assets/ai-employees-guidelines-categories.png)
+</Frame>
+
+| Category | Use for |
+| -------- | ------- |
+| [**Identity & style**](/help/ai-employees/identity-and-guidelines/identity-and-style) | Who the employee is and how they communicate in chat. |
+| [**Conversation flow & objectives**](/help/ai-employees/identity-and-guidelines/conversation-flow-and-objectives) | Goals per thread and when to use @Content, @Actions, or @Assets. |
+| [**Boundaries**](/help/ai-employees/identity-and-guidelines/boundaries) | Hard limits, compliance, escalation, and topics to decline. |
+| [**Other**](/help/ai-employees/identity-and-guidelines/other) | Seasonal promos, regional rules, and one-offs that do not fit above. |
+
+## Anatomy of a guideline
+
+Every guideline has the same fields whether you create it from scratch or start from a template.
+
+| Field | Description |
+| ----- | ----------- |
+| **Title** | A short label your team recognizes in the accordion list. |
+| **Status** | **Active** guidelines are injected on every reply; **inactive** ones are saved but ignored. |
+| **Prompt** | The instruction the employee follows when the guideline is active. |
+| **Category** | One of the four types above — set when you create the guideline. |
+
+## Add a guideline
+
+1. Open an employee and go to **Identity & guidelines**.
+2. Expand the category accordion you want.
+3. Click **Add guideline**.
+4. Enter a title, set status to **Active**, and write the prompt.
+5. Save.
+
+<Frame>
+  ![Add a guideline](/assets/ai-employees-guidelines-add.png)
+</Frame>
+
+Use **Suggestions** when creating a guideline to start from a template for that category. Use **Optimize** on an existing prompt to tighten wording without changing the intent.
+
+## @mentions in prompts
+
+Type `@` in the prompt editor to reference capabilities you have already configured. Mentions tell the employee which attributes, knowledge, tools, or files you mean — without pasting long IDs or URLs.
+
+<Frame>
+  ![@mentions menu](/assets/ai-employees-guidelines-mentions.png)
+</Frame>
+
+| Mention | Description |
+| ------- | ----------- |
+| **Attributes** | Contact fields the employee can read, share, or update. |
+| **Content** | Knowledge sources from the Content tab — websites, Q&A, and uploads. |
+| **Actions** | Tools the employee may invoke during the conversation. |
+| **Assets** | Shareable files from the Assets tab — PDFs, images, and brochures. |
+
+If nothing appears when you type `@`, configure [attributes](/help/ai-employees/capabilities/choose-attributes-to-expose), [content](/help/ai-employees/content/add-your-website), [actions](/help/ai-employees/capabilities/actions-overview), or [assets](/help/ai-employees/capabilities/share-files-in-chat) first, then return to the prompt.
+
+## Writing tips
+
+| Tip | Why it helps |
+| --- | ------------ |
+| Prefer several focused guidelines over one long block. | Easier to test, deactivate, and update without side effects. |
+| Write observable situations. | "When the customer asks for a refund" beats "handle complaints." |
+| Deactivate instead of delete. | Seasonal or campaign rules can be turned off and reused later. |
+| Avoid duplicating identity setup. | Role, tone, and answer length belong in [Identity setup](/help/ai-employees/identity-and-guidelines/identity-setup) — use guidelines for nuance. |
+| Test after every change. | Run real customer-style questions in the [Playground](/help/ai-employees/going-live/test-in-playground). |

@@ -46,7 +46,6 @@
                 "group": "Getting started",
                 "pages": [
                   "help/ai-employees/getting-started/hire-an-ai-employee",
-                  "help/ai-employees/getting-started/set-your-employee-live",
                   "help/ai-employees/getting-started/run-your-first-test-conversation",
                   "help/ai-employees/getting-started/connect-to-real-customer-traffic"
                 ]
@@ -54,44 +53,49 @@
               {
                 "group": "Identity & guidelines",
                 "pages": [
-                  "help/ai-employees/identity-and-guidelines/define-brand-voice-and-role",
-                  "help/ai-employees/identity-and-guidelines/set-tone-and-answer-length",
-                  "help/ai-employees/identity-and-guidelines/write-conversation-guidelines",
-                  "help/ai-employees/identity-and-guidelines/set-conversation-goals",
-                  "help/ai-employees/identity-and-guidelines/set-boundaries-and-escalation",
-                  "help/ai-employees/identity-and-guidelines/use-mentions-in-guidelines"
+                  "help/ai-employees/identity-and-guidelines/identity-setup",
+                  "help/ai-employees/identity-and-guidelines/write-your-guidelines",
+                  "help/ai-employees/identity-and-guidelines/identity-and-style",
+                  "help/ai-employees/identity-and-guidelines/conversation-flow-and-objectives",
+                  "help/ai-employees/identity-and-guidelines/boundaries",
+                  "help/ai-employees/identity-and-guidelines/other"
                 ]
               },
               {
-                "group": "Content & Actions",
+                "group": "Content",
                 "pages": [
-                  "help/ai-employees/content-and-actions/add-your-website",
-                  "help/ai-employees/content-and-actions/upload-documents",
-                  "help/ai-employees/content-and-actions/add-plain-text-knowledge",
-                  "help/ai-employees/content-and-actions/build-qa-knowledge-base",
-                  "help/ai-employees/content-and-actions/keep-knowledge-accurate",
-                  "help/ai-employees/content-and-actions/when-the-ai-can-take-action",
-                  "help/ai-employees/content-and-actions/call-an-external-api"
+                  "help/ai-employees/content/add-your-website",
+                  "help/ai-employees/content/upload-documents",
+                  "help/ai-employees/content/add-plain-text-knowledge",
+                  "help/ai-employees/content/build-qa-knowledge-base",
+                  "help/ai-employees/content/keep-knowledge-accurate"
                 ]
               },
               {
-                "group": "Customer context",
+                "group": "Capabilities",
                 "pages": [
-                  "help/ai-employees/customer-context/read-contact-fields",
-                  "help/ai-employees/customer-context/update-contact-fields",
-                  "help/ai-employees/customer-context/choose-attributes-to-expose"
+                  "help/ai-employees/capabilities/choose-attributes-to-expose",
+                  "help/ai-employees/capabilities/read-contact-fields",
+                  "help/ai-employees/capabilities/update-contact-fields",
+                  "help/ai-employees/capabilities/share-files-in-chat",
+                  "help/ai-employees/capabilities/reference-assets-in-guidelines",
+                  "help/ai-employees/capabilities/actions-overview",
+                  "help/ai-employees/capabilities/call-an-external-api",
+                  "help/ai-employees/capabilities/trigger-an-automation",
+                  "help/ai-employees/capabilities/create-exit-points"
                 ]
               },
               {
-                "group": "Testing & Going live",
+                "group": "Going live",
                 "pages": [
-                  "help/ai-employees/testing-and-going-live/test-in-playground",
-                  "help/ai-employees/testing-and-going-live/add-to-automation",
-                  "help/ai-employees/testing-and-going-live/channel-and-context",
-                  "help/ai-employees/testing-and-going-live/exit-conditions",
-                  "help/ai-employees/testing-and-going-live/reply-timeouts",
-                  "help/ai-employees/testing-and-going-live/hand-off-to-human",
-                  "help/ai-employees/testing-and-going-live/automation-guideline-overrides"
+                  "help/ai-employees/going-live/how-ai-employees-work-in-automations",
+                  "help/ai-employees/going-live/test-in-playground",
+                  "help/ai-employees/going-live/add-to-automation",
+                  "help/ai-employees/going-live/channel-and-context",
+                  "help/ai-employees/going-live/use-exit-points-in-automations",
+                  "help/ai-employees/going-live/hand-off-to-human",
+                  "help/ai-employees/going-live/reply-timeouts",
+                  "help/ai-employees/going-live/automation-guideline-overrides"
                 ]
               }
             ]
@@ -601,19 +605,95 @@
     },
     {
       "source": "/help/ai-employees/goals-and-personality",
-      "destination": "/help/ai-employees/identity-and-guidelines/define-brand-voice-and-role"
+      "destination": "/help/ai-employees/identity-and-guidelines/identity-setup"
+    },
+    {
+      "source": "/help/ai-employees/identity-and-guidelines/define-brand-voice-and-role",
+      "destination": "/help/ai-employees/identity-and-guidelines/identity-setup"
+    },
+    {
+      "source": "/help/ai-employees/identity-and-guidelines/set-tone-and-answer-length",
+      "destination": "/help/ai-employees/identity-and-guidelines/identity-setup"
+    },
+    {
+      "source": "/help/ai-employees/identity-and-guidelines/write-conversation-guidelines",
+      "destination": "/help/ai-employees/identity-and-guidelines/write-your-guidelines"
+    },
+    {
+      "source": "/help/ai-employees/identity-and-guidelines/use-mentions-in-guidelines",
+      "destination": "/help/ai-employees/identity-and-guidelines/write-your-guidelines"
+    },
+    {
+      "source": "/help/ai-employees/identity-and-guidelines/set-conversation-goals",
+      "destination": "/help/ai-employees/identity-and-guidelines/conversation-flow-and-objectives"
+    },
+    {
+      "source": "/help/ai-employees/identity-and-guidelines/set-boundaries-and-escalation",
+      "destination": "/help/ai-employees/identity-and-guidelines/boundaries"
     },
     {
       "source": "/help/ai-employees/knowledge",
-      "destination": "/help/ai-employees/content-and-actions/add-your-website"
+      "destination": "/help/ai-employees/content/add-your-website"
     },
     {
       "source": "/help/ai-employees/tools-and-integrations",
-      "destination": "/help/ai-employees/content-and-actions/when-the-ai-can-take-action"
+      "destination": "/help/ai-employees/capabilities/actions-overview"
+    },
+    {
+      "source": "/help/ai-employees/attributes/:path*",
+      "destination": "/help/ai-employees/capabilities/:path*"
+    },
+    {
+      "source": "/help/ai-employees/assets/overview",
+      "destination": "/help/ai-employees/capabilities/share-files-in-chat"
+    },
+    {
+      "source": "/help/ai-employees/assets/add-and-manage-assets",
+      "destination": "/help/ai-employees/capabilities/share-files-in-chat"
+    },
+    {
+      "source": "/help/ai-employees/assets/:path*",
+      "destination": "/help/ai-employees/capabilities/:path*"
+    },
+    {
+      "source": "/help/ai-employees/actions/overview",
+      "destination": "/help/ai-employees/capabilities/actions-overview"
+    },
+    {
+      "source": "/help/ai-employees/actions/:path*",
+      "destination": "/help/ai-employees/capabilities/:path*"
+    },
+    {
+      "source": "/help/ai-employees/exit-points/overview",
+      "destination": "/help/ai-employees/capabilities/create-exit-points"
+    },
+    {
+      "source": "/help/ai-employees/exit-points/create-exit-points",
+      "destination": "/help/ai-employees/capabilities/create-exit-points"
+    },
+    {
+      "source": "/help/ai-employees/exit-points/use-in-automations",
+      "destination": "/help/ai-employees/going-live/use-exit-points-in-automations"
+    },
+    {
+      "source": "/help/ai-employees/exit-points/:path*",
+      "destination": "/help/ai-employees/capabilities/create-exit-points"
+    },
+    {
+      "source": "/help/ai-employees/settings/:path*",
+      "destination": "/help/ai-employees/index"
     },
     {
       "source": "/help/ai-employees/playground",
-      "destination": "/help/ai-employees/testing-and-quality/test-in-playground"
+      "destination": "/help/ai-employees/going-live/test-in-playground"
+    },
+    {
+      "source": "/help/ai-employees/getting-started/set-your-employee-live",
+      "destination": "/help/ai-employees/going-live/add-to-automation"
+    },
+    {
+      "source": "/help/ai-employees/getting-started/add-to-automation",
+      "destination": "/help/ai-employees/going-live/add-to-automation"
     },
     {
       "source": "/help/ai-employees/use-cases",
@@ -633,11 +713,55 @@
     },
     {
       "source": "/help/ai-employees/knowledge-and-answers/:path*",
-      "destination": "/help/ai-employees/content-and-actions/:path*"
+      "destination": "/help/ai-employees/content/:path*"
     },
     {
       "source": "/help/ai-employees/capabilities-and-actions/:path*",
-      "destination": "/help/ai-employees/content-and-actions/:path*"
+      "destination": "/help/ai-employees/capabilities/actions-overview"
+    },
+    {
+      "source": "/help/ai-employees/content-and-actions/call-an-external-api",
+      "destination": "/help/ai-employees/capabilities/call-an-external-api"
+    },
+    {
+      "source": "/help/ai-employees/content-and-actions/when-the-ai-can-take-action",
+      "destination": "/help/ai-employees/capabilities/actions-overview"
+    },
+    {
+      "source": "/help/ai-employees/content-and-actions/:path*",
+      "destination": "/help/ai-employees/content/:path*"
+    },
+    {
+      "source": "/help/ai-employees/testing-and-going-live/add-to-automation",
+      "destination": "/help/ai-employees/going-live/add-to-automation"
+    },
+    {
+      "source": "/help/ai-employees/testing-and-going-live/exit-conditions",
+      "destination": "/help/ai-employees/going-live/use-exit-points-in-automations"
+    },
+    {
+      "source": "/help/ai-employees/customer-context/:path*",
+      "destination": "/help/ai-employees/capabilities/:path*"
+    },
+    {
+      "source": "/help/ai-employees/testing-and-going-live/:path*",
+      "destination": "/help/ai-employees/going-live/:path*"
+    },
+    {
+      "source": "/help/ai-employees/testing-and-quality/:path*",
+      "destination": "/help/ai-employees/going-live/:path*"
+    },
+    {
+      "source": "/help/ai-employees/going-live/exit-conditions",
+      "destination": "/help/ai-employees/going-live/use-exit-points-in-automations"
+    },
+    {
+      "source": "/help/ai-employees/migration-guides/:path*",
+      "destination": "/help/ai-employees/index"
+    },
+    {
+      "source": "/help/ai-employees/managing-ai-employees/:path*",
+      "destination": "/help/ai-employees/index"
     },
     {
       "source": "/help/ai-employees/personality-and-behavior/:path*",
