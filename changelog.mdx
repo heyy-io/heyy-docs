@@ -8,6 +8,94 @@ mode: "center"
   <div className="changelog-month-bg"></div>
   <div className="changelog-month-content">
     <span className="changelog-month-kicker">PRODUCT UPDATES</span>
+    <h2 className="mt-1 mb-0 text-[26px] font-extrabold leading-[1.15] scroll-mt-[184px]">June 2026</h2>
+  </div>
+</div>
+
+<Update label="June 13, 2026">
+  ## AI Employee v2
+
+  <Frame>
+    ![AI Employee v2](/assets/13-06-2026-changelog.png)
+  </Frame>
+
+  **AI Employee v2** is a redesigned way to set up your AI teammates: structured identity, guidelines by category, assets, and a new playground—instead of one big block of free-form instructions.
+
+  If you already have AI Employees, you can **migrate in one step** from the upgrade banner. Your current instructions are preserved in an **Other** guideline, so nothing gets lost while you move to the clearer v2 experience.
+</Update>
+
+<Update label="June 12, 2026">
+  ## URL buttons for WhatsApp, Instagram, and Facebook
+
+  <Frame>
+    ![URL buttons for WhatsApp, Instagram, and Facebook](/assets/12-06-2026-changelog.png)
+  </Frame>
+
+  Automations can now send messages with **URL buttons** on **WhatsApp**, **Instagram**, and **Facebook Messenger**—alongside the quick replies you already use.
+
+  Customers tap a button and land on your link directly: booking pages, product URLs, landing pages, and more. No need to paste long links into the message body.
+</Update>
+
+<Update label="June 10, 2026">
+  ## Search by message content
+
+  <Frame>
+    ![Search by message content](/assets/10-06-2026-changelog.png)
+  </Frame>
+
+  **Global search** now includes a **Messages** filter, so you can find conversations by what was actually said—not just contact name or phone number.
+
+  Open search from the Inbox sidebar, switch to Messages, and jump straight to the chat you need. Handy when you remember the wording but not who sent it.
+</Update>
+
+<div className="changelog-month-header">
+  <div className="changelog-month-bg"></div>
+  <div className="changelog-month-content">
+    <span className="changelog-month-kicker">PRODUCT UPDATES</span>
+    <h2 className="mt-1 mb-0 text-[26px] font-extrabold leading-[1.15] scroll-mt-[184px]">May 2026</h2>
+  </div>
+</div>
+
+<Update label="May 26, 2026">
+  ## New Facebook comment trigger
+
+  <Frame>
+    ![New Facebook comment trigger](/assets/26-05-2026-changelog.png)
+  </Frame>
+
+  Automations can now start when someone **comments on a Facebook post**—the same idea as our Instagram comment trigger, now for Facebook too.
+
+  Choose **all posts** or **specific posts**, then build comment-to-DM flows, follow-ups, or routing logic from the automation editor you already know.
+</Update>
+
+<Update label="May 18, 2026">
+  ## Improved new chat dialog
+
+  Starting an outbound conversation is smoother with a redesigned **New chat** dialog: search for a contact by phone or email, **quick-add** someone new if they are not in Heyy yet, then pick the channel to send from.
+
+  Keyboard navigation and a clearer From/To layout mean fewer steps and less hunting—right from Inbox. See [Start a new chat](/help/inbox/start-a-new-chat).
+</Update>
+
+<Update label="May 12, 2026">
+  ## Saved inbox views
+
+  Build an advanced chat filter once, **save it as a view**, and return to it from the Inbox sidebar anytime—each view shows its own open and unread counts so workload is visible at a glance.
+
+  Perfect for VIP queues, channel-specific inboxes, or any slice of conversations your team checks often. See [Saved inbox views](/help/inbox/find-and-organize/saved-inbox-views).
+</Update>
+
+<Update label="May 2, 2026">
+  ## 2FA support for all users
+
+  **Two-factor authentication** is now available for every Heyy user—not just admins. Turn on TOTP from **Profile → Security** with your authenticator app for an extra layer of account protection.
+
+  Workspace members who need it will see verification at login. See [Security](/help/managing-your-profile/security).
+</Update>
+
+<div className="changelog-month-header">
+  <div className="changelog-month-bg"></div>
+  <div className="changelog-month-content">
+    <span className="changelog-month-kicker">PRODUCT UPDATES</span>
     <h2 className="mt-1 mb-0 text-[26px] font-extrabold leading-[1.15] scroll-mt-[184px]">April 2026</h2>
   </div>
 </div>
@@ -51,7 +139,7 @@ mode: "center"
 
   We added a **Manager** role that sits between **Member** and **Admin**, so you can give trusted people more room to run things without handing over the whole workspace.
 
-  That should make it simpler to grow your team and keep permissions sensible. Assign it when you invite or edit someone in [**Settings → Team**](https://app.heyy.io/settings/team). For the full permission breakdown, see the [permissions table](/quick-start/settings/team#roles-and-permissions).
+  That should make it simpler to grow your team and keep permissions sensible. Assign it when you invite or edit someone in [**Settings → Team**](https://app.heyy.io/settings/team). For the full permission breakdown, see the [permissions table](/help/managing-your-workspace/workspace-roles).
 </Update>
 
 <Update label="March 18, 2026">
@@ -73,9 +161,9 @@ mode: "center"
     ![Webhooks v2.0](/assets/17-03-2026-changelog.gif)
   </Frame>
 
-  **Webhooks v2.0** lines up with our [API versioning](/api-reference/versioning) and a clearer [webhook payload model](/api-reference/webhook-object-model), so your integrations receive consistent, structured events as Heyy evolves.
+  **Webhooks v2.0** lines up with our [API versioning](/api-reference/versioning) and a clearer [webhook payload model](/webhooks/event-types), so your integrations receive consistent, structured events as Heyy evolves.
 
-  If you connect Heyy to your own systems or data warehouse, this makes it easier to build reliable automations—treat unknown fields as optional, route on `event`, and upgrade on your timeline. For setup in the app, see [Webhooks](/quick-start/settings/webhooks).
+  If you connect Heyy to your own systems or data warehouse, this makes it easier to build reliable automations—treat unknown fields as optional, route on `event`, and upgrade on your timeline. For setup in the app, see [Webhooks](/webhooks/overview).
 </Update>
 
 <Update label="March 16, 2026">
@@ -83,7 +171,7 @@ mode: "center"
 
   Automations can now start from more of what happens in your account—beyond chats alone. New triggers help you react when **contacts are created or updated**, when a **label is added**, or when a **label is removed**, so workflows stay in sync with your CRM-style data and team organization.
 
-  Together, these options reduce manual work: sync attributes, kick off follow-ups when a label changes, or keep downstream tools updated automatically. Browse all triggers in [Triggers](/quick-start/automations/triggers).
+  Together, these options reduce manual work: sync attributes, kick off follow-ups when a label changes, or keep downstream tools updated automatically. Browse all triggers in [Triggers](/help/automations/triggers/overview).
 </Update>
 
 <Update label="March 12, 2026">
@@ -91,7 +179,7 @@ mode: "center"
 
   AI Employees can now **collect more than one customer message** before sending a reply—helpful when people send several short lines in a row or when you want the model to see the full thought before responding.
 
-  That leads to more natural conversations and fewer premature answers, especially in fast-moving chats. Configure this behavior where you set up your AI Employee in [AI Employees](/quick-start/ai-employees).
+  That leads to more natural conversations and fewer premature answers, especially in fast-moving chats. Configure this behavior where you set up your AI Employee in [AI Employees](/help/ai-employees/index).
 </Update>
 
 <Update label="March 08, 2026">
@@ -99,7 +187,7 @@ mode: "center"
 
   AI Employees can **use what’s inside media attachments**—not just the text around them—so replies can reflect images, documents, and other files customers share.
 
-  Whether someone sends a screenshot, a photo, or a PDF, your AI Employee has more context to help accurately. This pairs with how you already train employees in [AI Employees](/quick-start/ai-employees).
+  Whether someone sends a screenshot, a photo, or a PDF, your AI Employee has more context to help accurately. This pairs with how you already train employees in [AI Employees](/help/ai-employees/index).
 </Update>
 
 <Update label="March 03, 2026">
@@ -141,7 +229,7 @@ mode: "center"
 
   Heyy now **won’t let you submit** a WhatsApp template until **every validation issue is fixed**. You see what’s wrong up front and resolve it in the editor—instead of sending something to Meta and waiting, only to get a frustrating rejection.
 
-  That saves your team real time and cuts down on those slow, annoying review cycles. You still get **clear guidance** as you build (structure, buttons, and what usually passes). For more on templates in Heyy, see [WhatsApp templates](/quick-start/settings/whatsapp-templates).
+  That saves your team real time and cuts down on those slow, annoying review cycles. You still get **clear guidance** as you build (structure, buttons, and what usually passes). For more on templates in Heyy, see [WhatsApp templates](/help/messaging-channels/whatsapp/whatsapp-templates).
 </Update>
 
 <Update label="February 21, 2026">
@@ -149,7 +237,7 @@ mode: "center"
 
   We removed the need to **manually retrain** your AI Employees. The knowledge base now **updates on its own every few minutes**, so your sources stay in sync without an extra button to remember.
 
-  That’s a smoother experience for your team and a more reliable one for customers: answers reflect what you’ve added or changed recently, not the last time someone kicked off a training job. Add and edit knowledge as usual on [AI Employees](/quick-start/ai-employees)—Heyy keeps the rest up to date in the background.
+  That’s a smoother experience for your team and a more reliable one for customers: answers reflect what you’ve added or changed recently, not the last time someone kicked off a training job. Add and edit knowledge as usual on [AI Employees](/help/ai-employees/index)—Heyy keeps the rest up to date in the background.
 </Update>
 
 <Update label="February 16, 2026">
@@ -157,7 +245,7 @@ mode: "center"
 
   You can now train AI Employees using **structured Q&amp;A** and **uploaded documents**, alongside the website links and free text you already use. That’s ideal for FAQs, policies, and files that don’t live on a public page.
 
-  Together, these sources help the AI pull answers from the material your team trusts most—whether it’s a short Q&amp;A pair or a full PDF. Learn more about building knowledge in [AI Employees](/quick-start/ai-employees#knowledge-tab).
+  Together, these sources help the AI pull answers from the material your team trusts most—whether it’s a short Q&amp;A pair or a full PDF. Learn more about building knowledge in [AI Employees](/help/ai-employees/index#knowledge-tab).
 </Update>
 
 <Update label="February 06, 2026">
@@ -171,7 +259,7 @@ mode: "center"
 <Update label="February 04, 2026">
   ## Contacts bulk actions
 
-  On the [Contacts](/quick-start/contacts) page, you can now select **multiple contacts at once** and apply actions to the whole group—so repetitive updates take a few clicks instead of one-by-one edits.
+  On the [Contacts](/help/contacts/index) page, you can now select **multiple contacts at once** and apply actions to the whole group—so repetitive updates take a few clicks instead of one-by-one edits. See [Bulk actions](/help/contacts/search-and-filters/bulk-actions).
 
   It’s built for everyday cleanup and segmentation: keep your list accurate faster when you need the same change across many people.
 </Update>
@@ -179,7 +267,7 @@ mode: "center"
 <Update label="February 02, 2026">
   ## Inbox bulk actions
 
-  In [Inbox](/quick-start/inbox), select several chats and use the **bulk action bar** to triage at scale—open, close, snooze, assign, move between team inboxes, and more.
+  In [Inbox](/help/inbox/find-and-organize/bulk-actions), select several chats and use the **bulk action bar** to triage at scale—open, close, snooze, assign, move between team inboxes, and more.
 
   It’s the same workflow you already use for one chat, now built for busy queues: clear backlog faster and keep routing consistent across your team.
 </Update>
@@ -255,9 +343,9 @@ mode: "center"
 
   New automations are easier to set up the way you work. We listened to customer feedback and split the older “New & reopened chat” trigger into two clearer options—one for first-time conversations and one for returning customers. We also added a dedicated “Chat moved” trigger for when routing changes.
 
-    - **[New incoming chat](/quick-start/automations/triggers#new-incoming-chat)**: starts when someone messages you for the first time and a brand-new conversation is created. Use this for true onboarding moments like first greetings, collecting basic details, or starting the right welcome flow without mixing in returning customers.
-    - **[Reopened chat](/quick-start/automations/triggers#reopened-chat)**: starts when a previously closed conversation gets a new message. Use this for “welcome back” moments, re-assigning or routing returning chats, or triggering a different flow so you don’t repeat the same first-time welcome every time.
-    - **[Chat moved](/quick-start/automations/triggers#chat-moved)**: starts when a chat is moved into one of your selected inboxes. Use this to react to routing decisions—like notifying the right team, kicking off a new checklist, or updating what happens next based on where the chat landed.
+    - **[New incoming chat](/help/automations/triggers/new-incoming-chat)**: starts when someone messages you for the first time and a brand-new conversation is created. Use this for true onboarding moments like first greetings, collecting basic details, or starting the right welcome flow without mixing in returning customers.
+    - **[Reopened chat](/help/automations/triggers/reopened-chat)**: starts when a previously closed conversation gets a new message. Use this for “welcome back” moments, re-assigning or routing returning chats, or triggering a different flow so you don’t repeat the same first-time welcome every time.
+    - **[Chat moved](/help/automations/triggers/chat-moved)**: starts when a chat is moved into one of your selected inboxes. Use this to react to routing decisions—like notifying the right team, kicking off a new checklist, or updating what happens next based on where the chat landed.
 </Update>
 
 <Update label="January 02, 2026">
