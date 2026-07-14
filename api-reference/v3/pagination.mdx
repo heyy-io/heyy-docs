@@ -1,0 +1,68 @@
+---
+title: Pagination
+description: Page through search results with pagination in the request and response.
+---
+
+Search endpoints return paginated arrays. Control page size with **`pagination`** in the request body; read totals from the response.
+
+## Request shape
+
+```json
+{
+  "pagination": {
+    "page": 0,
+    "limit": 10
+  }
+}
+```
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `page` | integer ≥ 0 | Zero-based page index. Defaults to **0** when omitted. |
+| `limit` | integer 1–100 | Rows per page. Defaults to **10** when omitted. Maximum **100**. |
+
+Omit `pagination` entirely to use defaults.
+
+## Response shape
+
+Paginated search responses wrap results like this:
+
+```json
+{
+  "success": true,
+  "data": [],
+  "pagination": {
+    "page": 0,
+    "limit": 10,
+    "total": 142
+  },
+  "query": {
+    "query": "equals(status, 'open')",
+    "sortBy": "desc(createdAt)",
+    "search": "acme"
+  }
+}
+```
+
+| Field | Description |
+| ----- | ----------- |
+| `success` | Always `true` for successful paginated search responses |
+| `data` | Array of resources for the current page |
+| `pagination.page` | Current page index |
+| `pagination.limit` | Page size used for this request |
+| `pagination.total` | Total matching rows across all pages |
+| `query` | Echo of the `query`, `sortBy`, and `search` values applied to this request (when present) |
+
+## Paging through results
+
+Increment `page` until `page * limit >= total`:
+
+```bash
+# Page 0 → rows 0–9
+# Page 1 → rows 10–19
+# …
+```
+
+## Related fields
+
+Search bodies combine pagination with optional [`query`](/api-reference/v3/query), [`sortBy`](/api-reference/v3/sort-by), and [`search`](/api-reference/v3/search) filters.

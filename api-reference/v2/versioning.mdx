@@ -7,25 +7,25 @@ The Heyy API is versioned in the request path, following semantic versioning pri
 
 ### Versioning model
 
-- We use **major** and **minor** versions (for example, `v1.0`, `v2.0`).
+- We use **major** and **minor** versions (for example, `v1`, `v2`).
 - Major versions are encoded in the base path of the API:
 
 ```bash
-GET https://api.heyy.io/v1.0/...
-GET https://api.heyy.io/v2.0/...
+GET https://api.heyy.io/v1/...
+GET https://api.heyy.io/v2/...
 ```
-
-Minor and patch updates within a major version (for example, from `v2.0` to `v2.1`) are designed to be **backwards compatible** for existing clients.
 
 ### Current version
 
-The current latest version of the Heyy API is **v2.0**.
+The current latest version of the Heyy API is **v3**. See the [API v3 reference](/api-reference/v3/overview).
+
+**v2** is deprecated and will be **sunset on November 1, 2026**.
 
 ### Deprecation policy
 
 When we release a new major version:
 
-- The previous major version (for example, **v1.x** when **v2.x** is current) remains **available and supported for up to 6 months**.
+- The previous major version (for example, **v1.x** when **v2.x** is current) remains **available and supported for up to 3 months**.
 - We will clearly communicate deprecation timelines and the exact sunset date in advance.
 
 This window is intended to give you enough time to:

@@ -1,0 +1,70 @@
+---
+title: message.received
+sidebarTitle: message.received
+description: Occurs when a new inbound message is received on one of your channels.
+---
+
+import { MessageWebhookPayloadFields } from "/snippets/message-webhook-payload-fields.mdx";
+
+Event triggered when a **new inbound message** is received on one of your channels.
+
+## Payload fields
+
+<MessageWebhookPayloadFields />
+
+<ResponseExample>
+
+```json
+{
+  "id": "f8a2b1c3-4d5e-4f6a-9b0c-1d2e3f4a5b6c",
+  "tenantId": "a98d0e1f2-a1b4-4c4d-6e7f-8a9b0c1d2e3f",
+  "event": "message.received",
+  "data": {
+    "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+    "type": "message",
+    "sender": "inbound",
+    "sources": [
+      {
+        "type": "vendor"
+      }
+    ],
+    "status": "delivered",
+    "scheduledAt": null,
+    "content": {
+      "body": "Hello world"
+    },
+    "forwarded": false,
+    "reactions": [],
+    "errors": [],
+    "history": [],
+    "vendorId": "wamid.HBgNOTcyNTQ0Nzc4NzcwFQIAEhgUMzJCNzMyRzU0OTQ2MDdDNUE1RTIA",
+    "timestamp": "2026-03-13T23:29:34.000Z",
+    "vendorDetails": null,
+    "isSensitive": false,
+    "aiGenerationId": null,
+    "metadata": {},
+    "chat": {
+      "id": "5f3700cd-a5cf-4b2b-be5a-23b013025c11"
+    },
+    "handle": {
+      "id": "1a9559d7-3c53-4cd5-a076-962193b206e9",
+      "type": "phone_number",
+      "value": "+12135550123"
+    },
+    "contact": {
+      "id": "259c9fec-c831-41ad-8a43-3fdad389d015",
+      "firstName": "John",
+      "lastName": "Doe",
+      "phoneNumber": "+12135550123",
+      "email": "john@example.com"
+    },
+    "channel": {
+      "id": "h9dd4c3e-b049-4903-b047-e2717f1e88e3",
+      "type": "whatsapp",
+      "name": "Examply"
+    }
+  }
+}
+```
+
+</ResponseExample>

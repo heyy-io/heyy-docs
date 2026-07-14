@@ -1,0 +1,76 @@
+---
+title: Query
+description: Filter list results with structured query expressions on search endpoints.
+---
+
+Most list endpoints use `POST .../search` with an optional **`query`** string in the request body. Use it to filter rows before pagination is applied.
+
+`query` is a **structured expression**, not plain keyword search. For text matching across searchable fields, use the separate [`search`](/api-reference/v3/search) field instead.
+
+## Request shape
+
+```json
+{
+  "query": "equals(status, 'open')",
+  "pagination": { "page": 0, "limit": 25 }
+}
+```
+
+All search body fields are optional. Omit `query` to return unfiltered results (subject to your workspace permissions and any endpoint-specific defaults).
+
+## Expression syntax
+
+`query` uses a function-call syntax parsed as an expression tree. Combine filters with logical operators:
+
+| Function | Description |
+| -------- | ----------- |
+| `and(...)` | All conditions must match |
+| `or(...)` | Any condition must match |
+| `not(expr)` | Negates a condition |
+
+### Comparisons
+
+| Function | Description |
+| -------- | ----------- |
+| `equals(field, value)` | Exact match (string, number, date, or boolean) |
+| `has(field)` | Field is present / not null |
+| `startsWith(field, value)` | String prefix match |
+| `endsWith(field, value)` | String suffix match |
+| `contains(field, value)` | Substring match |
+| `gt(field, value)` / `gte(field, value)` | Numeric greater than / greater than or equal |
+| `lt(field, value)` / `lte(field, value)` | Numeric less than / less than or equal |
+| `before(field, date)` / `after(field, date)` | Date comparisons |
+| `relativeBefore(field, n, unit)` / `relativeAfter(field, n, unit)` | Relative date windows (`unit`: `days`, `weeks`, `months`) |
+| `relativeEqual(field, n, unit)` / `relativeNotEqual(field, n, unit)` | Relative date equality checks |
+| `inArray(field, [values])` | Value is in a list |
+| `containsAll(field, [values], key?)` | Array field contains all values |
+| `containsAny(field, [values], key?)` | Array field contains any value |
+| `equalsSet(field, [values], key?)` | Array field matches the set exactly |
+
+### Field references
+
+- Use the resource field name directly, for example `status`, `createdAt`, or `name`.
+- Reference another column in the expression with `col('fieldName')`.
+- Filter on a contact attribute with `getBy('attributes', 'id', 'attribute-id')` or `getBy('attributes', 'name', 'attribute_name')`.
+
+## Examples
+
+```json
+{
+  "query": "and(equals(status, 'open'), contains(name, 'Acme'))"
+}
+```
+
+```json
+{
+  "query": "or(equals(channelType, 'whatsapp'), equals(channelType, 'instagram'))"
+}
+```
+
+```json
+{
+  "query": "relativeAfter(createdAt, 7, 'days')"
+}
+```
+
+Field names are case-sensitive. Each search endpoint documents its filterable fields on the `query` property in the API reference.

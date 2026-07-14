@@ -3,6 +3,10 @@ title: 'Overview'
 description: 'Welcome to the Heyy Developer Guide! Whether you’re integration a simple API or building complex integrations, this guide will help you implement our API.'
 ---
 
+<Warning>
+  **API v2 is deprecated** and will be sunset on **November 1, 2026**. Use [API v3](/api-reference/v3/overview) for all new integrations.
+</Warning>
+
 <Frame>
   <img className="block dark:hidden" src="/assets/banner-light.svg" alt="Heyy banner" />
   <img className="hidden dark:block" src="/assets/banner-dark.svg" alt="Heyy banner" />
@@ -17,26 +21,3 @@ The Heyy API is a REST API that lets you build rich messaging experiences on top
 - Automate repetitive workflows and integrate Heyy with your existing tools.
 
 Whether you are adding a simple integration or building a full customer messaging platform, this documentation will help you get started quickly and stay productive.
-
-## Next steps
-
-<Columns cols={3}>
-  <Card title="Authentication" icon="key" href="/api-reference/authentication">
-    How to authenticate requests with API keys.
-  </Card>
-  <Card title="Versioning" icon="code-branch" href="/api-reference/versioning">
-    How we version the API.
-  </Card>
-    <Card title="Rate limiting" icon="gauge" href="/api-reference/rate-limiting">
-    How our rate limits work.
-  </Card>
-</Columns>
-
-<Columns cols={2}>
-  <Card title="Error handling" icon="triangle-exclamation" href="/api-reference/error-handling">
-    How errors are returned and how to handle them.
-  </Card>
-  <Card title="Webhooks" icon="share-nodes" href="/api-reference/webhook-object-model">
-    How webhook work and their payloads.
-  </Card>
-</Columns>

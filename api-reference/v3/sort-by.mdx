@@ -1,0 +1,64 @@
+---
+title: Sort By
+description: Order search results with sortBy expressions.
+---
+
+Search endpoints accept an optional **`sortBy`** string in the request body to control result ordering.
+
+## Request shape
+
+```json
+{
+  "sortBy": "desc(createdAt)",
+  "pagination": { "page": 0, "limit": 25 }
+}
+```
+
+If `sortBy` is omitted, the API uses the endpoint's default ordering.
+
+## Expression syntax
+
+`sortBy` uses the same expression parser as [`query`](/api-reference/v3/query), but only sorting functions are allowed.
+
+### Single field
+
+```json
+{
+  "sortBy": "asc(name)"
+}
+```
+
+```json
+{
+  "sortBy": "desc(updatedAt, 'nulls last')"
+}
+```
+
+| Function | Description |
+| -------- | ----------- |
+| `asc(field)` | Ascending order |
+| `desc(field)` | Descending order |
+| `asc(field, 'nulls first' \| 'nulls last')` | Ascending with null placement |
+| `desc(field, 'nulls first' \| 'nulls last')` | Descending with null placement |
+
+### Multiple fields
+
+Chain sort keys with `sort(...)`:
+
+```json
+{
+  "sortBy": "sort(desc(updatedAt), asc(name))"
+}
+```
+
+### Attribute fields
+
+Sort by a contact attribute using `getBy`:
+
+```json
+{
+  "sortBy": "asc(getBy('attributes', 'name', 'company'))"
+}
+```
+
+Field names are case-sensitive. Each search endpoint documents its sortable fields on the `sortBy` property in the API reference.

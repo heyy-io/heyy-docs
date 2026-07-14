@@ -14,17 +14,19 @@ The API uses the following HTTP codes to communicate errors:
 | 400       | Client error      | Returned when there is a type mismatch in the request body, invalid fields, or other structural issues in the request.                                   |
 | 401       | Unauthorized      | Returned when the request could not be authenticated (e.g. missing or invalid API key).                                                                   |
 | 404       | Not found         | Returned when the requested resource does not exist.                                                                                                     |
-| 429       | Too many requests | Returned when you exceed the [rate limit](/api-reference/rate-limiting). Throttle requests and use the rate limit headers to retry appropriately.       |
+| 429       | Too many requests | Returned when you exceed the [rate limit](/api-reference/v3/rate-limiting). Throttle requests and use the rate limit headers to retry appropriately.       |
 | 500       | Unexpected error  | Returned when an unexpected problem occurs on our servers. Retry with exponential backoff.                                                              |
 
 ## Error object
 
-Every error response uses the same structure: a single `error` object with `messageKey` and `message`.
+Every error response uses the same structure: `success` set to `false` and a single `error` object with `messageKey` and `message`. For **400** responses, `error` may also include `invalidParams` with field-level validation details.
 
 ```json
 {
+  "success": false,
   "error": {
     "messageKey": "contact_not_found",
     "message": "No contact could be found for this resource identifier. Please make sure to use the correct contact ID."
   }
 }
+```

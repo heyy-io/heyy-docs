@@ -1,0 +1,71 @@
+---
+title: message.sent
+sidebarTitle: message.sent
+description: Occurs when a new outbound message is created and sent from Heyy.
+---
+
+import { MessageWebhookPayloadFields } from "/snippets/message-webhook-payload-fields.mdx";
+
+Event triggered when a **new outbound message** is created and sent from Heyy (by an agent, automation, or API call).
+
+## Payload fields
+
+<MessageWebhookPayloadFields />
+
+<ResponseExample>
+
+```json
+{
+  "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+  "tenantId": "a98d0e1f2-a1b4-4c4d-6e7f-8a9b0c1d2e3f",
+  "event": "message.sent",
+  "data": {
+    "id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
+    "type": "message",
+    "sender": "outbound",
+    "sources": [
+      {
+        "type": "inbox",
+        "userId": "b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2e"
+      }
+    ],
+    "status": "pending",
+    "scheduledAt": null,
+    "content": {
+      "body": "Hello world"
+    },
+    "forwarded": false,
+    "reactions": [],
+    "errors": [],
+    "history": [],
+    "vendorId": "2847123456789012345",
+    "timestamp": "2026-03-13T23:15:25.166Z",
+    "vendorDetails": null,
+    "isSensitive": false,
+    "aiGenerationId": null,
+    "metadata": {},
+    "chat": {
+      "id": "5f3700cd-a5cf-4b2b-be5a-23b013025c11"
+    },
+    "handle": {
+      "id": "1a9559d7-3c53-4cd5-a076-962193b206e9",
+      "type": "phone_number",
+      "value": "+12135550123"
+    },
+    "contact": {
+      "id": "259c9fec-c831-41ad-8a43-3fdad389d015",
+      "firstName": "John",
+      "lastName": "Doe",
+      "phoneNumber": "+12135550123",
+      "email": "john@example.com"
+    },
+    "channel": {
+      "id": "h9dd4c3e-b049-4903-b047-e2717f1e88e3",
+      "type": "whatsapp",
+      "name": "Examply"
+    }
+  }
+}
+```
+
+</ResponseExample>

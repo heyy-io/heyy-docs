@@ -1,0 +1,45 @@
+---
+title: Versioning
+description: How Heyy versions its public API and deprecates older versions.
+---
+
+The Heyy API is versioned in the request path, following semantic versioning principles.
+
+### Versioning model
+
+- We use **major** and **minor** versions (for example, `v2`, `v3`).
+- Major versions are encoded in the base path of the API:
+
+```bash
+GET https://api.heyy.io/v2/...
+GET https://api.heyy.io/v3/...
+```
+
+### Current version
+
+The current latest version of the Heyy API is **v3**. Use it for all new integrations.
+
+### API v2 sunset
+
+[API v2](/api-reference/v2/overview) is deprecated and will be **sunset on November 1, 2026**. After that date, v2 endpoints will no longer be available.
+
+If you are still on v2, plan your migration to v3 before the sunset date. Key changes include:
+
+- Search endpoints use `POST .../search` with a request body instead of list `GET` endpoints.
+- Broadcasts are now **campaigns**.
+- Workflows are now **automations**.
+- Webhook management uses the [v3 API webhook endpoints](/webhooks/overview#manage-webhooks-via-api).
+
+If you need help planning or executing a migration between versions, please contact our support team and we'll be happy to assist.
+
+### Deprecation policy
+
+When we release a new major version:
+
+- The previous major version remains **available and supported for up to 3 months** after the new version is published.
+- We clearly communicate deprecation timelines and the exact sunset date in advance.
+
+This window is intended to give you enough time to:
+
+- Test your integration against the new version.
+- Roll out changes safely across your environments.
