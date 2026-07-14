@@ -46,6 +46,7 @@ When you are rate limited, the API returns **429 Too Many Requests** with this b
 
 ```json
 {
+  "success": false,
   "error": {
     "messageKey": "rate_limit_exceeded",
     "message": "Too many requests. Limit is applied per minute per tenant. Please retry after the time indicated by the X-RateLimit-Reset header."

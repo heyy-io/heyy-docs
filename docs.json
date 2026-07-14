@@ -30,7 +30,7 @@
     "tabs": [
       {
         "tab": "Help Center",
-        "icon": "life-buoy",
+        "icon": "life-ring",
         "groups": [
           {
             "group": "QUICK START",
@@ -356,19 +356,23 @@
       {
         "tab": "API Reference",
         "icon": "code",
-        "dropdowns": [
+        "versions": [
           {
-            "dropdown": "Version 2",
-            "icon": "code",
+            "version": "Version 3",
+            "tag": "Latest",
             "groups": [
               {
                 "group": "GETTING STARTED",
                 "pages": [
-                  "api-reference/overview",
-                  "api-reference/authentication",
-                  "api-reference/versioning",
-                  "api-reference/rate-limiting",
-                  "api-reference/error-handling"
+                  "api-reference/v3/overview",
+                  "api-reference/v3/authentication",
+                  "api-reference/v3/versioning",
+                  "api-reference/v3/query",
+                  "api-reference/v3/sort-by",
+                  "api-reference/v3/search",
+                  "api-reference/v3/pagination",
+                  "api-reference/v3/rate-limiting",
+                  "api-reference/v3/error-handling"
                 ]
               },
               {
@@ -377,111 +381,153 @@
                   {
                     "group": "Attribute",
                     "expanded": false,
-                    "openapi": "api-reference/openapi.json",
                     "pages": [
-                      "GET /attributes",
-                      "POST /attributes",
-                      "DELETE /attributes/{attributeId}"
+                      "api-reference/openapi-v3.json POST /attributes/search",
+                      "api-reference/openapi-v3.json POST /attributes",
+                      "api-reference/openapi-v3.json PUT /attributes/{attributeId}",
+                      "api-reference/openapi-v3.json GET /attributes/{attributeId}",
+                      "api-reference/openapi-v3.json DELETE /attributes/{attributeId}"
                     ]
                   },
                   {
                     "group": "Automation",
                     "expanded": false,
-                    "openapi": "api-reference/openapi.json",
                     "pages": [
-                      "GET /{channelId}/workflows",
-                      "POST /{channelId}/workflows/{workflowId}"
+                      "api-reference/openapi-v3.json POST /automations/search",
+                      "api-reference/openapi-v3.json GET /automations/{automationId}",
+                      "api-reference/openapi-v3.json POST /automations/{automationId}/pause",
+                      "api-reference/openapi-v3.json POST /automations/{automationId}/unpause",
+                      "api-reference/openapi-v3.json POST /automations/{automationId}/trigger"
                     ]
                   },
                   {
-                    "group": "Broadcast",
+                    "group": "Campaign",
                     "expanded": false,
-                    "openapi": "api-reference/openapi.json",
                     "pages": [
-                      "GET /{channelId}/broadcasts",
-                      "POST /{channelId}/broadcasts",
-                      "GET /{channelId}/broadcasts/{broadcastId}",
-                      "PUT /{channelId}/broadcasts/{broadcastId}",
-                      "DELETE /{channelId}/broadcasts/{broadcastId}",
-                      "POST /{channelId}/broadcasts/{broadcastId}/start",
-                      "GET /{channelId}/broadcasts/{broadcastId}/recipients",
-                      "POST /{channelId}/broadcasts/{broadcastId}/recipients",
-                      "DELETE /{channelId}/broadcasts/{broadcastId}/recipients"
-                    ]
-                  },
-                  {
-                    "group": "Business",
-                    "expanded": false,
-                    "openapi": "api-reference/openapi.json",
-                    "pages": [
-                      "GET /business"
+                      "api-reference/openapi-v3.json POST /campaigns/search",
+                      "api-reference/openapi-v3.json POST /campaigns",
+                      "api-reference/openapi-v3.json PUT /campaigns/{campaignId}",
+                      "api-reference/openapi-v3.json GET /campaigns/{campaignId}",
+                      "api-reference/openapi-v3.json DELETE /campaigns/{campaignId}",
+                      "api-reference/openapi-v3.json POST /campaigns/{campaignId}/recipients",
+                      "api-reference/openapi-v3.json DELETE /campaigns/{campaignId}/recipients",
+                      "api-reference/openapi-v3.json POST /campaigns/{campaignId}/start"
                     ]
                   },
                   {
                     "group": "Channel",
                     "expanded": false,
-                    "openapi": "api-reference/openapi.json",
                     "pages": [
-                      "GET /channels",
-                      "GET /channels/{channelId}"
+                      "api-reference/openapi-v3.json POST /channels/search",
+                      "api-reference/openapi-v3.json GET /channels/{channelId}"
                     ]
                   },
                   {
                     "group": "Chat",
                     "expanded": false,
-                    "openapi": "api-reference/openapi.json",
                     "pages": [
-                      "GET /{channelId}/chats",
-                      "GET /{channelId}/chats/{chatId}",
-                      "PUT /{channelId}/chats/{chatId}"
+                      "api-reference/openapi-v3.json POST /chats/search",
+                      "api-reference/openapi-v3.json GET /chats/{chatId}",
+                      "api-reference/openapi-v3.json DELETE /chats/{chatId}",
+                      "api-reference/openapi-v3.json POST /chats/{chatId}/status",
+                      "api-reference/openapi-v3.json POST /chats/{chatId}/assign_team",
+                      "api-reference/openapi-v3.json POST /chats/{chatId}/assign_user",
+                      "api-reference/openapi-v3.json POST /chats/{chatId}/mark_as_sensitive",
+                      "api-reference/openapi-v3.json POST /chats/{chatId}/mark_as_not_sensitive",
+                      "api-reference/openapi-v3.json POST /chats/{chatId}/mark_as_read",
+                      "api-reference/openapi-v3.json POST /chats/{chatId}/mark_as_unread"
                     ]
                   },
                   {
                     "group": "Contact",
                     "expanded": false,
-                    "openapi": "api-reference/openapi.json",
                     "pages": [
-                      "GET /contacts",
-                      "POST /contacts",
-                      "GET /contacts/{contactId}",
-                      "PUT /contacts/{contactId}",
-                      "DELETE /contacts/{contactId}",
-                      "POST /contacts/{contactId}/attributes",
-                      "DELETE /contacts/{contactId}/attributes"
+                      "api-reference/openapi-v3.json POST /contacts/search",
+                      "api-reference/openapi-v3.json POST /contacts",
+                      "api-reference/openapi-v3.json POST /contacts/upsert",
+                      "api-reference/openapi-v3.json PUT /contacts/{contactId}",
+                      "api-reference/openapi-v3.json GET /contacts/{contactId}",
+                      "api-reference/openapi-v3.json DELETE /contacts/{contactId}",
+                      "api-reference/openapi-v3.json POST /contacts/{contactId}/labels",
+                      "api-reference/openapi-v3.json DELETE /contacts/{contactId}/labels",
+                      "api-reference/openapi-v3.json POST /contacts/{contactId}/subscribe",
+                      "api-reference/openapi-v3.json POST /contacts/{contactId}/unsubscribe",
+                      "api-reference/openapi-v3.json POST /contacts/bulk"
                     ]
                   },
                   {
                     "group": "File",
                     "expanded": false,
-                    "openapi": "api-reference/openapi.json",
                     "pages": [
-                      "POST /upload_file"
+                      "api-reference/openapi-v3.json POST /files",
+                      "api-reference/openapi-v3.json GET /files/{fileId}",
+                      "api-reference/openapi-v3.json GET /files/{fileId}/public_url"
+                    ]
+                  },
+                  {
+                    "group": "Journey",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v3.json POST /journeys/search",
+                      "api-reference/openapi-v3.json GET /journeys/{journeyId}",
+                      "api-reference/openapi-v3.json POST /journeys/{journeyId}/subscribe",
+                      "api-reference/openapi-v3.json POST /journeys/{journeyId}/unsubscribe"
                     ]
                   },
                   {
                     "group": "Label",
                     "expanded": false,
-                    "openapi": "api-reference/openapi.json",
                     "pages": [
-                      "GET /labels",
-                      "POST /labels",
-                      "DELETE /labels/{labelId}"
+                      "api-reference/openapi-v3.json POST /labels/search",
+                      "api-reference/openapi-v3.json POST /labels",
+                      "api-reference/openapi-v3.json PUT /labels/{labelId}",
+                      "api-reference/openapi-v3.json GET /labels/{labelId}",
+                      "api-reference/openapi-v3.json DELETE /labels/{labelId}"
+                    ]
+                  },
+                  {
+                    "group": "Message",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v3.json POST /messages/send",
+                      "api-reference/openapi-v3.json POST /messages/send_template"
                     ]
                   },
                   {
                     "group": "Message Template",
                     "expanded": false,
-                    "openapi": "api-reference/openapi.json",
                     "pages": [
-                      "GET /message_templates"
+                      "api-reference/openapi-v3.json POST /message_templates/search",
+                      "api-reference/openapi-v3.json POST /message_templates",
+                      "api-reference/openapi-v3.json PUT /message_templates/{messageTemplateId}",
+                      "api-reference/openapi-v3.json GET /message_templates/{messageTemplateId}",
+                      "api-reference/openapi-v3.json DELETE /message_templates/{messageTemplateId}"
                     ]
                   },
                   {
-                    "group": "WhatsApp Message",
+                    "group": "Team",
                     "expanded": false,
-                    "openapi": "api-reference/openapi.json",
                     "pages": [
-                      "POST /{channelId}/whatsapp_messages/send"
+                      "api-reference/openapi-v3.json POST /teams/search",
+                      "api-reference/openapi-v3.json POST /teams",
+                      "api-reference/openapi-v3.json PUT /teams/{teamId}",
+                      "api-reference/openapi-v3.json GET /teams/{teamId}",
+                      "api-reference/openapi-v3.json DELETE /teams/{teamId}"
+                    ]
+                  },
+                  {
+                    "group": "User",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v3.json GET /users",
+                      "api-reference/openapi-v3.json GET /users/{userId}"
+                    ]
+                  },
+                  {
+                    "group": "Workspace",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v3.json GET /workspace"
                     ]
                   }
                 ]
@@ -489,13 +535,121 @@
             ]
           },
           {
-            "dropdown": "Version 3 (coming soon)",
-            "icon": "code",
+            "version": "Version 2",
+            "tag": "Sunset Oct 1, 2026",
             "groups": [
               {
-                "group": "API V3",
+                "group": "GETTING STARTED",
                 "pages": [
-                  "api-reference/v3/overview"
+                  "api-reference/v2/overview",
+                  "api-reference/v2/authentication",
+                  "api-reference/v2/versioning",
+                  "api-reference/v2/rate-limiting",
+                  "api-reference/v2/error-handling"
+                ]
+              },
+              {
+                "group": "HEYY API",
+                "pages": [
+                  {
+                    "group": "Attribute",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v2.json GET /attributes",
+                      "api-reference/openapi-v2.json POST /attributes",
+                      "api-reference/openapi-v2.json DELETE /attributes/{attributeId}"
+                    ]
+                  },
+                  {
+                    "group": "Automation",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v2.json GET /{channelId}/workflows",
+                      "api-reference/openapi-v2.json POST /{channelId}/workflows/{workflowId}"
+                    ]
+                  },
+                  {
+                    "group": "Broadcast",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v2.json GET /{channelId}/broadcasts",
+                      "api-reference/openapi-v2.json POST /{channelId}/broadcasts",
+                      "api-reference/openapi-v2.json GET /{channelId}/broadcasts/{broadcastId}",
+                      "api-reference/openapi-v2.json PUT /{channelId}/broadcasts/{broadcastId}",
+                      "api-reference/openapi-v2.json DELETE /{channelId}/broadcasts/{broadcastId}",
+                      "api-reference/openapi-v2.json POST /{channelId}/broadcasts/{broadcastId}/start",
+                      "api-reference/openapi-v2.json GET /{channelId}/broadcasts/{broadcastId}/recipients",
+                      "api-reference/openapi-v2.json POST /{channelId}/broadcasts/{broadcastId}/recipients",
+                      "api-reference/openapi-v2.json DELETE /{channelId}/broadcasts/{broadcastId}/recipients"
+                    ]
+                  },
+                  {
+                    "group": "Business",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v2.json GET /business"
+                    ]
+                  },
+                  {
+                    "group": "Channel",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v2.json GET /channels",
+                      "api-reference/openapi-v2.json GET /channels/{channelId}"
+                    ]
+                  },
+                  {
+                    "group": "Chat",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v2.json GET /{channelId}/chats",
+                      "api-reference/openapi-v2.json GET /{channelId}/chats/{chatId}",
+                      "api-reference/openapi-v2.json PUT /{channelId}/chats/{chatId}"
+                    ]
+                  },
+                  {
+                    "group": "Contact",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v2.json GET /contacts",
+                      "api-reference/openapi-v2.json POST /contacts",
+                      "api-reference/openapi-v2.json GET /contacts/{contactId}",
+                      "api-reference/openapi-v2.json PUT /contacts/{contactId}",
+                      "api-reference/openapi-v2.json DELETE /contacts/{contactId}",
+                      "api-reference/openapi-v2.json POST /contacts/{contactId}/attributes",
+                      "api-reference/openapi-v2.json DELETE /contacts/{contactId}/attributes"
+                    ]
+                  },
+                  {
+                    "group": "File",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v2.json POST /upload_file"
+                    ]
+                  },
+                  {
+                    "group": "Label",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v2.json GET /labels",
+                      "api-reference/openapi-v2.json POST /labels",
+                      "api-reference/openapi-v2.json DELETE /labels/{labelId}"
+                    ]
+                  },
+                  {
+                    "group": "Message Template",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v2.json GET /message_templates"
+                    ]
+                  },
+                  {
+                    "group": "WhatsApp Message",
+                    "expanded": false,
+                    "pages": [
+                      "api-reference/openapi-v2.json POST /{channelId}/whatsapp_messages/send"
+                    ]
+                  }
                 ]
               }
             ]
@@ -524,19 +678,18 @@
           {
             "group": "MANAGE WEBHOOKS",
             "expanded": false,
-            "openapi": "api-reference/openapi.json",
             "pages": [
-              "GET /api_webhooks",
-              "POST /api_webhooks",
-              "PUT /api_webhooks/{webhookId}",
-              "DELETE /api_webhooks/{webhookId}"
+              "api-reference/openapi-v3.json POST /api_webhooks",
+              "api-reference/openapi-v3.json PUT /api_webhooks/{webhookId}",
+              "api-reference/openapi-v3.json DELETE /api_webhooks/{webhookId}",
+              "api-reference/openapi-v3.json POST /api_webhooks/search"
             ]
           }
         ]
       },
       {
         "tab": "Changelog",
-        "icon": "megaphone",
+        "icon": "bullhorn",
         "groups": [
           {
             "group": "Changelog",
@@ -560,10 +713,6 @@
   },
   "navbar": {
     "links": [
-      {
-        "label": "Join partner program",
-        "href": "https://partners.dub.co/heyy"
-      },
       {
         "label": "Contact support",
         "href": "https://wa.me/16504570123"

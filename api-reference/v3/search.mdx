@@ -1,0 +1,34 @@
+---
+title: Search
+description: Full-text search on list endpoints using the search request body field.
+---
+
+In addition to structured [`query`](/api-reference/v3/query) filters, search endpoints accept an optional **`search`** string for keyword-style lookup.
+
+## `search` vs `query`
+
+| Field | Purpose |
+| ----- | ------- |
+| **`query`** | Structured filter expressions (`equals`, `contains`, `and`, `or`, …) |
+| **`search`** | Free-text search across the resource's searchable fields |
+
+You can use them together:
+
+```json
+{
+  "search": "john acme",
+  "query": "equals(status, 'open')",
+  "sortBy": "desc(updatedAt)",
+  "pagination": { "page": 0, "limit": 25 }
+}
+```
+
+## Request shape
+
+```json
+{
+  "search": "your keywords here"
+}
+```
+
+`search` is a plain string. Matching behavior (which columns are searched and how terms are tokenized) depends on the resource. Each search endpoint documents the `search` property in the API reference.
