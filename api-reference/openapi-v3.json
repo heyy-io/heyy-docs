@@ -48769,6 +48769,7 @@
                       "header": "string",
                       "footer": "string"
                     },
+                    "variables": [],
                     "vendorDetails": {
                       "name": "string",
                       "language": "af",
@@ -49699,6 +49700,7 @@
                       "header": "string",
                       "footer": "string"
                     },
+                    "variables": [],
                     "vendorDetails": {
                       "name": "string",
                       "language": "af",
@@ -51464,6 +51466,7 @@
                       "header": "string",
                       "footer": "string"
                     },
+                    "variables": [],
                     "vendorDetails": {
                       "name": "string",
                       "language": "af",
