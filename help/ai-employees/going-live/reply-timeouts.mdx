@@ -1,8 +1,26 @@
 ---
 title: "Set reply timeouts"
-description: "Handle when the customer stops responding."
+description: "Handle a contact who stops replying with the Contact Not Replied condition."
 ---
 
-Configure **Reply timeout** on the **AI Employee** action so the automation can continue if the customer goes silent.
+**Reply timeout**, also called **Contact Not Replied**, is a timer condition on the **AI Employee** automation action: if the contact does not reply within a set window, the automation can act instead of leaving the conversation open indefinitely.
 
-Pick duration and unit to match your SLA. Timeouts often pair with follow-up messages or closing the chat in later nodes.
+## Configure it
+
+1. Open the **AI Employee** action in the automation editor.
+2. Set the **Reply timeout** duration and unit to match your SLA — for example, 30 minutes.
+3. Connect the timeout branch to whatever should happen next.
+
+<Frame>
+  ![Reply timeout configuration](/assets/ai-employees-automations-reply-timeout.png)
+</Frame>
+
+## What to do when it fires
+
+| Outcome | When to use it |
+| ------- | ---------------- |
+| **Close the chat** | The conversation was likely resolved or abandoned; free it up rather than leaving it open. |
+| **Reassign it** | Route to a different team or teammate for a fresh follow-up attempt. |
+| **Hand to another AI Employee** | Trigger a different employee for a lighter-touch, automated follow-up message. |
+
+Fully custom — place the timeout condition wherever it is useful in the flow, and pair it with whatever next step matches your SLA. See [Add an AI employee to an automation](/help/ai-employees/going-live/add-to-automation) for how this fits alongside channel selection and exit points on the same action.

@@ -1,8 +1,32 @@
 ---
 title: "Override guidelines inside an automation"
-description: "Per-automation instructions for the same employee."
+description: "Per-automation instructions that supplement the employee's base guidelines, without cloning the employee."
 ---
 
-The **AI Employee** action can include automation-specific guidelines that supplement (not replace) the employee's base [guidelines](/help/ai-employees/identity-and-guidelines/write-your-guidelines).
+The **AI Employee** automation action includes an optional **Context** field for automation-specific guidelines. These supplement — they do not replace — the employee's base [guidelines](/help/ai-employees/identity-and-guidelines/write-your-guidelines), and they apply only inside this one automation, not everywhere the employee is used.
 
-Use overrides for channel-specific tone, promo rules, or seasonal scripts without cloning the whole employee.
+## When to use an override
+
+| Use an override for | Use a base guideline instead |
+| --------------------- | ------------------------------ |
+| A one-off task specific to this automation's flow | Behavior that should hold everywhere the employee runs |
+| An extra boundary that only applies on this channel | A permanent rule — belongs in [Boundaries](/help/ai-employees/identity-and-guidelines/boundaries) |
+| A narrower set of actions than the employee normally has access to | The employee's default capability set |
+| Channel-specific tone or a seasonal promo script for one automation | Ongoing tone — belongs in [Identity setup](/help/ai-employees/identity-and-guidelines/identity-setup) |
+
+## Add an override
+
+1. Open the **AI Employee** action in the automation editor.
+2. Open the **Context** field.
+3. Write the additional instruction, scoped to what this automation needs.
+4. Save and publish.
+
+<Frame>
+  ![Automation context override field](/assets/ai-employees-automations-context-override.png)
+</Frame>
+
+<Tip>
+  Overrides are the right tool when one employee runs in several automations that each need a slightly different script — a seasonal promo on one channel, a stricter boundary on another — without maintaining separate cloned employees.
+</Tip>
+
+Test the override in the [Playground](/help/ai-employees/going-live/test-in-playground) before publishing; the Playground reflects the employee's base configuration, so verify override behavior once the automation is live with a real test conversation on that channel.

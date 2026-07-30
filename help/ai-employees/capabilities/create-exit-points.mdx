@@ -1,26 +1,72 @@
 ---
 title: "Create exit points"
-description: "Define when the AI should hand off, close, or branch."
+description: "Every way a conversation can end — and why none of them work until selected in an automation."
 ---
 
-**Exit points** tell your employee when a conversation should stop and continue elsewhere in your automation — handoff to a human, close the chat, run a follow-up action, or branch to another path.
+An **exit point** is how your AI Employee recognizes that a conversation has reached a natural end, and what should happen next. Most people think of this as escalation — handing off to a human — but that is only one kind.
 
-Each exit point has:
+<Frame>
+  ![Exit points on an AI Employee](/assets/ai-employees-exit-points-hero.png)
+</Frame>
 
-- **Name** — A label your team recognizes in the app and automation editor
-- **Prompt** — Natural-language instructions for when this exit should fire
-- **Status** — Active or inactive
+<Warning>
+  Configuring an exit point on the employee is not enough on its own. Every [automation](/help/automations/index) the employee runs in has its own exit point selection — if it is not explicitly selected there, the employee will not use it, even though it is fully set up here. See [Use exit points in automations](/help/ai-employees/going-live/use-exit-points-in-automations).
+</Warning>
+
+## It's broader than escalation
+
+An exit point can represent any resolution:
+
+| Type | Example |
+| ---- | ------- |
+| **Escalation** | The contact asks for a human, or the issue needs human judgment. |
+| **Resolution** | The issue is actually solved, no handoff needed. |
+| **A qualified outcome** | A lead is warm and ready to be handed to sales. |
+
+You are not limited to a single generic "escalate to human" option — create as many exit points as you need, each with its own name and trigger condition: escalate to a specific team, escalate to a named teammate, flag a warm lead, close out a resolved ticket. Whatever shape your workflow needs.
 
 ## Create an exit point
 
-On the **Exit points** tab:
-
-1. Click **New exit point**.
-2. Enter a **name** (for example, "Request human" or "Issue resolved").
-3. Write the **prompt** — describe the situation that should trigger this exit.
+1. On the **Exit points** tab, click **New exit point**.
+2. Enter a clear, friendly **name** — for example, *"Escalate to Human"* or *"Resolved"*.
+3. Write the **prompt** — describe, in plain language, exactly when this exit should trigger.
 4. Set **status** to active when you are ready to use it.
 5. Save.
 
-Write prompts the way you would brief a teammate: specific, observable situations work better than vague rules. Align handoff exits with [Boundaries](/help/ai-employees/identity-and-guidelines/boundaries).
+<Frame>
+  ![Create an exit point](/assets/ai-employees-exit-points-create.png)
+</Frame>
 
-Test each exit point in the [Playground](/help/ai-employees/going-live/test-in-playground). Wire exits in automations via [Use exit points in automations](/help/ai-employees/going-live/use-exit-points-in-automations).
+Common examples:
+
+| Name | Trigger condition |
+| ---- | ------------------- |
+| **Escalate to Human** | The contact asks for a person, or the issue needs human judgment. |
+| **Escalate to Sales** | A warm lead is ready for a human conversation. |
+| **Refund Request** | The contact asks for a refund. |
+| **Resolved** | The contact confirms they got what they needed. |
+
+<Frame>
+  ![Exit point examples](/assets/ai-employees-exit-points-examples.png)
+</Frame>
+
+The employee reads the conversation and decides which, if any, exit point matches, then acts on it. You can create as many as you need — there is no cap — and each can be routed differently downstream in an automation.
+
+<Tip>
+  Write prompts the way you would brief a teammate — specific, observable situations work better than vague rules. Align handoff exits with [Boundaries](/help/ai-employees/identity-and-guidelines/boundaries) so escalation triggers and hard limits use the same language.
+</Tip>
+
+## More scenarios worth an exit point
+
+Because trigger instructions are entirely freehand, exit points can be shaped around whatever genuinely warrants human involvement for your business:
+
+| Scenario | Why it needs a human |
+| -------- | ---------------------- |
+| **Repeated unresolved issue** | The employee has already attempted a fix once or twice and the customer indicates the problem persists — continued automated attempts are less valuable than a human approaching it differently. |
+| **Refund outside standard policy** | The request falls outside the stated policy window or is a genuinely unique circumstance — a human can apply discretion instead of the employee simply repeating the policy. |
+| **Cancellation requiring judgment** | Unusual circumstances around a cancellation are better routed to a human than resolved purely by policy lookup. |
+| **Complex technical issue** | Standard troubleshooting cannot resolve a reported bug, or it clearly needs engineering investigation. |
+
+The principle underneath all of these: an employee can resolve the large majority of routine conversations independently, but some situations benefit from human judgment specifically. Exit points formalize, in advance, exactly where that line sits for your business, rather than discovering it reactively when a conversation goes wrong.
+
+Set at least one escalation exit point before going live — without one, the employee keeps trying to handle a conversation it is not equipped for, instead of handing it to a person. Test each exit point in the [Playground](/help/ai-employees/going-live/test-in-playground), then wire it into an automation via [Use exit points in automations](/help/ai-employees/going-live/use-exit-points-in-automations).

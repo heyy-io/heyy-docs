@@ -1,12 +1,26 @@
 ---
 title: "Let your employee read contact fields"
-description: "Grant read access to contact data in chat."
+description: "Grant read access so the employee can see and use contact data."
 ---
 
-On **Attributes**:
+**Read** is the base permission on the **Attributes** tab — see [Choose which attributes to expose](/help/ai-employees/capabilities/choose-attributes-to-expose) for how it relates to Share and Update. With Read enabled, the employee can see an attribute's value and use it internally: in its own reasoning, in an [action](/help/ai-employees/capabilities/actions-overview) call, or in how it greets a returning contact by name. Read does not let the employee say the value out loud — that requires Share as well.
 
-1. Click **Add attribute**.
-2. Choose a built-in or custom [workspace attribute](/help/contacts/mini-crm/custom-attributes-as-columns).
-3. Enable **Read**.
+## Grant read access
 
-The employee can use these values in replies and [guideline @mentions](/help/ai-employees/identity-and-guidelines/write-your-guidelines). Only expose fields the AI truly needs — fewer fields mean fewer mistakes.
+1. Open the **Attributes** tab on an employee.
+2. Click **Add attribute**.
+3. Choose a built-in field (first name, last name, email, phone) or a custom [workspace attribute](/help/contacts/mini-crm/custom-attributes-as-columns).
+4. Enable **Read**.
+5. Save.
+
+<Frame>
+  ![Enable read on an attribute](/assets/ai-employees-attributes-read.png)
+</Frame>
+
+## Using it in guidelines
+
+Once Read is enabled, reference the attribute directly in a [guideline](/help/ai-employees/identity-and-guidelines/write-your-guidelines) with `@Attributes` — for example, *update the language attribute when the AI detects the contact's language*, or *greet returning contacts by their first name*.
+
+<Tip>
+  Only expose fields the employee truly needs. Fewer fields mean fewer places a guideline can misfire or leak a value it should not have access to.
+</Tip>

@@ -1,13 +1,44 @@
 ---
 title: "Connect to real customer traffic"
-description: "Wire an AI Employee into channels via automations."
+description: "Connect a channel and wire your AI Employee into an automation."
 ---
 
-AI Employees reach customers through **automations**, not by sitting on a channel alone.
+A tested AI Employee is not doing anything on its own yet. It needs somewhere to have the conversation, and an [automation](/help/automations/index) that hands incoming messages to it.
 
-1. Finish configuration — start with [Identity setup](/help/ai-employees/identity-and-guidelines/identity-setup) and [Content](/help/ai-employees/content/add-your-website) as needed.
-2. [Test in the Playground](/help/ai-employees/going-live/test-in-playground).
-3. [Add the employee to an automation](/help/ai-employees/going-live/add-to-automation) on the channel you use (WhatsApp, Instagram, Live Chat, etc.).
-4. Publish the automation.
+## Connect a channel
 
-When a trigger fires (for example, a new incoming message), the automation can hand the conversation to your AI Employee. See [How AI employees work in automations](/help/ai-employees/going-live/how-ai-employees-work-in-automations) and [Messaging channels](/help/messaging-channels/whatsapp/getting-started) if you have not set up a channel yet.
+Go to **Settings → Channels**, click **Add Channel**, and pick one of the following. You can connect more than one, and one employee can work across all of them.
+
+| Channel | Best for |
+| ------- | -------- |
+| **Live Chat** | A widget embedded on your own website — support, FAQs, or lead capture without sending visitors elsewhere. |
+| **WhatsApp** | Connecting your business number where a large share of customers already message you. |
+| **Instagram** | Replying to DMs and comments without leaving Heyy. |
+| **Facebook Messenger** | The same idea, for your Facebook Page's Messenger conversations. |
+
+<Frame>
+  ![Add channel](/assets/ai-employees-add-channel.png)
+</Frame>
+
+Each channel has its own short setup, covered in [Messaging channels](/help/messaging-channels/whatsapp/getting-started). If you already have a channel connected, skip ahead.
+
+## Build an automation
+
+Go to **Automations** in the top navigation and click **Create new automation** if your list is empty.
+
+1. **Set the trigger's channel.** The editor opens with a **Trigger** block set to *New incoming message*. Click into it and choose the channel you just connected.
+2. **Add your AI Employee.** Open the **Channel Menu** on the right, search for the AI Employee option, and select which employee handles this automation.
+3. **Optionally add extra guidelines.** These apply only inside this automation, not everywhere the employee is used — useful for a one-off task or a narrower boundary. See [Automation guideline overrides](/help/ai-employees/going-live/automation-guideline-overrides).
+4. **Select which exit points are active.** An [exit point](/help/ai-employees/capabilities/create-exit-points) configured on the employee does not apply automatically — if it is not selected here, the automation will not use it.
+
+<Frame>
+  ![Automation with AI Employee step](/assets/ai-employees-automation-step.png)
+</Frame>
+
+<Tip>
+  A **Contact Not Replied** condition lets you close, reassign, or hand off to another employee if the customer does not reply within a set window — place it wherever it is useful in the flow. See [Reply timeouts](/help/ai-employees/going-live/reply-timeouts).
+</Tip>
+
+## Publish
+
+Once the automation is set up the way you want, publish it to start receiving real conversations. See [How AI employees work in automations](/help/ai-employees/going-live/how-ai-employees-work-in-automations) and [Add to an automation](/help/ai-employees/going-live/add-to-automation) for the full reference.
