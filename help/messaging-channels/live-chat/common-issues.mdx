@@ -1,3 +1,29 @@
 ---
 title: "Common issues"
+description: "Fix a widget that won't load, won't match your brand, or won't reach the Inbox."
 ---
+
+Most Live Chat problems come down to three things: the embed script isn't on the page, the domain isn't allowed, or a visibility rule is hiding the widget where you expect to see it. Work through these before assuming something is broken.
+
+<Warning>
+  **Widget doesn't appear on your site at all.** Check in this order:
+
+  1. **Confirm the embed script is actually on the page.** Open the **Installation** tab in [Getting started](/help/messaging-channels/live-chat/getting-started) and re-copy the script — a typo or a script placed inside a conditional block that never renders is the most common cause.
+  2. **Check Allowed domains.** If the **Security** tab has domains listed and the current site isn't one of them, the widget will not load there. Add the domain, including any subdomain you're testing on (`www.` vs. bare domain count as different entries).
+  3. **Check Hidden paths.** A hidden-path rule that's broader than intended — for example, a pattern that matches your entire site instead of just one section — will suppress the widget everywhere.
+  4. **Hard-refresh and check the browser console** for a blocked script (ad blockers and strict cookie/privacy browser extensions occasionally interfere with embedded widgets).
+</Warning>
+
+## Widget appears but conversations aren't in the Inbox
+
+If visitors can open and use the widget but nothing shows up in [Inbox](/help/inbox/inbox-tour), confirm you're checking **All** rather than a filtered view like **My Inbox** or a specific [team inbox](/help/inbox/find-and-organize/team-and-user-inboxes) — a new Live Chat conversation starts **Unassigned** unless an automation routes it immediately.
+
+## Styling doesn't match your brand
+
+- **Theme and Primary color** only affect the widget chrome, not custom CSS on your site — if the widget looks off against your page background, adjust **Theme** (light/dark) first.
+- **"Remove Powered by" not taking effect** — confirm the toggle is saved on the correct channel if you run more than one Live Chat channel across different sites.
+- **RTL layout looks wrong** — set **Direction** to RTL explicitly; it does not follow your site's own text direction automatically.
+
+## Before deleting a channel
+
+Deletion is irreversible — see the warning in [Getting started](/help/messaging-channels/live-chat/getting-started#install-the-widget). If you're troubleshooting a misconfigured widget, prefer editing the existing channel over deleting and recreating it, since recreating changes the widget ID and breaks the old embed script on every site it was installed on.

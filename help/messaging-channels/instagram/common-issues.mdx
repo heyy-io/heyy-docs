@@ -1,3 +1,26 @@
 ---
 title: "Common issues"
+description: "Fix an Instagram connection that fails or won't finish."
 ---
+
+Instagram connection failures almost always trace back to one of the four prerequisites in [Getting started](/help/messaging-channels/instagram/getting-started#before-you-start). Check each one specifically rather than retrying the same flow repeatedly.
+
+<Warning>
+  **Connection fails, or the account doesn't appear in the picker.** Work through this checklist:
+
+  1. **Personal account instead of professional.** Instagram will not let you connect a personal account at all. Convert it to a **Creator** or **Business** account in the Instagram app first — this is the single most common blocker.
+  2. **Not connected to a Facebook Page.** Every Instagram business account needs a linked Facebook Page before Heyy can connect to it. Link one in the Instagram app if you haven't already.
+  3. **Missing from the Business Portfolio.** Both the Facebook Page and the Instagram account need to exist inside the same Meta Business Portfolio, with the Page verified in Business settings.
+  4. **Not an admin.** The person clicking **Connect** needs admin access to both the Instagram account and the Facebook Page — not just editor or moderator access.
+</Warning>
+
+## Connected, but messages aren't coming through
+
+- Confirm the authorization step actually completed — if the Meta flow was closed early or a permission was declined, the connection can appear to succeed in Heyy's UI without fully authorizing message access. Disconnect and reconnect if in doubt.
+- Check you're looking at **All** rather than a filtered [Inbox](/help/inbox/inbox-tour) view — new Instagram conversations start **Unassigned** unless routed by an automation.
+
+## Display name is wrong
+
+**Display name** is read-only in Heyy and pulled from the Instagram account itself. Update your Instagram username or profile directly in the app, or via **Edit profile on Instagram** from the channel's Profile tab — see [Getting started](/help/messaging-channels/instagram/getting-started#configure-the-profile).
+
+For problems with an active conversation rather than the connection itself, see [Message errors](/help/messaging-channels/instagram/message-errors).

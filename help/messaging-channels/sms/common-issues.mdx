@@ -1,3 +1,24 @@
 ---
 title: "Common issues"
+description: "Fix an SMS connection that won't send or receive."
 ---
+
+<Warning>
+  **Inbound SMS messages aren't appearing in Heyy.** Check these in order:
+
+  1. **Twilio purchase incomplete.** Confirm the number shows as fully active (not pending) in your Twilio console — a number still mid-purchase or mid-porting will not route messages correctly.
+  2. **Number entered doesn't match Twilio exactly.** Re-check the **Twilio phone number** field in [Getting started](/help/messaging-channels/sms/getting-started#connect-the-channel) against your Twilio console, including the country code format.
+  3. **Twilio credentials are wrong or expired.** Re-enter your credentials if they were rotated in Twilio after the channel was first connected.
+  4. **Number is shared with another system.** If the same Twilio number is also wired into another tool, whichever system last configured Twilio's webhook may have overwritten the other's — see the warning in [Getting started](/help/messaging-channels/sms/getting-started#connect-the-channel). Use a dedicated number for Heyy.
+</Warning>
+
+## Outbound messages aren't sending
+
+- Confirm your Twilio account has sufficient balance — Twilio bills usage separately from your Heyy plan, and a depleted balance silently blocks sends on Twilio's side.
+- Check whether your number or account requires **10DLC** (US) or equivalent local registration — carriers can filter or block unregistered traffic even when Heyy reports the send as successful. See [Getting started → Compliance](/help/messaging-channels/sms/getting-started#compliance).
+
+## Messages attach to the wrong contact
+
+Since SMS contacts are indexed purely by **phone number**, a contact who previously texted from a different number will not automatically merge with their new one — Heyy has no way to infer they're the same person from the SMS channel alone. Merge the records manually in [Contacts](/help/contacts/mini-crm/contacts-tour) if needed.
+
+For character limits and message-splitting behavior, see [Message errors](/help/messaging-channels/sms/message-errors).
