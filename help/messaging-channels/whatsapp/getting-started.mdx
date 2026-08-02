@@ -1,3 +1,100 @@
 ---
 title: "Getting started"
+description: "Connect a WhatsApp number to Heyy with Cloud API or Coexistence."
 ---
+
+Heyy connects to WhatsApp through Meta, giving you a single Inbox for conversations alongside Instagram, Messenger, Live Chat, and SMS. There are **two connection methods** — pick one before you start, since they have different tradeoffs and are not simple to switch between later.
+
+<Frame>
+  ![Choosing a WhatsApp connection method](/assets/whatsapp-connection-methods.png)
+</Frame>
+
+## Choose a method
+
+| | **Cloud API** | **Coexistence** |
+| - | -------------- | ----------------- |
+| **What it is** | Meta hosts your number; you manage every conversation through Heyy. | You keep using the WhatsApp Business App on your phone while also managing conversations through Heyy. |
+| **Mobile app usage** | The number **cannot** be used on the WhatsApp mobile app (Standard or Business) once connected. | The WhatsApp Business App stays usable on your phone. |
+| **Stability** | Higher — the recommended default for most businesses. | Generally lower than Cloud API. |
+| **Best for** | Businesses moving conversations entirely into Heyy. | Businesses not ready to give up the mobile app. |
+
+<Tip>
+  If you're not sure which to pick, choose **Cloud API**. It's more stable, and it's what most growing teams end up on eventually — Coexistence exists specifically for the transition period before that.
+</Tip>
+
+## Before you start (both methods)
+
+- A **Meta Business Portfolio** with the **Business Info** section fully completed. Incomplete Business Info is the single most common reason a connection fails partway through.
+- A phone number that can receive an **SMS or voice call** for verification.
+
+## Connect with Cloud API
+
+<Warning>
+  The number you connect **cannot** be active on the WhatsApp mobile app (Standard or Business) once the connection completes. If you're currently using this number on your phone, back up your chat history there first — you will not be able to use it in the app afterward.
+</Warning>
+
+1. Go to **Settings → Channels → Add Channel**.
+2. Select **WhatsApp**.
+3. Click **Connect Number**.
+4. In Meta's flow, select **Create a WhatsApp Business account**.
+5. Complete the remaining steps: portfolio selection, business details, and number addition/verification.
+
+<Frame>
+  ![Meta Cloud API connection flow](/assets/whatsapp-cloud-api-flow.png)
+</Frame>
+
+When adding a number, Meta gives you two options:
+
+| Option | Result |
+| ------ | ------ |
+| **Use a display name only** | You get a free `+1 555…` Meta test number. Fine for testing the integration, but **it cannot send templates** — not suitable for real customer traffic. |
+| **Add a new number** | Enter your own phone number, which requires SMS or voice verification. This is the number real customers will message. |
+
+## Connect with Coexistence
+
+<Warning>
+  **"Don't share chats" may lead to connection errors if skipped or answered incorrectly.** When Meta's flow asks whether to share existing chats, select **Don't share chats** — sharing chats at this step is a common cause of a broken connection.
+</Warning>
+
+**Requirements specific to Coexistence:**
+
+- WhatsApp Business App version **2.24.17 or higher**.
+- The app must **not** already be connected to any other Business Platform integration.
+- Your Meta Business Portfolio's Business Info must be complete.
+- Your WhatsApp display name should match your business Portfolio name, or contain it.
+
+If your Business App is already connected to another platform, disconnect it first:
+
+| Platform | How to disconnect |
+| -------- | ------------------- |
+| **Android** | Open the **3-dot menu** (top right) → **Settings** → **Account** → **Business Platform**. If a platform is listed, tap it and select **Disconnect**. |
+| **iPhone** | Go to **Settings** → **Account** → **Business Platform**. If connected, tap it and select **Disconnect**. |
+
+Then connect to Heyy:
+
+1. Go to **Settings → Channels → Add Channel**.
+2. Select **WhatsApp**, then click **Connect Number**.
+3. Select **Connect a WhatsApp Business App**.
+4. Enter the phone number associated with your Business App.
+5. Scan the QR code, or enter the pairing code inside the Business App.
+6. When prompted, select **Don't share chats**.
+7. Complete the remaining steps in the flow.
+
+<Frame>
+  ![Coexistence QR pairing flow](/assets/whatsapp-coexistence-flow.png)
+</Frame>
+
+## After connecting
+
+Once connected, configure your public-facing profile — see [Guides](/help/messaging-channels/whatsapp/guides#profile-configuration) — and set up your [message template library](/help/messaging-channels/whatsapp/whatsapp-templates) before relying on WhatsApp for outbound or re-engagement messages.
+
+<Warning>
+  **Disconnecting or deleting a WhatsApp channel is irreversible.** Heyy will no longer send or receive messages for that number. Export or back up anything you need first.
+</Warning>
+
+## What WhatsApp is good for
+
+- Customer support through [Inbox](/help/inbox/inbox-tour).
+- Campaigns and re-engagement, using [WhatsApp templates](/help/messaging-channels/whatsapp/whatsapp-templates) once the [conversation window](/help/inbox/chat-fundamentals/conversation-window) closes.
+- [Automations](/help/automations/index) using [WhatsApp triggers and actions](/help/automations/whatsapp-actions).
+- [AI Employee](/help/ai-employees/going-live/channel-and-context) assignment for 24/7 first-line responses.

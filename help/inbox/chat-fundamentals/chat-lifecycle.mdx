@@ -1,3 +1,29 @@
 ---
 title: "Chat lifecycle"
+description: "How a conversation moves between open, closed, and snoozed."
 ---
+
+Every conversation in the Inbox is in one of three states, shown in the [status filter](/help/inbox/find-and-organize/search-and-filter-chats) above the conversation list.
+
+| Status | Meaning |
+| ------ | ------- |
+| **Open** | Active and unresolved — the default state for a new or ongoing conversation. |
+| **Snoozed** | Deliberately set aside to resurface later, without marking it resolved. |
+| **Closed** | Resolved. |
+
+## How a chat changes state
+
+- **A new conversation opens** when a contact messages in for the first time, or reopens automatically if they message again after being closed — see the [Reopened chat](/help/automations/triggers/reopened-chat) and [New and reopened chat](/help/automations/triggers/new-and-reopened-chat) automation triggers.
+- **Closing** a chat can happen manually from the [chat header](/help/inbox/chat-actions#header-controls), as a [bulk action](/help/inbox/find-and-organize/bulk-actions), or automatically from an automation — see the [Chat closed](/help/automations/triggers/chat-closed) trigger.
+- **Snoozing** removes a conversation from your active view without closing it, for when you're waiting on something — an internal answer, a customer's promised follow-up — and don't want it cluttering **Open** in the meantime.
+- **Assigning or moving** a chat changes who owns it without changing its status — see [Chat assigned](/help/automations/triggers/chat-assigned) and [Chat moved](/help/automations/triggers/chat-moved).
+
+<Tip>
+  A closed conversation is not deleted — its full history stays intact and searchable, and it reopens automatically the moment the contact messages again. Close conversations freely; closing is a triage state, not a commitment that the relationship is over.
+</Tip>
+
+## Where lifecycle state shows up
+
+- The [conversation list](/help/inbox/inbox-tour#the-conversation-list) status filter and sort order.
+- Automation triggers that fire on a lifecycle event — useful for notifying a team when a VIP contact's chat is closed, or for routing a reopened chat back to whoever handled it last.
+- [Bulk actions](/help/inbox/find-and-organize/bulk-actions), for changing the state of many conversations that match a filter at once.

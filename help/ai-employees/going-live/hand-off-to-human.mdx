@@ -1,14 +1,32 @@
 ---
 title: "Hand off to a human teammate"
-description: "Move from AI to your inbox team."
+description: "Combine exit points, boundaries, and inbox routing to move a conversation from AI to your team."
 ---
 
-Combine:
+Handoff is not a single setting — it is three pieces working together, each configured in a different place.
 
-- [Exit points](/help/ai-employees/capabilities/create-exit-points) that detect handoff intent (for example, "Request human")
-- [Boundaries](/help/ai-employees/identity-and-guidelines/boundaries) telling the AI to qualify before escalating
-- Inbox routing ([team inboxes](/help/inbox/find-and-organize/team-and-user-inboxes), [assign chat](/help/automations/chats-actions) automation actions)
+| Piece | Where it lives |
+| ----- | --------------- |
+| **Detection** | An [exit point](/help/ai-employees/capabilities/create-exit-points) that recognizes handoff intent — for example, "Escalate to Human". |
+| **Restraint** | A [Boundaries](/help/ai-employees/identity-and-guidelines/boundaries) guideline telling the employee to qualify or troubleshoot before escalating, rather than handing off immediately. |
+| **Routing** | The exit point mapped, inside the automation, to an inbox or team action — see [Use exit points in automations](/help/ai-employees/going-live/use-exit-points-in-automations). |
 
-Map the handoff exit point in your automation to assign the chat or route it to the right inbox. See [Use exit points in automations](/help/ai-employees/going-live/use-exit-points-in-automations).
+<Frame>
+  ![Handoff exit point mapped to inbox routing](/assets/ai-employees-handoff-routing.png)
+</Frame>
 
-After handoff, humans work in the [inbox](/help/inbox/inbox-tour) with full conversation history.
+## Example
+
+**Exit point** — *"Escalate to Human"*: fires if the customer requests a person, or the issue needs additional help.
+
+**Boundary** — *"Handoff after two failed attempts"*: if the issue is not resolved after two back-and-forth replies, stop troubleshooting and hand off plainly rather than continuing to guess.
+
+**Routing** — inside the automation, map "Escalate to Human" to [assign chat](/help/automations/chats-actions) to the right [team inbox](/help/inbox/find-and-organize/team-and-user-inboxes).
+
+## After handoff
+
+Once routed, humans work the conversation in the [inbox](/help/inbox/inbox-tour) with the full conversation history the employee already built — nothing is lost in the transition.
+
+<Tip>
+  Test the handoff path specifically in the [Playground](/help/ai-employees/going-live/test-in-playground) before going live: push toward frustration or a refund request and confirm the employee escalates instead of continuing to try.
+</Tip>

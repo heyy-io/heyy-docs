@@ -18,7 +18,7 @@ When a customer message reaches your AI employee, Heyy merges active guidelines 
 Each guideline is a short, titled instruction. You group them into one of four categories — each category has its own accordion and a dedicated article with goals and examples.
 
 <Frame>
-  ![Guideline categories](/assets/ai-employees-guidelines-categories.png)
+  ![Four guideline category accordions on the Identity & guidelines tab](/assets/ai-employees-guidelines-categories.png)
 </Frame>
 
 | Category | Use for |
@@ -43,22 +43,55 @@ Every guideline has the same fields whether you create it from scratch or start 
 
 1. Open an employee and go to **Identity & guidelines**.
 2. Expand the category accordion you want.
-3. Click **Add guideline**.
-4. Enter a title, set status to **Active**, and write the prompt.
-5. Save.
+3. Click **New**. A popup opens with the option to start from a template or write your own.
+4. To use a template, click the **three-dot icon** to browse templates for that category. Hovering over or clicking a template previews its contents — worth browsing even if you don't use one as-is, simply for inspiration on structure and phrasing.
+5. To write your own, type a rough draft directly into the prompt field the way you'd explain the rule out loud, then click **Optimize** — you do not need to arrive with polished prompt-engineering language.
+6. Enter a title, set status to **Active**, and click **Save**.
 
 <Frame>
-  ![Add a guideline](/assets/ai-employees-guidelines-add.png)
+  ![New guideline form with title, prompt field, and Optimize and Save buttons](/assets/ai-employees-guidelines-add.png)
 </Frame>
 
-Use **Suggestions** when creating a guideline to start from a template for that category. Use **Optimize** on an existing prompt to tighten wording without changing the intent.
+Use **Suggestions** when creating a guideline to start from a template for that category.
+
+## Guidelines are prompt engineering, made accessible
+
+Every guideline you write, regardless of category, is converted into a carefully engineered prompt behind the scenes. Small differences in phrasing, structure, and specificity can produce meaningfully different behavior from an AI system — and most people configuring an employee are not prompt engineers, and should not need to be. The template library and the Optimize button exist to close that gap: you supply the business logic and the intent, and the platform translates it into language the model follows reliably.
+
+<Tip>
+  Do not aim for "perfect" wording on the first attempt. Write the rough version the way you would naturally explain it to a colleague, let Optimize do the heavy lifting, then review the result before saving — and re-run Optimize again if the first pass does not quite land.
+</Tip>
+
+## How Optimize works
+
+Every guideline has an **Optimize** button next to Save. Click it, and a smaller model rewrites the prompt before it goes live, tightening the wording without changing what it tells the employee to do.
+
+| Optimize does this | Example |
+| -------------------- | ------- |
+| **Removes anything already covered elsewhere** | If name and gender are already set in [Identity setup](/help/ai-employees/identity-and-guidelines/identity-setup), Optimize will not leave them repeated in a guideline. |
+| **Removes duplicate role-specific rules** | Support and Sales roles carry built-in behavior — a guideline restating something the Role field already handles gets dropped. |
+| **Tightens the structure** | Long, meandering phrasing gets shortened into something direct, without losing the actual instruction. |
+
+For example, this:
+
+> Before recommending anything, learn the customer's situation one question at a time: (1) what they're trying to achieve, (2) their timeline, (3) their budget or company size. Skip anything already answered in the conversation. Once you have the picture, recommend the best fit and move to the next step.
+
+becomes:
+
+> Qualify leads by asking about their goals, timeline, and budget or company size. Ask one question at a time, skipping any details already provided. Once you have a clear picture, recommend the best solution.
+
+Same instruction, same order of operations, tighter sentences — and any bracketed template placeholders are folded into plain language once you have filled in your specifics.
+
+<Tip>
+  Run Optimize again after any significant edit, not just the first time you write a guideline — guidelines pick up small contradictions and repetition as they grow, especially once several start to overlap. Once a guideline is already tight, the Optimize button will not reappear until you make a change worth re-running it on.
+</Tip>
 
 ## @mentions in prompts
 
 Type `@` in the prompt editor to reference capabilities you have already configured. Mentions tell the employee which attributes, knowledge, tools, or files you mean — without pasting long IDs or URLs.
 
 <Frame>
-  ![@mentions menu](/assets/ai-employees-guidelines-mentions.png)
+  ![@ mentions dropdown open in a guideline's prompt editor, showing Attributes, Actions, and Content options](/assets/ai-employees-guidelines-mentions.png)
 </Frame>
 
 | Mention | Description |
@@ -79,3 +112,20 @@ If nothing appears when you type `@`, configure [attributes](/help/ai-employees/
 | Deactivate instead of delete. | Seasonal or campaign rules can be turned off and reused later. |
 | Avoid duplicating identity setup. | Role, tone, and answer length belong in [Identity setup](/help/ai-employees/identity-and-guidelines/identity-setup) — use guidelines for nuance. |
 | Test after every change. | Run real customer-style questions in the [Playground](/help/ai-employees/going-live/test-in-playground). |
+
+## How the four categories work together
+
+Although each category is configured separately, they combine into a single, coherent instruction set that governs every conversation. It helps to think of each as answering a different question:
+
+| Category | Answers |
+| -------- | ------- |
+| [**Identity & style**](/help/ai-employees/identity-and-guidelines/identity-and-style) | How should this employee sound? |
+| [**Conversation flow & objectives**](/help/ai-employees/identity-and-guidelines/conversation-flow-and-objectives) | What is it trying to achieve, and what should it draw on to get there? |
+| [**Boundaries**](/help/ai-employees/identity-and-guidelines/boundaries) | What must it never do, under any circumstances? |
+| [**Other**](/help/ai-employees/identity-and-guidelines/other) | What else is unique to how this business operates? |
+
+A well-configured employee has thoughtful input across all four, not just one or two. It is common to over-invest in Identity & style, since tone feels like the most visible, most "creative" part of setup, while under-investing in Boundaries, since it feels like a formality — in practice the opposite emphasis is usually more valuable: an imperfect tone rarely causes real harm, but a missing boundary around pricing, competitors, or off-limits topics can.
+
+<Tip>
+  Once all four categories are filled in, audit the result by imagining a few different, slightly awkward customer messages and mentally walking through how the employee would respond. If you cannot confidently predict the reply, a guideline somewhere needs to be more specific.
+</Tip>

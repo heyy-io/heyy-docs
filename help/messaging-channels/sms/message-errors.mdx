@@ -1,3 +1,30 @@
 ---
 title: "Message errors"
+description: "Character limits, segmentation, and carrier filtering."
 ---
+
+Unlike WhatsApp, Messenger, and Instagram, SMS has no conversation window — see [Conversation window](/help/inbox/chat-fundamentals/conversation-window) — so most SMS delivery issues come down to message length, opt-outs, or carrier filtering rather than a policy block.
+
+## Character limits and segmentation
+
+SMS is sent in fixed-size segments, and a longer message is automatically split into multiple segments and billed accordingly by Twilio:
+
+| Message content | Single segment | Each segment when concatenated |
+| ----------------- | :-------------: | :-------------------------------: |
+| Standard (GSM-7) text | 160 characters | 153 characters |
+| Contains emoji or non-Latin characters (Unicode) | 70 characters | 67 characters |
+
+<Warning>
+  **A single emoji or a non-Latin character anywhere in the message drops the entire message into Unicode mode** — cutting your per-segment limit roughly in half, not just adding a small overhead for that one character. If a message is unexpectedly split into far more segments than you'd estimate from character count alone, this is almost always why.
+</Warning>
+
+## Message never arrives
+
+1. **Check for opt-out.** If the recipient has ever replied **STOP** (or a local equivalent) to your number, carriers block further messages to them until they opt back in — this happens at the carrier level and will not show as a Heyy error.
+2. **Check carrier filtering.** Messages that look like spam — excessive links, certain flagged phrases, very high send volume from an unregistered number — can be silently filtered by carriers rather than bounced with a clear error.
+3. **Check compliance registration.** In the US particularly, an unregistered **10DLC** number can have its throughput throttled or filtered. See [Common issues](/help/messaging-channels/sms/common-issues).
+4. **Check delivery status on the message itself** — see [Message actions](/help/inbox/message-actions).
+
+<Tip>
+  Keep messages short and avoid unnecessary links or promotional-sounding phrasing in transactional SMS — both segmentation cost and carrier filtering risk go up together as a message gets longer and more marketing-like.
+</Tip>

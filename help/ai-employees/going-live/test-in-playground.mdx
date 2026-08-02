@@ -1,16 +1,61 @@
 ---
-title: "Test in playground"
-description: "Validate behavior before customers see your employee."
+title: "Test in the playground"
+description: "Validate replies, actions, and exit points before an employee reaches a real customer."
 ---
 
-The **Playground** is a side panel on every AI Employee page. Use it to chat with the employee using its live configuration.
+The **Playground** sits on the right side of every AI Employee card (or opens full-screen on smaller windows). It is a live chat with the employee, using whatever settings are currently saved across every tab, and nothing sent here reaches a real channel.
 
-From the toolbar:
+<Warning>
+  The Playground is consequence-free for the customer, but not for your test contact's data. If **Update** is enabled for an attribute, testing really does update that contact's record. Use a dedicated test contact rather than a real one, unless you intend that.
+</Warning>
 
-- Open or close the Playground with the **Playground** button.
-- Send messages as if you were a contact.
-- Observe replies, [actions](/help/ai-employees/capabilities/actions-overview), asset delivery, and [exit points](/help/ai-employees/capabilities/create-exit-points).
+## Why the Playground matters
 
-When an exit point triggers, the Playground shows that the route fired. Click **Reset chat** to start a fresh test session.
+Every setting across all seven tabs of the AI Employee configuration ultimately shapes how it behaves in an actual conversation — the Playground is where all of that comes together and gets verified directly, rather than trusted blindly. Use it to check:
 
-Run through your most common customer questions and edge cases before [adding the employee to an automation](/help/ai-employees/going-live/add-to-automation).
+- Does the tone of voice actually come through the way you intended?
+- Are [boundaries](/help/ai-employees/identity-and-guidelines/boundaries) actually being respected — does the employee decline the topics you marked off-limits?
+- Is [Conversation flow & objectives](/help/ai-employees/identity-and-guidelines/conversation-flow-and-objectives) correctly triggering the right content, actions, or assets at the right moments?
+- Does [Identity & style](/help/ai-employees/identity-and-guidelines/identity-and-style) produce the personality you were aiming for?
+- Do [exit points](/help/ai-employees/capabilities/create-exit-points) fire when they should — does asking for a human actually trigger the handover?
+- Are [assets](/help/ai-employees/capabilities/share-files-in-chat) actually sent when the relevant condition comes up?
+- Is [content](/help/ai-employees/content/add-your-website) actually informing accurate answers?
+
+## Pick a test contact first
+
+Select a **test contact** from the dropdown before sending a message. Without one, the employee has nothing to read, share, or update, so any guideline or action that depends on contact data will not behave the way it does live.
+
+<Frame>
+  ![Test contact search dropdown in the Playground's "Chat as" selector](/assets/ai-employees-playground-test-contact.png)
+</Frame>
+
+Once selected, the conversation pulls that contact's real data — first name, email, phone, custom attributes — and updates it live as the conversation progresses, if the employee has [Update permission](/help/ai-employees/capabilities/update-contact-fields) turned on for that field.
+
+## The session persists across tabs
+
+Send a message, then switch to another tab — [Content](/help/ai-employees/content/add-your-website), [Attributes](/help/ai-employees/capabilities/choose-attributes-to-expose), [Actions](/help/ai-employees/capabilities/actions-overview), whatever you need to adjust — and the conversation stays exactly where you left it. Tweak a guideline, add a knowledge source, or toggle an attribute, then jump back to the same chat to see the effect immediately, with no need to start over.
+
+## What you can send
+
+The Playground supports text, images, video, documents, and emojis. Voice is not supported here yet, though it works on live channels — that is a Playground-specific gap for now.
+
+## Starting clean
+
+Click **Reset chat** to clear the conversation and start from scratch, with no history carried over. Use this whenever you are testing one specific scenario and do not want earlier messages influencing the reply.
+
+## Before you go live
+
+Test the situations you are most worried about, not just a friendly hello:
+
+- Ask something that should trigger an [action](/help/ai-employees/capabilities/actions-overview), and confirm it fires correctly.
+- Ask something outside a [boundary](/help/ai-employees/identity-and-guidelines/boundaries), and confirm the employee holds the line — boundaries are instructions, not a hard filter.
+- Push toward an [exit point](/help/ai-employees/capabilities/create-exit-points) — frustration, a refund request, whatever you have defined — and confirm it hands off the way you expect.
+
+Once you are happy with how the employee behaves, click **Set Live** to activate it — only live employees can be added to an [automation](/help/ai-employees/going-live/add-to-automation). If you need to pause one without deleting it, click **Set Inactive** instead; it stays in your list and keeps its setup, it just stops running until you switch it back on.
+
+## Best practices
+
+- **Test after every meaningful change**, not just at the end of a long editing session — it is much easier to identify which specific change caused an unexpected behavior if you test incrementally.
+- **Test edge cases deliberately**, not only the obvious happy-path questions. Phrase a question awkwardly, bring up a boundary topic directly, ask for something the employee should decline, and confirm the response matches what you configured.
+- **Test from the customer's actual perspective**, using the language and tone real customers tend to use, rather than clean, formal test phrasing that does not reflect how conversations unfold in the wild.
+- **Revisit the Playground after launch**, not just during initial setup — especially after adding new content, assets, or actions, to confirm the additions integrate correctly with everything already configured.

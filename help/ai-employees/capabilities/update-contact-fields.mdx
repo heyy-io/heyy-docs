@@ -1,11 +1,33 @@
 ---
 title: "Let your employee update contact fields"
-description: "Allow the AI to write contact data during conversations."
+description: "Allow the AI to capture and save new contact data during a conversation."
 ---
 
-On **Attributes**:
+**Update** lets the employee write a new value to a contact record based on what the contact says — see [Choose which attributes to expose](/help/ai-employees/capabilities/choose-attributes-to-expose) for how it relates to Read and Share. Update requires Read to already be enabled on that attribute.
 
-1. Add an attribute.
-2. Enable **Update** (with or without read).
+## Grant update access
 
-Use updates for capture flows (email, preferences, lead stage). Pair with [Boundaries](/help/ai-employees/identity-and-guidelines/boundaries) so the AI confirms before changing sensitive data.
+1. Open the **Attributes** tab on an employee.
+2. Add or select an attribute.
+3. Enable **Update** (Read is enabled automatically if it was not already).
+4. Save.
+
+<Frame>
+  ![Enable update on an attribute](/assets/ai-employees-attributes-update.png)
+</Frame>
+
+## What Update is for
+
+Update is what makes an employee useful for lead qualification and data capture, not just answering questions. It can collect a name, an email, a phone number, or any custom attribute you have defined, and save it straight to the contact record without anyone entering it manually afterward.
+
+This matters most on channels like Live Chat, where a visitor starts out anonymous. Grant Update access to name, email, and phone number, and the employee can turn an anonymous chat into a fully identified contact over the course of a conversation.
+
+## Confirm before writing sensitive fields
+
+Pair Update with a [Boundaries](/help/ai-employees/identity-and-guidelines/boundaries) guideline so the employee confirms a new value back to the contact before saving it — for example:
+
+> Before updating a contact's email or phone number, confirm the new value back to the contact first.
+
+<Tip>
+  Default to Read only for anything sensitive, and enable Update only for fields this specific employee is expected to capture. Turning on Update anywhere it isn't needed just increases the odds of an accidental bad write.
+</Tip>

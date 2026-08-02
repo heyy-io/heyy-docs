@@ -1,3 +1,24 @@
 ---
 title: "Sensitive chats"
+description: "Flag a conversation that contains sensitive information."
 ---
+
+Marking a chat **sensitive** flags a conversation that contains information worth handling with extra care — payment details, personal or health information, a legal matter, or anything else you would not want treated as routine. It is a flag on the conversation record, separate from its [open/closed/snoozed status](/help/inbox/chat-fundamentals/chat-lifecycle).
+
+## Mark a chat sensitive
+
+1. Open the conversation.
+2. Click the **More (⋯)** menu in the chat header — see [Chat actions](/help/inbox/chat-actions#header-controls).
+3. Select **Mark as sensitive**.
+
+To reverse it, open the same menu and select **Mark as not sensitive**.
+
+<Frame>
+  ![Marking a chat as sensitive from the header menu](/assets/inbox-mark-sensitive.png)
+</Frame>
+
+<Tip>
+  If your team handles anything covered by internal privacy or compliance policy — a customer sharing a card number in chat, a health-related support request, a dispute headed toward legal review — flag it as sensitive as soon as you notice, not after the conversation is closed.
+</Tip>
+
+Both actions are also available through the **Chat** section of the [API Reference](/api-reference/v3/overview) as `mark_as_sensitive` and `mark_as_not_sensitive` endpoints — useful if you want to flag conversations matching a condition automatically from your own system, rather than relying on a teammate to do it manually.
