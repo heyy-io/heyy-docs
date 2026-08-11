@@ -30,7 +30,7 @@
     "tabs": [
       {
         "tab": "Help Center",
-        "icon": "life-ring",
+        "icon": "life-buoy",
         "groups": [
           {
             "group": "QUICK START",
@@ -691,7 +691,7 @@
       },
       {
         "tab": "Changelog",
-        "icon": "bullhorn",
+        "icon": "megaphone",
         "groups": [
           {
             "group": "Changelog",
