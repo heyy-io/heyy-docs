@@ -142,6 +142,7 @@
           {
             "group": "MESSAGING CHANNELS",
             "pages": [
+              "help/messaging-channels/index",
               {
                 "group": "WhatsApp",
                 "pages": [
