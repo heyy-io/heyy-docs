@@ -1,6 +1,6 @@
 ---
-title: "Choose channel and context for the step"
-description: "Configure the channel, employee, and optional per-automation context on the AI Employee action."
+title: "Choose channel and extra guidelines for the step"
+description: "Configure the channel, employee, and optional per-automation extra guidelines on the AI Employee action."
 ---
 
 The **AI Employee** automation action has several fields that determine how the step runs.
@@ -9,7 +9,7 @@ The **AI Employee** automation action has several fields that determine how the 
 | ----- | ------------------ |
 | **Channel** | Which connected channel this step applies to — Live Chat, WhatsApp, Instagram, or Facebook Messenger. |
 | **AI Employee** | Which configured, live employee runs in this step. |
-| **Context** | Optional extra instructions that apply only inside this automation — see [Automation guideline overrides](/help/ai-employees/going-live/automation-guideline-overrides). |
+| **Extra guidelines** | Optional extra instructions that apply only inside this automation — see [Automation guideline overrides](/help/ai-employees/going-live/automation-guideline-overrides). |
 | **Exit points** | Which of the employee's exit points are allowed to move this automation forward — see [Use exit points in automations](/help/ai-employees/going-live/use-exit-points-in-automations). |
 | **If contact has not replied** | An optional reply timeout that moves the automation on when the customer goes quiet — see [Set reply timeouts](/help/ai-employees/going-live/reply-timeouts). |
 | **Response delay** | An optional randomized pause before the employee replies, so it reads more naturally and can batch quick follow-up messages. |
@@ -29,12 +29,12 @@ The channel selected on the AI Employee action must match where the automation's
 Only a **live** employee appears in the picker — see [employee status](/help/ai-employees/going-live/how-ai-employees-work-in-automations#employee-status-active-inactive-retired) if the one you expect is missing.
 
 <Note>
-  With channel and employee both set, the step already works. Context, exit points, reply timeout, and response delay — covered below — are all optional.
+  With channel and employee both set, the step already works. Extra guidelines, exit points, reply timeout, and response delay — covered below — are all optional.
 </Note>
 
-## Context
+## Extra guidelines
 
-Below **AI Employee**, you'll find **Context**, shown in the product as **Extra guidelines**. This is where you hand the employee instructions that apply only inside this one automation, on top of everything it already knows from its own base guidelines.
+Below **AI Employee**, you'll find **Extra guidelines**. This is where you hand the employee instructions that apply only inside this one automation, on top of everything it already knows from its own base guidelines.
 
 Use it when this specific automation needs something the employee's default setup doesn't cover — a narrower boundary, a one-off instruction, a rule that only makes sense in this particular flow. Click **New** to add one.
 
@@ -42,7 +42,7 @@ If nothing here needs to differ from how the employee normally behaves, skip it 
 
 ## Exit points
 
-Right below Context sits **Exit points**. This controls which of the employee's exit points are allowed to move this automation forward.
+Right below Extra guidelines sits **Exit points**. This controls which of the employee's exit points are allowed to move this automation forward.
 
 <Warning>
   An exit point set up on the employee doesn't carry over here automatically. If it isn't selected in this step, the AI won't use it, no matter how it's configured on the employee itself.
