@@ -1,0 +1,94 @@
+---
+title: "Getting started"
+description: "Embed the Live Chat widget on your website and connect it to your Inbox."
+---
+
+**Live Chat** is a chat widget you embed on your own website. Conversations started through it land in the same [Inbox](/help/inbox/inbox-tour) as WhatsApp, Instagram, Messenger, and SMS — one queue, regardless of channel.
+
+## Add the channel
+
+1. Go to **Settings → Channels → Add Channel**.
+2. Select **Live Chat**.
+3. Fill in the initial fields:
+
+   | Field | Required | Description |
+   | ----- | -------- | ------------ |
+   | **Name** | Yes | An internal label for this channel — for example *"Website support"*. Not shown to visitors. |
+   | **Primary color** | No | The widget's accent color. Defaults to pink. |
+   | **Websites** | No | An optional domain whitelist — leave empty to allow the widget anywhere it's embedded, or restrict it to specific domains. |
+
+<Frame>
+  ![Add Live Chat channel form](/assets/live-chat-add-channel.png)
+</Frame>
+
+## Configure the widget
+
+Once created, the channel opens into four configuration tabs.
+
+### Content
+
+| Field | Controls |
+| ----- | -------- |
+| **Title** | The widget's heading. |
+| **Message placeholder** | Placeholder text in the input field. |
+| **Initial messages** | What the widget shows when a visitor first opens it. |
+| **Suggested messages** | Quick-reply buttons a visitor can tap instead of typing. |
+| **Profile picture** | The avatar shown in the widget. |
+| **Remove "Powered by"** | Toggles the Heyy branding footer off. |
+
+### Style
+
+| Field | Options |
+| ----- | ------- |
+| **Theme** | Light or dark. |
+| **Primary color** | Accent color (also set during initial setup). |
+| **Alignment** | Left or right side of the page. |
+| **Direction** | LTR or RTL, for right-to-left languages. |
+| **Position** | Fine-tune X/Y placement on the page. |
+
+### Security
+
+| Field | Purpose |
+| ----- | ------- |
+| **Allowed domains** | Restrict which domains may load this widget — the same concept as the Websites field, managed here going forward. |
+| **Secret keys** | Server-side visitor identification. Coming soon. |
+
+### Visibility
+
+| Field | Purpose |
+| ----- | ------- |
+| **Hidden paths** | URL patterns where the widget should not appear — for example, hiding it from an internal admin path on the same domain. |
+
+<Frame>
+  ![Live Chat Content, Style, Security, and Visibility tabs](/assets/live-chat-config-tabs.png)
+</Frame>
+
+## Install the widget
+
+Open the **Installation** tab to get your embed script, tied to this channel's widget ID.
+
+<Frame>
+  ![Live Chat installation tab with embed script](/assets/live-chat-installation.png)
+</Frame>
+
+Platform-specific guides are available for:
+
+- Plain HTML/JS (**Code**)
+- **Webflow**
+- **WordPress**
+- **Framer**
+- **Wix**
+- **Squarespace**
+
+<Warning>
+  **Deleting a Live Chat channel is irreversible.** The widget stops working on every site it's embedded on immediately, and existing conversations tied to it may be lost. Export or back up anything you need before deleting.
+</Warning>
+
+## What Live Chat is good for
+
+- Customer support and FAQ handling directly on your site.
+- Lead capture from visitors who wouldn't otherwise message you on WhatsApp or Instagram.
+- [Automations](/help/automations/index) using [Live Chat triggers and actions](/help/automations/live-chat-actions).
+- [AI Employee](/help/ai-employees/going-live/channel-and-context) assignment for 24/7 first-response coverage.
+
+Unlike WhatsApp, Messenger, and Instagram, Live Chat has no Meta-imposed reply window — see [Conversation window](/help/inbox/chat-fundamentals/conversation-window) — so conversations stay freely messageable without needing a template to reopen them.

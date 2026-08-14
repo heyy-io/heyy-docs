@@ -1,0 +1,51 @@
+---
+title: "Guides"
+description: "Profile configuration, method migration, and ongoing WhatsApp management."
+---
+
+Once your WhatsApp channel is [connected](/help/messaging-channels/whatsapp/getting-started), this page covers the ongoing configuration and decisions that come up after initial setup.
+
+## Profile configuration
+
+Open **Settings → Channels → [your WhatsApp channel] → Profile**. Changes appear in a live preview of your WhatsApp Business profile.
+
+| Field | Editable in Heyy? | Notes |
+| ----- | :----------------: | ----- |
+| **Internal name** | Yes | A label for this channel inside Heyy only — contacts never see it. |
+| **Display name** | No | Read-only, sourced from your Meta Business profile. Change it via the WhatsApp Manager link instead. |
+| **Profile photo** | Yes | Upload or remove your business image. |
+| **Category** | Yes | Your business vertical — for example Retail, Health, or Finance. |
+| **Description** | Yes | Supports WhatsApp-style text formatting. |
+| **Address, Email, Websites** | Yes | Optional. Websites is limited to **up to two URLs**. |
+| **About** | Yes | Short text shown on your profile, **max 140 characters**. |
+
+<Frame>
+  ![WhatsApp Profile tab with live preview](/assets/whatsapp-profile-tab.png)
+</Frame>
+
+<Tip>
+  If **Display name** is wrong or out of date, editing it in Heyy will not work — it's pulled directly from Meta. Update it through WhatsApp Manager, and it will sync back into Heyy automatically.
+</Tip>
+
+## Cloud API vs. Coexistence: switching later
+
+Moving between methods is not a simple toggle — treat it as closer to a re-connection than a settings change:
+
+- **Coexistence → Cloud API** is the more common direction, usually done once a team is ready to fully move conversations into Heyy and stop using the mobile app. Expect to go through the Cloud API connection flow again from [Getting started](/help/messaging-channels/whatsapp/getting-started#connect-with-cloud-api).
+- **Cloud API → Coexistence** is unusual, since Cloud API numbers cannot be used on the mobile app at all — moving back would mean losing that constraint's benefit in the first place.
+
+If you're planning a migration, do it during low-traffic hours and confirm your [templates](/help/messaging-channels/whatsapp/whatsapp-templates) are already approved beforehand, since a fresh connection can briefly interrupt template-sending capability.
+
+## Template best practices
+
+- Keep a small library of well-tested templates for your most common re-engagement scenarios — order updates, appointment reminders, abandoned cart follow-ups — rather than creating a new one per campaign.
+- Submit template changes for approval well ahead of when you need them; Meta's review is not instant. See [WhatsApp templates](/help/messaging-channels/whatsapp/whatsapp-templates).
+- Test a new template in the [Playground](/help/ai-employees/going-live/test-in-playground) or a low-stakes conversation before using it in a [campaign](/help/campaigns-and-outreach/build/campaigns-tour).
+
+## Managing the channel long-term
+
+<Warning>
+  **Disconnecting or deleting a WhatsApp channel is irreversible.** Heyy stops sending and receiving messages for that number immediately. If you might need the conversation data later, export or back it up before disconnecting.
+</Warning>
+
+For day-to-day connection problems rather than configuration, see [Common issues](/help/messaging-channels/whatsapp/common-issues).

@@ -1,0 +1,22 @@
+---
+title: "What is a journey?"
+description: "Timed automation paths for contacts with scheduled steps and waits."
+---
+
+**Journeys** are timed paths for clients, leads, and customers on the **contact** record. You schedule steps with waits between them; **each step runs an automation** so the sequence advances on its own.
+
+## How journeys differ from one-off automations
+
+| | **Automation** | **Journey** |
+| --- | --- | --- |
+| Start | A [trigger](/help/automations/triggers/overview) fires once | Contacts enter a journey and move through steps over time |
+| Timing | Immediate actions (plus [Delay](/help/automations/logic-actions) inside a flow) | Built-in scheduling between steps |
+| Anchor | Event-driven | Often tied to [subscription](/help/contacts/the-contact/contact-subscription) (day zero = when they join) or **fixed calendar dates** |
+
+Use journeys for onboarding drips, launch countdowns, post-trial nurture, and other multi-day sequences.
+
+## Related
+
+- [Build a journey](/help/automations/journeys/build-a-journey)
+- [Contact subscription](/help/contacts/the-contact/contact-subscription)
+- [Triggers](/help/automations/triggers/overview) — individual automations that steps can run

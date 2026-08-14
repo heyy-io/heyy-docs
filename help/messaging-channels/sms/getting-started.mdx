@@ -1,0 +1,57 @@
+---
+title: "Getting started"
+description: "Connect a Twilio number to send and receive SMS through Heyy."
+---
+
+SMS in Heyy runs on **Twilio** — you bring a Twilio phone number and account, and Heyy handles inbound and outbound texting through the same [Inbox](/help/inbox/inbox-tour) as WhatsApp, Instagram, Messenger, and Live Chat.
+
+## Before you start
+
+- A **Twilio account**.
+- A **Twilio phone number** capable of sending and receiving SMS.
+
+<Tip>
+  Twilio bills separately from Heyy — for the phone number itself and for SMS usage. Check Twilio's own pricing before connecting a number you plan to send high volume through.
+</Tip>
+
+## Connect the channel
+
+1. Go to **Settings → Channels**.
+2. Click **Add Channel**.
+3. Select **SMS**.
+4. Fill in:
+
+   | Field | Description |
+   | ----- | ------------ |
+   | **Name** | An internal label — for example *"Support SMS"*. |
+   | **Twilio phone number** | The number you purchased in Twilio. |
+   | **Twilio credentials** | Your Twilio account credentials, used to authorize Heyy to send and receive on that number. |
+5. Click **Create** (or **Connect**).
+
+<Frame>
+  ![Add SMS channel form](/assets/sms-add-channel.png)
+</Frame>
+
+<Warning>
+  **Use a fresh Twilio number for Heyy.** A number already wired into another system (a different CRM, a custom script, another messaging tool) will conflict with Heyy over inbound message handling — messages may go to the wrong place, or webhook configuration may get overwritten between the two systems.
+</Warning>
+
+## Compliance
+
+SMS compliance requirements vary by country and use case. In the US, for example, Twilio may require **10DLC registration** before you can send at volume. Check Twilio's own registration requirements for your number's country before relying on it for anything beyond light testing — Heyy cannot bypass carrier-level compliance requirements imposed on the number itself.
+
+## How messaging works
+
+- Inbound texts to your Twilio number appear directly in the Heyy [Inbox](/help/inbox/inbox-tour).
+- Replies sent through Heyy transmit via Twilio.
+- Contacts are indexed by **phone number** — a text from a new number automatically creates a new contact, and one from a known number attaches to their existing record.
+
+## What SMS is good for
+
+- [Automations](/help/automations/index) for routing, tagging, and team notifications.
+- [AI Employee](/help/ai-employees/going-live/channel-and-context) assignment for first-response handling.
+- Campaign delivery, where enabled on your workspace — see [Campaigns](/help/campaigns-and-outreach/build/campaigns-tour).
+
+<Warning>
+  **Deleting an SMS channel is irreversible.** Inbound messages to that Twilio number will no longer appear in Heyy. Export or back up anything you need first.
+</Warning>

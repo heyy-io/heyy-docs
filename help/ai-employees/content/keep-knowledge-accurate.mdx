@@ -1,0 +1,56 @@
+---
+title: "Keep knowledge accurate"
+description: "How automatic training works, what the status badges mean, and how quota is measured."
+---
+
+Whenever you add, edit, or remove a source on the **Content** tab — [links](/help/ai-employees/content/add-your-website), [documents](/help/ai-employees/content/upload-documents), [text](/help/ai-employees/content/add-plain-text-knowledge), or [Q&A](/help/ai-employees/content/build-qa-knowledge-base) — the employee automatically retrains. There is no manual **Retrain** button or trigger.
+
+<Tip>
+  Training runs every **5–15 minutes**, all day. After a change, wait a few minutes for it to be picked up in the next cycle rather than looking for a way to force it.
+</Tip>
+
+## Training status badges
+
+Every content source shows a badge so you always know where it stands.
+
+| Badge | Meaning |
+| ----- | ------- |
+| **Untrained** | Brand new — has not been picked up by a training cycle yet. |
+| **Training required** | You edited or added something and it needs to be retrained. |
+| **Trained** | Ready — the employee can use this source in conversations. |
+| **Failed** | Something went wrong. Check the source and try again, or contact support. |
+
+<Frame>
+  ![Content training status badges](/assets/ai-employees-content-training-status.png)
+</Frame>
+
+If a source shows anything other than **Trained**, the employee cannot answer from it yet — a question that depends on it comes up empty, not because the content is wrong, only because processing has not finished. If a source sits on **Failed** for a while, re-check the file or link and re-add it rather than leaving it as-is; the employee is treating that content as unavailable the entire time.
+
+## What gets extracted
+
+| Source | What training extracts |
+| ------ | ------------------------ |
+| **Documents** | Smart-scanned: tables get reconstructed, multi-column layouts get read in proper order — see [Upload documents](/help/ai-employees/content/upload-documents). |
+| **Links** | Crawled for text only; images and scripts are stripped out. |
+
+## Content limits
+
+The Content tab shows how much of your knowledge base quota you have used, as a running total against your plan's limit — see [plan limits](/help/ai-employees/getting-started/hire-an-ai-employee).
+
+<Frame>
+  ![Content quota usage](/assets/ai-employees-content-limits.png)
+</Frame>
+
+<Tip>
+  The quota counts extracted text, not original file or page size. A 20 MB PDF with 1 MB of actual text and tables only counts as 1 MB. The same applies to crawled pages. In practice, even a smaller plan's quota goes further than the megabyte number suggests.
+</Tip>
+
+## Reviewing content over time
+
+Review the Content tab whenever offers, policies, or products change:
+
+- **Update or remove** outdated links, documents, text, and Q&A entries.
+- **Rename** sources so your team knows what each one covers at a glance.
+- **Delete** sources that are no longer valid — stale content is what causes wrong answers, not a gap in coverage.
+
+After a batch of edits, [test in the Playground](/help/ai-employees/going-live/test-in-playground) with the questions customers actually ask, not just a general check. If your content includes product data that changes on its own, see [why you shouldn't crawl store data](/help/ai-employees/content/add-your-website#dont-crawl-store-data-shopify-woocommerce) for the more reliable alternative.

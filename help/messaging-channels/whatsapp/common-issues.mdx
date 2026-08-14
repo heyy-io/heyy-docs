@@ -1,0 +1,48 @@
+---
+title: "Common issues"
+description: "Fix a WhatsApp connection that won't complete or keeps failing."
+---
+
+Almost every WhatsApp connection failure traces back to one of three things: incomplete Meta Business Info, a number that's still active somewhere else, or a Coexistence-specific requirement not being met. Check these before contacting support.
+
+<Warning>
+  **Connection fails partway through, or Meta rejects the number.** Work through this checklist:
+
+  1. **Business Info incomplete.** Open your Meta Business Portfolio and confirm the **Business Info** section is fully filled in — this is the most common blocker for both connection methods.
+  2. **Number already active on the mobile app (Cloud API only).** Cloud API requires the number be free of the WhatsApp Standard or Business mobile app entirely. Log the number out of the app first.
+  3. **App already connected elsewhere (Coexistence only).** If your Business App shows an existing Business Platform connection, [disconnect it first](/help/messaging-channels/whatsapp/getting-started#connect-with-coexistence) before connecting to Heyy.
+  4. **App version too old (Coexistence only).** Confirm you're running WhatsApp Business App **2.24.17 or higher**.
+</Warning>
+
+## "Don't share chats" errors
+
+If Meta's Coexistence flow prompts you to share existing chats and you select **Share chats** (or the prompt is dismissed without an explicit choice), the connection can end up in a broken state. Restart the connection flow and explicitly select **Don't share chats** — see [Getting started](/help/messaging-channels/whatsapp/getting-started#connect-with-coexistence).
+
+## Coexistence feels unstable
+
+Coexistence is inherently less stable than Cloud API, since two systems (the mobile app and Heyy) are both interacting with the same number. If you're seeing frequent disconnects or missed messages:
+
+- Confirm the phone running the Business App has a stable internet connection — Coexistence relies on the app staying connected, not just installed.
+- Consider migrating to Cloud API once you no longer need the mobile app — see [Guides](/help/messaging-channels/whatsapp/guides#cloud-api-vs-coexistence-switching-later).
+
+## Test number can't send templates
+
+If you selected **Use a display name only** during setup, you received a free `+1 555…` test number. This number **cannot send templates** and is not suitable for real customer traffic — connect a real, verified phone number instead. See [Getting started](/help/messaging-channels/whatsapp/getting-started#connect-with-cloud-api).
+
+## Display name won't update
+
+**Display name** is read-only in Heyy — it's sourced directly from your Meta Business profile. Update it in WhatsApp Manager instead; see [Guides](/help/messaging-channels/whatsapp/guides#profile-configuration).
+
+## Can't send a normal message in an existing conversation
+
+This is almost always the **24-hour conversation window** closing, not a connection problem:
+
+1. Check the countdown in the chat header, or whether the composer already shows **"Select a WhatsApp message template to continue."**
+2. If the window has closed, send an approved template — see [WhatsApp templates](/help/messaging-channels/whatsapp/whatsapp-templates).
+3. Once the contact replies to the template, free-form messaging reopens.
+
+See [Conversation window](/help/inbox/chat-fundamentals/conversation-window) for the full explanation, and [Message actions](/help/inbox/message-actions) if a specific message shows as **Failed** rather than the composer being blocked outright.
+
+## Template was rejected by Meta
+
+Template review happens on Meta's side, not Heyy's. Common rejection reasons include promotional language in a template categorized as a utility/transactional message, or placeholder variables without enough surrounding context for a reviewer to understand the message's purpose. Revise and resubmit from [Settings → WhatsApp Templates](https://app.heyy.io/settings/whatsapp-templates).

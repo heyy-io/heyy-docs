@@ -1,0 +1,22 @@
+---
+title: "Build a journey"
+description: "Create journey steps, waits, and linked automations."
+---
+
+Open **Journeys** in Heyy to create a path contacts follow over time.
+
+## Typical setup
+
+1. **Define the journey** — Name it and choose how timing works:
+   - **From subscription** — Day zero is when the contact joins (subscribe date).
+   - **Fixed calendar dates** — Steps run on specific dates (launches, events).
+2. **Add steps** — Each step waits until its scheduled time, then **starts an automation** you select (build those automations under [Actions](/help/automations/logic-actions) first).
+3. **Enroll contacts** — Contacts enter via subscription, [triggers](/help/automations/triggers/contact-created), [campaigns](/help/campaigns-and-outreach/build/campaigns-tour), or [Contacts actions](/help/automations/contacts-actions) such as subscribe flows.
+
+## Tips
+
+- Keep each step’s automation focused (one job per automation).
+- Use [Manual trigger](/help/automations/triggers/manual-trigger) automations when a step should only run from the journey or API—not on every message.
+- Review enrollments and progress in the journey UI; use [Activity log](/help/automations/activity-log/overview) to debug automation runs from steps.
+
+See [What is a journey?](/help/automations/journeys/what-is-a-journey) for concepts.

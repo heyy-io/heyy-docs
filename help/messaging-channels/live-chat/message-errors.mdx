@@ -1,0 +1,17 @@
+---
+title: "Message errors"
+description: "Why a Live Chat message might not send or arrive."
+---
+
+Live Chat has no Meta-imposed reply window — see [Conversation window](/help/inbox/chat-fundamentals/conversation-window) — so most send failures here are connectivity or session issues rather than a policy block, unlike WhatsApp, Messenger, or Instagram.
+
+## Message shows as failed
+
+1. **Check whether the visitor is still on the page.** If they closed the tab or navigated away, the widget session ends and outbound messages have nowhere to deliver — see [Message actions](/help/inbox/message-actions) for how delivery status is shown on a message.
+2. **Refresh the conversation** using the chat header's **Refresh** control — see [Chat actions](/help/inbox/chat-actions#header-controls) — in case the thread is just stale in your view.
+3. **Confirm the channel itself is still connected.** If the widget was recently edited or the domain restrictions changed, an active session may have been dropped — see [Common issues](/help/messaging-channels/live-chat/common-issues).
+
+## Visitor says they never saw your reply
+
+- Live Chat only delivers while the widget is open in the visitor's browser — if they navigated away before you replied, the message will be waiting the next time they open the widget on that site, but there is no push notification to bring them back the way WhatsApp or SMS would.
+- For conversations where reaching someone outside an active browser session matters, consider following up on a channel with persistent delivery — WhatsApp, SMS, or email — rather than relying solely on Live Chat.

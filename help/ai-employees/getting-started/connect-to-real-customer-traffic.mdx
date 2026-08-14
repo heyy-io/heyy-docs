@@ -1,0 +1,29 @@
+---
+title: "Connect to real customer traffic"
+description: "Connect a channel and wire your AI Employee into an automation."
+---
+
+A tested AI Employee is not doing anything on its own yet. It needs somewhere to have the conversation and an automation to work with. Any automation can be used with an AI Employee, including those triggered manually.
+
+If you have not connected a channel yet, see [Messaging channels](/help/messaging-channels/index) first — then come back here to build the automation.
+
+## Build an automation
+
+Go to **Automations** in the top navigation and click **Create new automation** if your list is empty.
+
+1. **Set the trigger's channel.** The editor opens with a **Trigger** block set to *New incoming message*. Click into it and choose the channel you just connected.
+2. **Add your AI Employee.** Open the **Channel Menu** on the right, search for the AI Employee option, and select which employee handles this automation.
+3. **Optionally add extra guidelines.** These apply only inside this automation, not everywhere the employee is used — useful for a one-off task or a narrower boundary. See [Automation guideline overrides](/help/ai-employees/going-live/automation-guideline-overrides).
+4. **Select which exit points are active.** An [exit point](/help/ai-employees/capabilities/create-exit-points) configured on the employee does not apply automatically — if it is not selected here, the automation will not use it.
+
+<Frame>
+  ![Automation editor with an AI Employee step added after the trigger](/assets/ai-employees-automation-step.png)
+</Frame>
+
+<Tip>
+  A **Contact Not Replied** condition lets you close, reassign, or hand off to another employee if the customer does not reply within a set window — place it wherever it is useful in the flow. See [Reply timeouts](/help/ai-employees/going-live/reply-timeouts).
+</Tip>
+
+## Publish
+
+Once the automation is set up the way you want, publish it to start receiving real conversations. See [How AI employees work in automations](/help/ai-employees/going-live/how-ai-employees-work-in-automations) and [Add to an automation](/help/ai-employees/going-live/add-to-automation) for the full reference.

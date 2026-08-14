@@ -1,0 +1,72 @@
+---
+title: "Call an external API"
+description: "Set up a Custom API action so your employee can look up data or trigger work, not just reply with text."
+---
+
+**Custom API** is the most useful [action](/help/ai-employees/capabilities/actions-overview) type. It lets the employee call an external HTTP endpoint mid-conversation — checking an order status, looking up live stock, creating a support ticket, or updating a CRM record.
+
+## Build the action
+
+1. **Name it.** Any language, any characters — this is for you and the employee to recognize the action, not code. *"Check Order Status"* is fine.
+2. **Add input parameters.** Define the values the employee needs to gather before it can call the action. For each one, set:
+
+   | Field | Description |
+   | ----- | ----------- |
+   | **Friendly name** | What you and the employee call it — keep the actual parameter name code-style, no spaces. |
+   | **Type** | `Text` (open text, most common), `Number`, `Boolean`, or `Date`. |
+   | **Description** | Optional, but tell the employee what should go in it if it is not self-explanatory — a `query` field for a product search needs one; `first_name` does not. |
+   | **Required** | If optional and the employee lacks the data, it skips the parameter rather than blocking the whole request. |
+3. **Configure the endpoint.** Set the method (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`) and the URL, plus any **query parameters** appended to the request and **headers** the target API requires, such as authentication tokens. For `POST`, `PUT`, `PATCH`, and `DELETE`, you also get a JSON request body editor.
+4. **Reference values with the insert button.** Reference input parameters as `input.parameter_name` and contact attributes as `contact.attribute_name` inside the URL, headers, query parameters, or body. Use the editor's insert button rather than typing the prefix by hand, so you do not end up with a broken reference.
+5. **Test before saving**, using both modes available:
+
+   | Test mode | What it does |
+   | --------- | ------------- |
+   | **Mock test** | Simulates a response without calling the live endpoint — useful for verifying your configuration and response mapping before anything real is connected. |
+   | **Live test** | Runs an actual call against the real endpoint, using real values for every input parameter and contact attribute the request needs, to confirm everything works end-to-end. |
+
+6. **Map the response.** Choose which fields come back to the employee — see [Response mapping](#response-mapping) below.
+
+<Frame>
+  ![Custom API action builder](/assets/ai-employees-actions-api-builder.png)
+</Frame>
+
+<Warning>
+  Input parameter names must be code-style, no spaces — they are referenced directly in the endpoint and body. If you catch yourself typing one with a space, fix it before saving.
+</Warning>
+
+Keep endpoints idempotent where possible, and never return sensitive data the employee should not repeat to a contact. Pair API actions with [Boundaries](/help/ai-employees/identity-and-guidelines/boundaries) so the employee knows when *not* to call an external system.
+
+## Response mapping
+
+After you test a Custom API Call, the raw response comes back — and it usually contains more than the employee needs: internal IDs, success flags, metadata, timestamps. Response mapping is where you trim that down.
+
+### Why it matters
+
+None of that extra data helps answer the contact, and all of it adds noise the employee has to sift through every time the action runs. Response mapping lets you select only the fields that matter — an order status, a price, a stock count — and drop everything else.
+
+### How to use it
+
+1. **Select the fields you want to keep.** If the response includes an `id` or `success` flag you do not need, leave it unmapped — you are choosing what reaches the employee, not editing the API itself.
+2. **Rename fields for clarity, if needed.** Some APIs return vague or technical names. If a value comes back as `val_1` or `stat_cd`, give it a friendlier output name so both the employee and your team understand what it represents.
+
+<Frame>
+  ![Response mapping table with API response fields selected and renamed for the employee to use](/assets/ai-employees-actions-response-mapping.png)
+</Frame>
+
+Response mapping earns its keep on APIs that return a large or deeply nested response — a full order object with shipping details, line items, and internal metadata benefits from mapping just the two or three fields your guideline actually references. A simple lookup that returns three fields probably needs little trimming.
+
+<Tip>
+  If a guideline references a specific value from an action's response, make sure that field is actually mapped. A field the employee cannot see is a field it cannot use, no matter how clearly the guideline describes it.
+</Tip>
+
+## Example: live stock instead of a crawled page
+
+A crawled page cannot reliably answer "is the medium blue hoodie in stock?" — the count it saw during the crawl may already be wrong. A Custom API Call can:
+
+1. Be named something like *Check Product Stock*.
+2. Take an input parameter, `product_name` or `sku`, so the employee knows what to look up.
+3. Point at your store's product API, using `input.product_name` in the request.
+4. Map the response to just `in_stock`, `quantity`, and `price` — not the raw JSON your store returns.
+
+See [Add your website](/help/ai-employees/content/add-your-website#dont-crawl-store-data-shopify-woocommerce) for why crawled links are the wrong tool for data like this in the first place.

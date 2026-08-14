@@ -1,0 +1,27 @@
+---
+title: "New & reopened chat"
+description: "Automation trigger: New & reopened chat."
+---
+
+## New & reopened chat
+
+<Frame>
+  ![New or reopened chat trigger](/assets/automations-triggers-new-reopened-chat.png)
+</Frame>
+
+Runs whenever a chat is opened, whether it’s the first time a contact messages you or they’re reopening a previously closed conversation. Use this when you want one automation to handle both new and returning contacts without distinguishing between them.
+
+#### Fields
+
+- **Channel** (required): Select the channel where this trigger will run.
+- **When to trigger** (optional): Add a condition to narrow the audience based on specific conditions.
+- **Save text reply to** (optional): Save the contact’s text reply to an automation variable.
+- **Save file reply to** (optional): Save the contact’s file reply to an automation variable.
+
+### Use cases
+
+- **Single welcome flow for all opens:** Send one greeting and qualification flow whether the contact is new or returning, without maintaining two separate automations.
+- **Unified triage:** Route or assign every opened chat the same way (e.g. AI first, then handoff) regardless of first-time vs. reopened.
+- **Always capture the first message:** Use “Save text reply to” so you can store what the contact said when they opened the chat and use it in later steps.
+
+---

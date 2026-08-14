@@ -1,0 +1,25 @@
+---
+title: "Delivery & failures"
+description: "Understand campaign delivery status per contact."
+---
+
+On the **campaign execution** page, each recipient (contact) has a delivery outcome—sent, delivered, failed, or other states your channel reports.
+
+## Why failures happen
+
+Common causes:
+
+- [Contact subscription](/help/contacts/the-contact/contact-subscription) or opt-out
+- Invalid or missing phone or channel identity
+- WhatsApp template or policy issues—see [Message errors](/help/messaging-channels/whatsapp/message-errors)
+- Channel disconnected or misconfigured—see [Common issues](/help/messaging-channels/whatsapp/common-issues)
+
+Fix the underlying issue (template, channel, contact data) before retrying.
+
+## Follow-up sends
+
+After a run, you can target contacts who **failed** with a new campaign from the execution screen—without rebuilding the full audience from scratch. That workflow pairs with [Export & bulk actions](/help/campaigns-and-outreach/run/export-and-bulk-actions) when you need to update contact data first.
+
+## Inbox and webhooks
+
+Replies to campaign messages appear in [Inbox](/help/inbox/inbox-tour) like other conversations. Outbound campaign messages may include `campaign` / `campaignExecutionId` in [message webhooks](/webhooks/events/message-sent)—useful for integrations.

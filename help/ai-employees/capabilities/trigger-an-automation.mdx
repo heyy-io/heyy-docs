@@ -1,0 +1,38 @@
+---
+title: "Trigger an automation"
+description: "Let your employee start another automation for the contact, with input parameters."
+---
+
+**Trigger automation** is the second [action](/help/ai-employees/capabilities/actions-overview) type. It lets the employee kick off an existing [automation](/help/automations/index) mid-conversation — useful for internal notifications, assigning a chat to a teammate, or starting a workflow your main automation does not handle inline.
+
+## Add the action
+
+1. On the **Actions** tab, click **Add action** and choose **Trigger automation**.
+2. Provide an **action name**.
+3. Add any input parameters the target automation expects, the same way you would for a [Custom API action](/help/ai-employees/capabilities/call-an-external-api#build-the-action) — friendly name, type, description, required toggle.
+4. Select the specific automation this action should fire.
+5. Save.
+
+Input parameters do not always need to come from the customer typing something in. The employee can fill them from three sources:
+
+| Source | Example |
+| ------ | ------- |
+| **The conversation history itself** | The customer already mentioned their order number earlier in the thread. |
+| **The output of a previous action** | An earlier [Custom API call](/help/ai-employees/capabilities/call-an-external-api) already returned the value this automation needs. |
+| **Asking the customer directly** | The employee asks a specific question to gather what is missing before it can call the action. |
+
+For example, if the employee captures a customer's email mid-conversation, it can feed that value directly into the triggered automation as a live input, without any manual step from your team.
+
+<Frame>
+  ![Trigger automation action](/assets/ai-employees-actions-trigger-automation.png)
+</Frame>
+
+## Common uses
+
+| Use case | What it does |
+| -------- | ------------- |
+| Internal notification | Notify a team or teammate the moment a specific situation comes up mid-chat. |
+| Assign a chat | Hand a conversation to a specific teammate or team without waiting for an exit point to close it out. |
+| Follow-up workflow | Start a separate journey — a nurture sequence, a fulfillment process — without blocking the current reply. |
+
+Reference this action in a [guideline](/help/ai-employees/identity-and-guidelines/write-your-guidelines) with `@Actions` so the employee knows exactly when to invoke it. Test the trigger path in the [Playground](/help/ai-employees/going-live/test-in-playground) and confirm the target automation is published and appropriate for the current channel before going live.

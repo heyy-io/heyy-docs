@@ -1,0 +1,20 @@
+---
+title: "View runs & debug"
+description: "Inspect automation runs and fix issues from the Activity log."
+---
+
+When an automation does not behave as expected, use the **Activity log** to inspect individual **runs** tied to a [contact](/help/contacts/the-contact/what-is-a-contact).
+
+## Inspect a run
+
+1. Open **Activity log**.
+2. Filter by automation, contact, date, or status if your workspace supports it.
+3. Open a run to see the trigger that started it and each **action** step (success, skipped, or failed).
+
+## Common issues
+
+- **Trigger did not fire** — Check channel, inbox, label, or [webhook](/help/automations/triggers/webhook-received) configuration on the trigger page.
+- **Action failed** — WhatsApp template errors, API timeouts, or missing attributes; see channel [message errors](/help/messaging-channels/whatsapp/message-errors) or [Call external API](/help/automations/apps-actions).
+- **Wrong branch** — Review [Condition](/help/automations/logic-actions) and [AI Intention](/help/automations/ai-actions) steps in the run detail.
+
+After fixing the automation, test with [Manual trigger](/help/automations/triggers/manual-trigger) or the Playground for [AI Employees](/help/ai-employees/going-live/test-in-playground) where relevant.
