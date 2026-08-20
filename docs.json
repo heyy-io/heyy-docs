@@ -334,22 +334,6 @@
                   "help/managing-your-workspace/workspace-members/how-to-invite-partners",
                   "help/managing-your-workspace/workspace-roles"
                 ]
-              },
-              {
-                "group": "Billing & subscription",
-                "pages": [
-                  "help/managing-your-workspace/billing-and-subscription/free-trial",
-                  "help/managing-your-workspace/billing-and-subscription/how-to-cancel-subscription",
-                  "help/managing-your-workspace/billing-and-subscription/how-to-change-billing-information",
-                  "help/managing-your-workspace/billing-and-subscription/how-to-download-invoice"
-                ]
-              },
-              {
-                "group": "Additional guides",
-                "pages": [
-                  "help/managing-your-workspace/additional-guides/switching-workspaces",
-                  "help/managing-your-workspace/additional-guides/deleting-workspace"
-                ]
               }
             ]
           }
