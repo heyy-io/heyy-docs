@@ -387,20 +387,6 @@
                     ]
                   },
                   {
-                    "group": "Campaign",
-                    "expanded": false,
-                    "pages": [
-                      "api-reference/openapi-v3.json POST /campaigns/search",
-                      "api-reference/openapi-v3.json POST /campaigns",
-                      "api-reference/openapi-v3.json PUT /campaigns/{campaignId}",
-                      "api-reference/openapi-v3.json GET /campaigns/{campaignId}",
-                      "api-reference/openapi-v3.json DELETE /campaigns/{campaignId}",
-                      "api-reference/openapi-v3.json POST /campaigns/{campaignId}/recipients",
-                      "api-reference/openapi-v3.json DELETE /campaigns/{campaignId}/recipients",
-                      "api-reference/openapi-v3.json POST /campaigns/{campaignId}/start"
-                    ]
-                  },
-                  {
                     "group": "Channel",
                     "expanded": false,
                     "pages": [
