@@ -461,8 +461,8 @@
                     "group": "Message",
                     "expanded": false,
                     "pages": [
-                      "api-reference/openapi-v3.json POST /messages/send",
-                      "api-reference/openapi-v3.json POST /messages/send_template"
+                      "api-reference/send-message",
+                      "api-reference/send-template-message"
                     ]
                   },
                   {
