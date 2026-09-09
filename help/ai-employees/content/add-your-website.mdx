@@ -6,7 +6,7 @@ description: "Crawl static pages so your employee answers from your site — and
 **Links** is one of four source types on the **Content** tab (along with [Documents](/help/ai-employees/content/upload-documents), [Text](/help/ai-employees/content/add-plain-text-knowledge), and [Q&A](/help/ai-employees/content/build-qa-knowledge-base)). Use it to crawl a single page or an entire site so the employee can answer from your actual content instead of guessing.
 
 <Warning>
-  Do not crawl store-based sites such as Shopify or WooCommerce for product data. See [Don't crawl store data](#dont-crawl-store-data-shopify-woocommerce) below.
+  Do not crawl store-based sites such as Shopify or WooCommerce for product data. See [Do not crawl store data](#do-not-crawl-store-data-shopify-woocommerce) below.
 </Warning>
 
 ## Add a link
@@ -29,7 +29,7 @@ Choosing between the two is a question of scope. Setting up an employee for the 
 
 Links are internal to the employee — they are never sent to a contact. Reference a link directly in a [guideline](/help/ai-employees/identity-and-guidelines/write-your-guidelines) with `@Content` when the employee should prefer a specific source over others.
 
-## Don't crawl store data (Shopify, WooCommerce)
+## Do not crawl store data (Shopify, WooCommerce)
 
 A crawled page is frozen the moment it is indexed. Your store is not — prices change, items sell out, variants get added, and none of that reaches the employee until the next crawl, if one even runs again. The employee has no way to tell a crawled page is outdated: it will confirm a price or state something is in stock with full confidence, using data that is already wrong. That is worse than not knowing the answer.
 
